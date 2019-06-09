@@ -29,13 +29,18 @@ public class UserMapRepository implements UserRepository {
 
 		userMap.put(acc.getuId(), acc);
 
-		return "{\"message\": \"Account Created\"}";
+		return "{\"message\": \"User Created\"}";
 	}
 
 	
 	public String findAllUsers() {
 
-		return userMap.toString();
+		if (getUserMap().size() == 0) {
+			return "{\"message\": \"Map of Users is empty\"}";
+		} else {
+		
+		return json.getJSONForObject(userMap);
+	}
 	}
 
 	
