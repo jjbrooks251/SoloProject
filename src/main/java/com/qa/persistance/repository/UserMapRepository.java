@@ -61,7 +61,7 @@ public class UserMapRepository implements UserRepository {
 
 		} else {
 
-			return "User does not exist";
+			return "{\"message\": \"User does not exist\"}";
 		}
 	}
 
@@ -85,11 +85,17 @@ public class UserMapRepository implements UserRepository {
 	}
 
 	public String updateUser(int id, String user) {
-		User acc = json.getObjectForJSON(user, User.class);
+		User oldClas = getUserMap().get(id);
+		User newClas = json.getObjectForJSON(user, User.class);
 
-		userMap.replace(id, acc);
+		if (oldClas != null) {
 
-		return "{\"Message\": \"Account Updated\"}";
+			getUserMap().put(id, newClas);
+			
+			return "{\"message\": \"User Updated\"}";
+		} else {
+			return "{\"message\": \"User does not exist\"}";
+		}
 	}
 
 	public String deleteUser(int id) {

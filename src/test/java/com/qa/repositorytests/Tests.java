@@ -57,7 +57,7 @@ public class Tests {
 	@Test
 	public void getUserNotExist() {
 
-		assertEquals("User does not exist", ump.findAUserId(1));
+		assertEquals("{\"message\": \"User does not exist\"}", ump.findAUserId(1));
 
 	}
 
@@ -144,14 +144,26 @@ public class Tests {
 		
 	}
 
-	@Ignore
+	@Test
 	public void updateUser() {
 
+		ump.createUser(Constants.user1);
+		
+		assertEquals("User: 1, jbro95, Jbrooks95, jbro95@qa.com", ump.findAUserId(1));
+		
+		ump.updateUser(1, Constants.sameId);
+		
+		assertEquals("User: 1, jbro951, Jbrooks95, jbrok95@qa.com", ump.findAUserId(1));
+		
 	}
 
-	@Ignore
+	@Test
 	public void updateDoesntExist() {
 
+		assertEquals(0, ump.getUserMap().size());
+		
+		assertEquals("{\"message\": \"User does not exist\"}", ump.updateUser(1, Constants.user1));
+		
 	}
 
 	@Ignore
