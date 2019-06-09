@@ -3,6 +3,7 @@ package com.qa.persistance.repository;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
 import javax.enterprise.inject.Alternative;
@@ -78,7 +79,9 @@ public class UserMapRepository implements UserRepository {
 			}
 
 			// List<String> names =
-			// userMap.entrySet().stream().filter(t->t.startsWith("S")).collect(Collectors.toList());
+			// userMap.entrySet().stream().filter(t->t.startsWith(username)).collect(Collectors.toList());
+			// List<Entry<Integer, User>> validList = userMap.entrySet().stream().filter(n
+			// -> n.getValue().equals(username)).collect(Collectors.toList());
 
 		}
 		return count;
@@ -91,7 +94,7 @@ public class UserMapRepository implements UserRepository {
 		if (oldClas != null) {
 
 			getUserMap().put(id, newClas);
-			
+
 			return "{\"message\": \"User Updated\"}";
 		} else {
 			return "{\"message\": \"User does not exist\"}";

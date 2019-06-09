@@ -37,6 +37,9 @@ public class UserDatabaseRepository implements UserRepository {
 	
 	@Override
 	public int findAUserName(String username) {
+		
+		// List<Movie> validList = movies.stream().filter(n -> n.getTitle().equals(title)).collect(Collectors.toList());
+		
 		return 1;
 	}
 
