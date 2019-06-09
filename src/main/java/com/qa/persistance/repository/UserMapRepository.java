@@ -28,11 +28,17 @@ public class UserMapRepository implements UserRepository {
 	public String createUser(String user) {
 		User acc = json.getObjectForJSON(user, User.class);
 
-		userMap.put(acc.getuId(), acc);
+		int id = acc.getuId();
 
-		System.out.println(acc.getuId());
+		if (getUserMap().containsKey(id) != false) {
 
-		return "{\"message\": \"User Created\"}";
+			return "{\"message\": \"Conflicting User Id\"}";
+
+		} else {
+			userMap.put(acc.getuId(), acc);
+
+			return "{\"message\": \"User Created\"}";
+		}
 	}
 
 	public String findAllUsers() {
@@ -70,8 +76,9 @@ public class UserMapRepository implements UserRepository {
 			if (s != null && s.contains(username)) {
 				count = count + 1;
 			}
-			
-		//	List<String> names = userMap.entrySet().stream().filter(t->t.startsWith("S")).collect(Collectors.toList());
+
+			// List<String> names =
+			// userMap.entrySet().stream().filter(t->t.startsWith("S")).collect(Collectors.toList());
 
 		}
 		return count;
@@ -87,9 +94,15 @@ public class UserMapRepository implements UserRepository {
 
 	public String deleteUser(int id) {
 
-		userMap.remove(id);
+		if (getUserMap().containsKey(id) != false) {
+			userMap.remove(id);
 
-		return "{\"Message\": \"Account Deleted\"}";
+			return "{\"Message\": \"Account Deleted\"}";
+
+		} else {
+
+			return "{\"Message\": \"Account does not exist\"}";
+		}
 	}
 
 }

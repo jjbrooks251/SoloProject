@@ -62,21 +62,31 @@ public class Tests {
 	}
 
 	@Test
+	public void create2Users() {
+
+		ump.createUser(Constants.user1);
+		ump.createUser(Constants.user2);
+
+		assertEquals(2, ump.getUserMap().size());
+
+	}
+
+	@Test
 	public void getMultipleUsers() {
 		ump.createUser(Constants.user1);
 		ump.createUser(Constants.user2);
 		ump.createUser(Constants.user3);
-		
+
 		assertEquals(2, ump.findAUserName("jbro95"));
 	}
 
-	@Ignore
-	public void create2Users() {
-
-	}
-
-	@Ignore
+	@Test
 	public void createUserSameId() {
+		
+		ump.createUser(Constants.user1);
+		
+		
+		assertEquals("{\"message\": \"Conflicting User Id\"}", ump.createUser(Constants.sameId));
 
 	}
 
@@ -115,14 +125,23 @@ public class Tests {
 
 	}
 
-	@Ignore
+	@Test
 	public void deleteUser() {
 
+		ump.createUser(Constants.user1);
+		assertEquals(1, ump.getUserMap().size());
+		
+		ump.deleteUser(1);
+		
+		assertEquals(0, ump.getUserMap().size());
+		
 	}
 
-	@Ignore
+	@Test
 	public void deleteDoesntExist() {
 
+		assertEquals("{\"Message\": \"Account does not exist\"}", ump.deleteUser(1));
+		
 	}
 
 	@Ignore

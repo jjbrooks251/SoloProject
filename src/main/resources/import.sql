@@ -4,7 +4,6 @@ INSERT INTO USER (uId, username, password, email) VALUES (3, 'kryan95', 'Gymsch2
 INSERT INTO USER (uId, username, password, email) VALUES (4, 'kpatel95', 'Password95', 'kpatel95@qa.com')
 INSERT INTO USER (uId, username, password, email) VALUES (5, 'omiller92', 'Magics92', 'omiller92@qa.com')
 
-
 INSERT INTO STORGAE (bId, uId) VALUES (1, 1)
 INSERT INTO STORGAE (bId, uId) VALUES (2, 2)
 INSERT INTO STORGAE (bId, uId) VALUES (3, 3)
