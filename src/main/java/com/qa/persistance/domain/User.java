@@ -10,7 +10,7 @@ import javax.persistence.Id;
 public class User {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	//@GeneratedValue(strategy = GenerationType.AUTO)
 	private int uId;
 	@Column(length = 30)
 	private String username;
@@ -62,5 +62,12 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	@Override
+	public String toString() {
+		return "User: " + uId + ", " + username + ", " + password + ", " + email;
+	}
+	
+	
 
 }
