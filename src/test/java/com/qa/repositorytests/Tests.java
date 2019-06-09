@@ -23,6 +23,16 @@ public class Tests {
 	}
 
 	@Test
+	public void createUser() {
+
+		assertEquals(0, ump.getUserMap().size());
+
+		ump.createUser(Constants.user1);
+
+		assertEquals(1, ump.getUserMap().size());
+	}
+
+	@Test
 	public void getEmptyMap() {
 
 		assertEquals(0, ump.getUserMap().size());
@@ -33,28 +43,31 @@ public class Tests {
 	@Test
 	public void getAllUsers() {
 
-		ump.getUserMap().put(1, Constants.user1);
+		ump.createUser(Constants.user1);
 		assertEquals(1, ump.getUserMap().size());
 	}
 
-	@Ignore
+	@Test
 	public void getAUser() {
 
+		ump.createUser(Constants.user1);
+		assertEquals("User: 1, jbro95, Jbrooks95, jbro95@qa.com", ump.findAUserId(1));
 	}
 
-	@Ignore
+	@Test
 	public void getUserNotExist() {
 
+		assertEquals("User does not exist", ump.findAUserId(1));
+
 	}
 
-	@Ignore
+	@Test
 	public void getMultipleUsers() {
-
-	}
-
-	@Ignore
-	public void createUser() {
-
+		ump.createUser(Constants.user1);
+		ump.createUser(Constants.user2);
+		ump.createUser(Constants.user3);
+		
+		assertEquals(2, ump.findAUserName("jbro95"));
 	}
 
 	@Ignore

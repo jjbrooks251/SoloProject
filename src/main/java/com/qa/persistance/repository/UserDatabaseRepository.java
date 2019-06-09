@@ -31,8 +31,13 @@ public class UserDatabaseRepository implements UserRepository {
 	}
 
 	@Override
-	public String findAUser(int id) {
+	public String findAUserId(int id) {
 		return null;
+	}
+	
+	@Override
+	public int findAUserName(String username) {
+		return 1;
 	}
 
 	@Transactional(TxType.REQUIRED)
@@ -47,4 +52,7 @@ public class UserDatabaseRepository implements UserRepository {
 		return null;
 	}
 
+
+
+	
 }

@@ -6,7 +6,9 @@ public interface UserRepository {
 	
 	public String findAllUsers();
 	
-	public String findAUser(int id);
+	public String findAUserId(int id);
+	
+	public int findAUserName(String username);
 	
 	public String updateUser(int id, String user);
 	
