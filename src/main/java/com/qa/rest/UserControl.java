@@ -38,10 +38,10 @@ public class UserControl {
 		return service.findAUserName(username);
 	}
 	
-	@Path("/createUser/{username}")
+	@Path("/createUser")
 	@POST
 	@Produces({ "application/json" })
-	public String createUser(@PathParam("username") String username) {
+	public String createUser(String username) {
 		return service.createUser(username);
 	}
 	

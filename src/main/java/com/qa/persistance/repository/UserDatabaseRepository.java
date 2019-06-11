@@ -24,8 +24,20 @@ public class UserDatabaseRepository implements UserRepository {
 	private JSONUtil util;
 	
 	@Transactional(TxType.REQUIRED)
-	public String createUser(String account) {
-		return null;
+	public String createUser(String user) {
+		User clas1 = util.getObjectForJSON(user, User.class);
+
+		int id = clas1.getuId();
+
+		if (manager.find(User.class, id) != null) {
+			return "{\"message\": \"User with this id already exists\"}";
+		} else {
+
+			manager.persist(clas1);
+
+			return "{\"message\": \"New User Created\"}";
+		}
+
 	}
 
 	public String findAllUsers() {
@@ -55,13 +67,32 @@ public class UserDatabaseRepository implements UserRepository {
 	}
 
 	@Transactional(TxType.REQUIRED)
-	public String updateUser(int id, String account) {
-		return null;
+	public String updateUser(int id, String user) {
+		User old = manager.find(User.class, id);
+		User update = util.getObjectForJSON(user, User.class);
+
+		if (old != null) {
+			old.setUsername(update.getUsername());
+			old.setPassword(update.getPassword());
+			old.setEmail(update.getEmail());
+
+			manager.persist(old);
+			return "{\"message\": \"User Updated\"}";
+		} else {
+			return "{\"message\": \"User does not exist\"}";
+		}
 	}
 
 	@Transactional(TxType.REQUIRED)
 	public String deleteUser(int id) {
-		return null;
+		User user1 = manager.find(User.class, id);
+
+		if (user1 != null) {
+			manager.remove(user1);
+			return "{\"message\": \"User Deleted\"}";
+		} else {
+			return "{\"message\": \"User with this id doesn't exist\"}";
+		}
 	}
 
 

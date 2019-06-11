@@ -36,13 +36,13 @@ public class UserServiceImpl implements UserService{
 	
 	public String updateUser(int id, String user) {
 		// TODO Auto-generated method stub
-		return null;
+		return repo.updateUser(id, user);
 	}
 
 	
 	public String deleteUser(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		return repo.deleteUser(id);
 	}
 
 	
