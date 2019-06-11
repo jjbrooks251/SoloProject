@@ -1,12 +1,16 @@
 package com.qa.persistance.repository;
 
+import java.util.Collection;
+
 import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
 import javax.transaction.Transactional.TxType;
 
+import com.qa.persistance.domain.User;
 import com.qa.util.JSONUtil;
 
 @Transactional(TxType.SUPPORTS)
@@ -14,28 +18,47 @@ import com.qa.util.JSONUtil;
 public class UserDatabaseRepository implements UserRepository {
 
 	@PersistenceContext(unitName = "primary")
-	private EntityManager em;
+	private EntityManager manager;
 
 	@Inject
-	private JSONUtil json;
+	private JSONUtil util;
 	
 	@Transactional(TxType.REQUIRED)
-	@Override
-	public String createUser(String account) {
-		return null;
+	public String createUser(String user) {
+		User clas1 = util.getObjectForJSON(user, User.class);
+
+		int id = clas1.getuId();
+
+		if (manager.find(User.class, id) != null) {
+			return "{\"message\": \"User with this id already exists\"}";
+		} else {
+
+			manager.persist(clas1);
+
+			return "{\"message\": \"New User Created\"}";
+		}
+
 	}
 
-	@Override
 	public String findAllUsers() {
-		return null;
+		Query query = manager.createQuery("SELECT a FROM User a");
+
+		Collection<User> users = (Collection<User>) query.getResultList();
+
+		return util.getJSONForObject(users);
 	}
 
-	@Override
 	public String findAUserId(int id) {
-		return null;
+		User user1 = manager.find(User.class, id);
+
+		if (user1 != null) {
+
+			return util.getJSONForObject(user1);
+		} else {
+			return "{\"message\": \"User doesn't exist\"}";
+		}
 	}
 	
-	@Override
 	public int findAUserName(String username) {
 		
 		// List<Movie> validList = movies.stream().filter(n -> n.getTitle().equals(title)).collect(Collectors.toList());
@@ -44,15 +67,32 @@ public class UserDatabaseRepository implements UserRepository {
 	}
 
 	@Transactional(TxType.REQUIRED)
-	@Override
-	public String updateUser(int id, String account) {
-		return null;
+	public String updateUser(int id, String user) {
+		User old = manager.find(User.class, id);
+		User update = util.getObjectForJSON(user, User.class);
+
+		if (old != null) {
+			old.setUsername(update.getUsername());
+			old.setPassword(update.getPassword());
+			old.setEmail(update.getEmail());
+
+			manager.persist(old);
+			return "{\"message\": \"User Updated\"}";
+		} else {
+			return "{\"message\": \"User does not exist\"}";
+		}
 	}
 
 	@Transactional(TxType.REQUIRED)
-	@Override
 	public String deleteUser(int id) {
-		return null;
+		User user1 = manager.find(User.class, id);
+
+		if (user1 != null) {
+			manager.remove(user1);
+			return "{\"message\": \"User Deleted\"}";
+		} else {
+			return "{\"message\": \"User with this id doesn't exist\"}";
+		}
 	}
 
 
