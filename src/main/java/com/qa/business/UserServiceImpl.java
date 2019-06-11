@@ -9,34 +9,41 @@ public class UserServiceImpl implements UserService{
 	@Inject
 	private UserRepository repo;
 
-	@Override
+	
 	public String createUser(String user) {
 		// TODO Auto-generated method stub
-		return null;
+		return repo.createUser(user);
 	}
 
-	@Override
+	
 	public String findAllUsers() {
 		// TODO Auto-generated method stub
-		return null;
+		return repo.findAllUsers();
 	}
 
-	@Override
-	public String findAUser(int id) {
+	
+	public String findAUserId(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		return repo.findAUserId(id);
 	}
 
-	@Override
+	
+	public int findAUserName(String username) {
+		// TODO Auto-generated method stub
+		return repo.findAUserName(username);
+	}
+
+	
 	public String updateUser(int id, String user) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
+	
 	public String deleteUser(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	
 }
