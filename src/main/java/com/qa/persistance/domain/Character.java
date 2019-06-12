@@ -10,7 +10,7 @@ import javax.persistence.Id;
 public class Character {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int cId;
 	@Column(length = 30)
 	private String name;
