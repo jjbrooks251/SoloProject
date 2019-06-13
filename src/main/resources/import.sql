@@ -4,8 +4,6 @@ INSERT INTO USER (uId, username, password, email) VALUES (3, 'mmist96', 'Netflix
 INSERT INTO USER (uId, username, password, email) VALUES (4, 'kpatel95', 'Password95', 'kpatel95@qa.com')
 INSERT INTO USER (uId, username, password, email) VALUES (5, 'omiller92', 'Magics92', 'omiller92@qa.com')
 
-INSERT INTO STORRAGE_CHARACTER (Storage_bId, Character_cId) VALUES (1, 1)
-
 INSERT INTO STORGAE (bId, uId) VALUES (1, 1)
 INSERT INTO STORGAE (bId, uId) VALUES (2, 2)
 INSERT INTO STORGAE (bId, uId) VALUES (3, 3)
@@ -63,7 +61,9 @@ INSERT INTO CATEGORY (catId, name) VALUES (1, 'trial')
 
 INSERT INTO STORELINE (bId, cId, lv) VALUES (1, 1, 56)
 
-INSERT INTO TEAM (tId, uId) VALUES (1, 1)
+INSERT INTO TEAM (tId, user_uId) VALUES (1, 1)
 
 INSERT INTO TEAMLINE (tId, cId) VALUES (1, 5)
+
+INSERT INTO TEAM_CHARACTER (team_tId, character_cId) VALUES (1, 1)
 

@@ -122,4 +122,6 @@ public class Character {
 		this.catId = catId;
 	}
 
+	
+
 }

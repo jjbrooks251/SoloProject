@@ -5,6 +5,7 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,20 +18,17 @@ public class Storage {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int bId;
 	private int uId;
-	@OneToMany(cascade = CascadeType.ALL)
-    private Set<Character> box = new HashSet<Character>();
-
+	
 	public Storage() {
 		super();
 	}
 
 	
 	
-	public Storage(int bId, int uId, Set<Character> box) {
+	public Storage(int bId, int uId) {
 		super();
 		this.bId = bId;
 		this.uId = uId;
-		this.box = box;
 	}
 
 	public int getbId() {
@@ -47,14 +45,6 @@ public class Storage {
 
 	public void setuId(int uId) {
 		this.uId = uId;
-	}
-
-	public Set<Character> getDecks() {
-		return box;
-	}
-
-	public void setDecks(Set<Character> box) {
-		this.box = box;
 	}
 	
 	

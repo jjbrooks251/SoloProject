@@ -1,10 +1,13 @@
 package com.qa.persistance.domain;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class User {
@@ -18,6 +21,9 @@ public class User {
 	private String password;
 	@Column(length = 255)
 	private String email;
+	
+	@OneToMany(mappedBy = "user")
+	private List<Team> teams;
 
 	public User() {
 		super();
@@ -61,6 +67,14 @@ public class User {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	public List<Team> getTeams() {
+		return teams;
+	}
+
+	public void setTeams(List<Team> teams) {
+		this.teams = teams;
 	}
 
 	@Override
