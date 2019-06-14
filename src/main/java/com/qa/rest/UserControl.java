@@ -55,7 +55,7 @@ public class UserControl {
 	@Path("/updateUser/{id}")
 	@PUT
 	@Produces({ "application/json" })
-	public String updateUser(@PathParam("id") int id, @PathParam("username") String username) {
+	public String updateUser(@PathParam("id") int id, String username) {
 		return service.updateUser(id, username);
 	}
 	

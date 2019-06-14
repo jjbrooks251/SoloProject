@@ -1,16 +1,22 @@
 package com.qa.persistance.domain;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 @Entity
 public class User {
 
 	@Id
-	//@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int uId;
 	@Column(length = 30)
 	private String username;
@@ -18,6 +24,10 @@ public class User {
 	private String password;
 	@Column(length = 255)
 	private String email;
+	
+//	@JoinColumn(name = "User_ID", referencedColumnName = "User_uID")
+//    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//	private List<Team> teams;
 
 	public User() {
 		super();
@@ -62,6 +72,14 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+//	public List<Team> getTeams() {
+//		return teams;
+//	}
+//
+//	public void setTeams(List<Team> teams) {
+//		this.teams = teams;
+//	}
 
 	@Override
 	public String toString() {

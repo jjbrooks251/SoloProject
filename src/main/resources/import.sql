@@ -1,6 +1,6 @@
 INSERT INTO USER (uId, username, password, email) VALUES (1, 'jrob93', 'Hammer93', 'jrob93@qa.com')
-INSERT INTO USER (uId, username, password, email) VALUES (3, 'mmist96', 'Netflix96', 'mmist96@qa.com')
 INSERT INTO USER (uId, username, password, email) VALUES (2, 'kryan95', 'Gymsch24', 'kryan95@qa.com')
+INSERT INTO USER (uId, username, password, email) VALUES (3, 'mmist96', 'Netflix96', 'mmist96@qa.com')
 INSERT INTO USER (uId, username, password, email) VALUES (4, 'kpatel95', 'Password95', 'kpatel95@qa.com')
 INSERT INTO USER (uId, username, password, email) VALUES (5, 'omiller92', 'Magics92', 'omiller92@qa.com')
 
@@ -61,7 +61,19 @@ INSERT INTO CATEGORY (catId, name) VALUES (1, 'trial')
 
 INSERT INTO STORELINE (bId, cId, lv) VALUES (1, 1, 56)
 
-INSERT INTO TEAM (tId, uId) VALUES (1, 1)
+INSERT INTO TEAM (tId, user_uId) VALUES (1, 1)
+INSERT INTO TEAM (tId, user_uId) VALUES (2, 1)
+INSERT INTO TEAM (tId, user_uId) VALUES (3, 1)
+INSERT INTO TEAM (tId, user_uId) VALUES (4, 2)
+INSERT INTO TEAM (tId, user_uId) VALUES (5, 2)
+INSERT INTO TEAM (tId, user_uId) VALUES (6, 3)
+INSERT INTO TEAM (tId, user_uId) VALUES (7, 4)
 
 INSERT INTO TEAMLINE (tId, cId) VALUES (1, 5)
+
+INSERT INTO TEAM_CHARACTER (team_tId, character_cId) VALUES (1, 1)
+INSERT INTO TEAM_CHARACTER (team_tId, character_cId) VALUES (1, 17)
+INSERT INTO TEAM_CHARACTER (team_tId, character_cId) VALUES (1, 5)
+INSERT INTO TEAM_CHARACTER (team_tId, character_cId) VALUES (2, 20)
+INSERT INTO TEAM_CHARACTER (team_tId, character_cId) VALUES (3, 5)
 
