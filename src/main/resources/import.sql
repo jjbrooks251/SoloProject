@@ -62,8 +62,18 @@ INSERT INTO CATEGORY (catId, name) VALUES (1, 'trial')
 INSERT INTO STORELINE (bId, cId, lv) VALUES (1, 1, 56)
 
 INSERT INTO TEAM (tId, user_uId) VALUES (1, 1)
+INSERT INTO TEAM (tId, user_uId) VALUES (2, 1)
+INSERT INTO TEAM (tId, user_uId) VALUES (3, 1)
+INSERT INTO TEAM (tId, user_uId) VALUES (4, 2)
+INSERT INTO TEAM (tId, user_uId) VALUES (5, 2)
+INSERT INTO TEAM (tId, user_uId) VALUES (6, 3)
+INSERT INTO TEAM (tId, user_uId) VALUES (7, 4)
 
 INSERT INTO TEAMLINE (tId, cId) VALUES (1, 5)
 
 INSERT INTO TEAM_CHARACTER (team_tId, character_cId) VALUES (1, 1)
+INSERT INTO TEAM_CHARACTER (team_tId, character_cId) VALUES (1, 17)
+INSERT INTO TEAM_CHARACTER (team_tId, character_cId) VALUES (1, 5)
+INSERT INTO TEAM_CHARACTER (team_tId, character_cId) VALUES (2, 20)
+INSERT INTO TEAM_CHARACTER (team_tId, character_cId) VALUES (3, 5)
 
