@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
+
 import javax.enterprise.inject.Alternative;
 
 import com.qa.persistance.domain.User;

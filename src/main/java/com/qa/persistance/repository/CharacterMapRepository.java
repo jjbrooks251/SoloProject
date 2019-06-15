@@ -58,5 +58,21 @@ public class CharacterMapRepository implements CharacterRepository {
 		}
 		return count;
 	}
+	
+	public String createCharacter(String user) {
+		Character acc = json.getObjectForJSON(user, Character.class);
+
+		int id = acc.getcId();
+
+		if (getCharMap().containsKey(id) != false) {
+
+			return "{\"message\": \"Conflicting User Id\"}";
+
+		} else {
+			charMap.put(acc.getcId(), acc);
+
+			return "{\"message\": \"User Created\"}";
+		}
+	}
 
 }

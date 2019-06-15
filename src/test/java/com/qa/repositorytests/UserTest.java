@@ -51,7 +51,7 @@ public class UserTest {
 	public void getAUser() {
 
 		ump.createUser(Constants.user1);
-		assertEquals("User: 1, jbro95, Jbrooks95, jbro95@qa.com", ump.findAUserId(1));
+		assertEquals("User: 1, jbro95, Jbrooks95, jbro95@qa.com, []", ump.findAUserId(1));
 	}
 
 	@Test
@@ -149,11 +149,11 @@ public class UserTest {
 
 		ump.createUser(Constants.user1);
 		
-		assertEquals("User: 1, jbro95, Jbrooks95, jbro95@qa.com", ump.findAUserId(1));
+		assertEquals("User: 1, jbro95, Jbrooks95, jbro95@qa.com, []", ump.findAUserId(1));
 		
 		ump.updateUser(1, Constants.sameId);
 		
-		assertEquals("User: 1, jbro951, Jbrooks95, jbrok95@qa.com", ump.findAUserId(1));
+		assertEquals("User: 1, jbro951, Jbrooks95, jbrok95@qa.com, []", ump.findAUserId(1));
 		
 	}
 

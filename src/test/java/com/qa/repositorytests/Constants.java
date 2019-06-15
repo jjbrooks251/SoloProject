@@ -12,12 +12,8 @@ public class Constants {
 	public final static String sameEmail = "{\"uId\":2,\"username\":\"jbrok95\",\"password\":\"Jbrooks95\",\"email\":\"jbro95@qa.com\"}";
 	public final static String smallPass = "{\"uId\":2,\"username\":\"jjbro95\",\"password\":\"Jbroo95\",\"email\":\"jjbro95@qa.com\"}";
 	
-	public final static User user12 = new User(1, "jbro95", "Jbrooks95", "jbro95@qa.com");
-	/*public final static User user2 = new User(2, "cTatum94", "Mynamegeoff25", "@qa.com");
-	public final static User sameId = new User(1, "jbro95", "Jbrooks95", "jbrok95@qa.com");
-	public final static User sameName = new User(2, "jbro95", "Jbrooks95", "jbrook95@qa.com");
-	public final static User sameEmail = new User(2, "jbrok95", "Jbrooks95", "jbro95@qa.com");
-	public final static User smallPass = new User(2, "jjbro95", "Jbroo95", "jjbro95@qa.com");
-	*/
+	//public final static User user12 = new User(1, "jbro95", "Jbrooks95", "jbro95@qa.com");
+	
+	public final static String char1 = "{\"cId\":1,\"name\":\"SSJ3 Gotenks\",\"alignment\":\"Super\",\"hp\":9578,\"atk\":10453,\"def\":5478}";
 
 }
