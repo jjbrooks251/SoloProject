@@ -49,11 +49,11 @@ INSERT INTO RARITY (rId, name, lvMax) VALUES (6, 'TUR', 120)
 INSERT INTO RARITY (rId, name, lvMax) VALUES (7, 'LR', 150)
 INSERT INTO RARITY (rId, name, lvMax) VALUES (8, 'Eza', 140)
 
-INSERT INTO TYPE (typeId, name) VALUES (1, 'Str')
-INSERT INTO TYPE (typeId, name) VALUES (2, 'Phy')
-INSERT INTO TYPE (typeId, name) VALUES (3, 'Int')
-INSERT INTO TYPE (typeId, name) VALUES (4, 'Teq')
-INSERT INTO TYPE (typeId, name) VALUES (5, 'Agl')
+INSERT INTO TYPE (tId, name) VALUES (1, 'Str')
+INSERT INTO TYPE (tId, name) VALUES (2, 'Phy')
+INSERT INTO TYPE (tId, name) VALUES (3, 'Int')
+INSERT INTO TYPE (tId, name) VALUES (4, 'Teq')
+INSERT INTO TYPE (tId, name) VALUES (5, 'Agl')
 
 INSERT INTO LEADER (lId, which, boost) VALUES (1, 1, 100)
 
