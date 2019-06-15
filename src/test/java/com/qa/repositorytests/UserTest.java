@@ -10,7 +10,7 @@ import com.qa.persistance.domain.User;
 import com.qa.persistance.repository.UserMapRepository;
 import com.qa.util.JSONUtil;
 
-public class Tests {
+public class UserTest {
 
 	private JSONUtil util;
 	private UserMapRepository ump;
