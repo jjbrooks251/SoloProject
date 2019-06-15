@@ -4,11 +4,11 @@ INSERT INTO USER (uId, username, password, email) VALUES (3, 'mmist96', 'Netflix
 INSERT INTO USER (uId, username, password, email) VALUES (4, 'kpatel95', 'Password95', 'kpatel95@qa.com')
 INSERT INTO USER (uId, username, password, email) VALUES (5, 'omiller92', 'Magics92', 'omiller92@qa.com')
 
-INSERT INTO STORGAE (bId, uId) VALUES (1, 1)
-INSERT INTO STORGAE (bId, uId) VALUES (2, 2)
-INSERT INTO STORGAE (bId, uId) VALUES (3, 3)
-INSERT INTO STORGAE (bId, uId) VALUES (4, 4)
-INSERT INTO STORGAE (bId, uId) VALUES (5, 5)
+INSERT INTO STORAGE (bId, uId) VALUES (1, 1)
+INSERT INTO STORAGE (bId, uId) VALUES (2, 2)
+INSERT INTO STORAGE (bId, uId) VALUES (3, 3)
+INSERT INTO STORAGE (bId, uId) VALUES (4, 4)
+INSERT INTO STORAGE (bId, uId) VALUES (5, 5)
 
 INSERT INTO CHARACTER (cId, name, typeId, alignment, rId, hp, atk, def, lId, catId) VALUES (1, 'SSJ3 Gotenks', 2, 'Super', 6, 9578, 10453, 5478, 1, 1)
 INSERT INTO CHARACTER (cId, name, typeId, alignment, rId, hp, atk, def, lId, catId) VALUES (2, 'SSJ Goku and Vegeta', 2, 'Super', 7, 15348, 14573, 7854, 1, 1)
@@ -59,7 +59,7 @@ INSERT INTO LEADER (lId, which, boost) VALUES (1, 1, 100)
 
 INSERT INTO CATEGORY (catId, name) VALUES (1, 'trial')
 
-INSERT INTO STORELINE (bId, cId, lv) VALUES (1, 1, 56)
+INSERT INTO STORELINE (sId, cId, lv) VALUES (1, 1, 56)
 
 INSERT INTO TEAM (tId, user_uId) VALUES (1, 1)
 INSERT INTO TEAM (tId, user_uId) VALUES (2, 1)
