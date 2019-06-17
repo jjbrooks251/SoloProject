@@ -36,13 +36,15 @@ public class TypeTest {
 	
 	private static final String MOCK_DATA_ARRAY1 = "[{\"tId\":1,\"name\":\"AGL\"}]";
 	private static final String MOCK_OBJECT1 = "{\"tId\":1,\"name\":\"AGL\"}";
+	private static final Type type1 = new Type(1, "AGL");
 	
 	private static final String MOCK_DATA_ARRAY2 = "[{\"tId\":2,\"name\":\"STR\"}]";
 	private static final String MOCK_OBJECT2 = "{\"tId\":2,\"name\":\"STR\"}";
+	private static final Type type2 = new Type(2, "STR");
 	
 	private static final String MOCK_DATA_ARRAY3 = "[{\"tId\":3,\"name\":\"TEQ\"}]";
 	private static final String MOCK_OBJECT3 = "{\"tId\":3,\"name\":\"TEQ\"}";
-	
+	private static final Type type3 = new Type(3, "TEQ");
 	
 	@Before
 	public void setup() {
@@ -56,7 +58,7 @@ public class TypeTest {
 	public void getAllRarities() {
 		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
 		List<Type> type = new ArrayList<>();
-		type.add(new Type(1, "AGL"));
+		type.add(type1);
 		Mockito.when(query.getResultList()).thenReturn(type);
 		Assert.assertEquals(MOCK_DATA_ARRAY1, repo.getAllTypes());
 	}
@@ -78,8 +80,8 @@ public class TypeTest {
 	public void getIdExist() {
 		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
 		List<Type> type = new ArrayList<>();
-		type.add(new Type(1, "AGL"));
-		type.add(new Type(2, "STR"));
+		type.add(type1);
+		type.add(type2);
 		Mockito.when(query.getResultList()).thenReturn(type);
 
 		Assert.assertEquals(2, type.size());
@@ -90,8 +92,8 @@ public class TypeTest {
 	public void getIdFail() {
 		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
 		List<Type> type = new ArrayList<>();
-		type.add(new Type(1, "AGL"));
-		type.add(new Type(2, "STR"));
+		type.add(type1);
+		type.add(type2);
 		Mockito.when(query.getResultList()).thenReturn(type);
 
 		Assert.assertEquals(2, type.size());
@@ -102,8 +104,8 @@ public class TypeTest {
 	public void getNameSingle() {
 		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
 		List<Type> type = new ArrayList<>();
-		type.add(new Type(1, "AGL"));
-		type.add(new Type(2, "STR"));
+		type.add(type1);
+		type.add(type2);
 		Mockito.when(query.getResultList()).thenReturn(type);
 
 		Assert.assertEquals(2, type.size());
@@ -115,9 +117,9 @@ public class TypeTest {
 	public void getNameMulti() {
 		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
 		List<Type> type = new ArrayList<>();
-		type.add(new Type(1, "AGL"));
-		type.add(new Type(2, "STR"));
-		type.add(new Type(3, "TEQ"));
+		type.add(type1);
+		type.add(type2);
+		type.add(type3);
 		
 		Mockito.when(query.getResultList()).thenReturn(type);
 
@@ -130,8 +132,8 @@ public class TypeTest {
 	public void getNameNothing() {
 		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
 		List<Type> type = new ArrayList<>();
-		type.add(new Type(1, "AGL"));
-		type.add(new Type(2, "STR"));
+		type.add(type1);
+		type.add(type2);
 		Mockito.when(query.getResultList()).thenReturn(type);
 
 		Assert.assertEquals(2, type.size());
