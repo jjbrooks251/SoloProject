@@ -1,4 +1,4 @@
-package com.qa.repositorytests;
+package com.qa.persistance.repository;
 
 import static org.junit.Assert.assertEquals;
 
@@ -6,11 +6,10 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import com.qa.persistance.domain.User;
 import com.qa.persistance.repository.UserMapRepository;
 import com.qa.util.JSONUtil;
 
-public class UserTest {
+public class UserMapTest {
 
 	private JSONUtil util;
 	private UserMapRepository ump;

@@ -1,4 +1,4 @@
-package com.qa.repositorytests;
+package com.qa.persistance.repository;
 
 import static org.junit.Assert.assertEquals;
 
