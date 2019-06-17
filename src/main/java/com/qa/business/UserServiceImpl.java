@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService{
 	}
 
 	
-	public int findAUserName(String username) {
+	public String findAUserName(String username) {
 		// TODO Auto-generated method stub
 		return repo.findAUserName(username);
 	}

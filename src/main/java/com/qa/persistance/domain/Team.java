@@ -25,13 +25,13 @@ public class Team {
 
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "team_character", joinColumns = @JoinColumn(name = "team_tId"), inverseJoinColumns = @JoinColumn(name = "character_cId"))
-	private Set<Character> characters = new HashSet<>();
+	private Set<Unit> characters = new HashSet<>();
 
 	public Team() {
 		super();
 	}
 
-	public Team(int tId, User user, Set<Character> characters) {
+	public Team(int tId, User user, Set<Unit> characters) {
 		super();
 		this.tId = tId;
 		this.user = user;
@@ -54,11 +54,11 @@ public class Team {
 		this.user = user;
 	}
 
-	 public Set<Character> getCharacters() {
+	 public Set<Unit> getCharacters() {
 	 return characters;
 	 }
 	
-	 public void setCharacters(Set<Character> characters) {
+	 public void setCharacters(Set<Unit> characters) {
 	 this.characters = characters;
 	 }
 

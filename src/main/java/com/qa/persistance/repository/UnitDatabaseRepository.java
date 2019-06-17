@@ -10,12 +10,12 @@ import javax.persistence.Query;
 import javax.transaction.Transactional;
 import javax.transaction.Transactional.TxType;
 
-import com.qa.persistance.domain.Character;
+import com.qa.persistance.domain.Unit;
 import com.qa.util.JSONUtil;
 
 @Transactional(TxType.SUPPORTS)
 @Default
-public class CharacterDatabaseRepository implements CharacterRepository {
+public class UnitDatabaseRepository implements UnitRepository {
 
 	@PersistenceContext(unitName = "primary")
 	private EntityManager manager;
@@ -23,31 +23,31 @@ public class CharacterDatabaseRepository implements CharacterRepository {
 	@Inject
 	private JSONUtil util;
 
-	public String getAllCharacters() {
+	public String getAllUnits() {
 
-		Query query = manager.createQuery("SELECT c FROM Character c");
+		Query query = manager.createQuery("SELECT c FROM Unit c");
 
-		Collection<Character> chars = (Collection<Character>) query.getResultList();
+		Collection<Unit> Units = (Collection<Unit>) query.getResultList();
 
-		return util.getJSONForObject(chars);
+		return util.getJSONForObject(Units);
 	}
 
-	public String getCharId(int cId) {
+	public String getUnitId(int cId) {
 
-		Character target = manager.find(Character.class, cId);
+		Unit target = manager.find(Unit.class, cId);
 
 		if (target != null) {
 
 			return util.getJSONForObject(target);
 
 		} else {
-			return "{\"message\": \"Character doesn't exist\"}";
+			return "{\"message\": \"Unit doesn't exist\"}";
 		}
 	}
 
-	public int getCharName(String name) {
+	public String getUnitName(String name) {
 
-		return 1;
+		return "hello";
 	}
 
 }

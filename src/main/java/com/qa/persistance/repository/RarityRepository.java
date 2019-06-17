@@ -6,6 +6,6 @@ public interface RarityRepository {
 	
 	public String getRarityId(int rId);
 	
-	public int getRarityName(String name);
+	public String getRarityName(String name);
 	
 }

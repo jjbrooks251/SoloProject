@@ -1,6 +1,8 @@
 package com.qa.persistance.repository;
 
 import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.enterprise.inject.Default;
 import javax.inject.Inject;
@@ -16,40 +18,51 @@ import com.qa.util.JSONUtil;
 
 @Transactional(TxType.SUPPORTS)
 @Default
-public class TypeDatebaseRepository implements TypeRepository{
+public class TypeDatebaseRepository implements TypeRepository {
 
 	@PersistenceContext(unitName = "primary")
 	private EntityManager manager;
 
 	@Inject
 	private JSONUtil util;
-	
+
+	@Override
 	public String getAllTypes() {
 		Query query = manager.createQuery("SELECT t FROM Type t");
 
 		Collection<Type> types = (Collection<Type>) query.getResultList();
 
 		return util.getJSONForObject(types);
+
 	}
 
-	
+	@Override
 	public String getTypeId(int tId) {
-		Type type = manager.find(Type.class, tId);
+		Type type1 = manager.find(Type.class, tId);
 
-		if (type != null) {
+		if (type1 != null) {
 
-			return util.getJSONForObject(type);
+			return util.getJSONForObject(type1);
 		} else {
-			return "{\"message\": \"Searched Type with this id doesn't exist\"}";
+			return "{\"message\": \"Chosen Type id doesn't exist\"}";
 		}
 	}
 
-	
+	@Override
 	public String getTypeName(String name) {
+		Query query = manager.createQuery("SELECT t FROM Type t");
 
-		return "{\"message\": \"Searched Type with this name exists\"}";
+		Collection<Type> types = (Collection<Type>) query.getResultList();
+		
+		List<Type> result = types.stream().filter(n -> n.getName().contains(name)).collect(Collectors.toList());
+
+		if (result.isEmpty()) {
+
+			return "{\"message\": \"User does not exist\"}";
+
+		} else {
+			return util.getJSONForObject(result);
+		}
 	}
 
-	
-	
 }

@@ -34,7 +34,7 @@ public class UserControl {
 	@Path("/findAUserName/{username}")
 	@GET
 	@Produces({ "application/json" })
-	public int findAUserName(@PathParam("username") String username) {
+	public String findAUserName(@PathParam("username") String username) {
 		return service.findAUserName(username);
 	}
 	

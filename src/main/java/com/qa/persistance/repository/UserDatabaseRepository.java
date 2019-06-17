@@ -1,6 +1,8 @@
 package com.qa.persistance.repository;
 
 import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.enterprise.inject.Default;
 import javax.inject.Inject;
@@ -22,7 +24,7 @@ public class UserDatabaseRepository implements UserRepository {
 
 	@Inject
 	private JSONUtil util;
-	
+
 	@Transactional(TxType.REQUIRED)
 	public String createUser(String user) {
 		User clas1 = util.getObjectForJSON(user, User.class);
@@ -58,12 +60,21 @@ public class UserDatabaseRepository implements UserRepository {
 			return "{\"message\": \"User doesn't exist\"}";
 		}
 	}
-	
-	public int findAUserName(String username) {
+
+	public String findAUserName(String username) {
+		Query query = manager.createQuery("SELECT a FROM User a");
+
+		Collection<User> users = (Collection<User>) query.getResultList();
 		
-		// List<Movie> validList = movies.stream().filter(n -> n.getTitle().equals(title)).collect(Collectors.toList());
-		
-		return 1;
+		List<User> result = users.stream().filter(n -> n.getUsername().contains(username)).collect(Collectors.toList());
+
+		if (result.isEmpty()) {
+
+			return "{\"message\": \"User does not exist\"}";
+
+		} else {
+			return util.getJSONForObject(result);
+		}
 	}
 
 	@Transactional(TxType.REQUIRED)
@@ -95,7 +106,4 @@ public class UserDatabaseRepository implements UserRepository {
 		}
 	}
 
-
-
-	
 }

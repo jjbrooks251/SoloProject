@@ -6,7 +6,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
-
 import javax.enterprise.inject.Alternative;
 
 import com.qa.persistance.domain.User;
@@ -67,25 +66,12 @@ public class UserMapRepository implements UserRepository {
 		}
 	}
 
-	public int findAUserName(String username) {
+	public String findAUserName(String username) {
 
-		int count = 0;
+		List<Entry<Integer, User>> result = userMap.entrySet().stream()
+				.filter(n -> n.getValue().getUsername().contains(username)).collect(Collectors.toList());
 
-		for (int i = 0; i < getUserMap().size(); i++) {
-
-			String s = getUserMap().get(i + 1).getUsername();
-
-			if (s != null && s.contains(username)) {
-				count = count + 1;
-			}
-
-			// List<String> names =
-			// userMap.entrySet().stream().filter(t->t.startsWith(username)).collect(Collectors.toList());
-			// List<Entry<Integer, User>> validList = userMap.entrySet().stream().filter(n
-			// -> n.getValue().equals(username)).collect(Collectors.toList());
-
-		}
-		return count;
+		return json.getJSONForObject(result);
 	}
 
 	public String updateUser(int id, String user) {

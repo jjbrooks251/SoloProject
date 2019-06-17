@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Character {
+public class Unit {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,11 +26,11 @@ public class Character {
 //	@ManyToOne
 //	private Rarity rarity;
 
-	public Character() {
+	public Unit() {
 		super();
 	}
 
-	public Character(int cId, String name, String alignment, int hp, int atk, int def) {
+	public Unit(int cId, String name, String alignment, int hp, int atk, int def) {
 	super();
 	this.cId = cId;
 	this.name = name;

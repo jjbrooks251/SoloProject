@@ -1,7 +1,10 @@
 package com.qa.persistance.repository;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
 import javax.enterprise.inject.Alternative;
 
@@ -45,20 +48,12 @@ public class RarityMapRepository implements RarityRepository {
 		}
 	}
 
-	public int getRarityName(String name) {
+	public String getRarityName(String name) {
 
-		int count = 0;
+		List<Entry<Integer, Rarity>> result = rarityMap.entrySet().stream()
+				.filter(n -> n.getValue().getName().contains(name)).collect(Collectors.toList());
 
-		for (int i = 0; i < getRarityMap().size(); i++) {
-
-			String s = getRarityMap().get(i + 1).getName();
-
-			if (s != null && s.contains(name)) {
-				count = count + 1;
-			}
-
-		}
-		return count;
+		return json.getJSONForObject(result);
 	}
 
 }

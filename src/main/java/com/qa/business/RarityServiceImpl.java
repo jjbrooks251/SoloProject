@@ -21,8 +21,10 @@ public class RarityServiceImpl implements RarityService {
 	}
 
 	
-	public int getRarityName(String name) {
+	public String getRarityName(String name) {
 	
+		name = name.toUpperCase();
+		
 		return repo.getRarityName(name);
 	}
 	

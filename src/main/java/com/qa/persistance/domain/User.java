@@ -28,13 +28,13 @@ public class User {
 	
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "user_character", joinColumns = @JoinColumn(name = "user_uId"), inverseJoinColumns = @JoinColumn(name = "character_cId"))
-	private Set<Character> characters = new HashSet<>();
+	private Set<Unit> characters = new HashSet<>();
 	
 	public User() {
 		super();
 	}
 
-	public User(int uId, String username, String password, String email, Set<Character> characters) {
+	public User(int uId, String username, String password, String email, Set<Unit> characters) {
 		super();
 		this.uId = uId;
 		this.username = username;
@@ -75,11 +75,11 @@ public class User {
 		this.email = email;
 	}
 
-	public Set<Character> getCharacters() {
+	public Set<Unit> getCharacters() {
 		return characters;
 	}
 
-	public void setCharacters(Set<Character> characters) {
+	public void setCharacters(Set<Unit> characters) {
 		this.characters = characters;
 	}
 

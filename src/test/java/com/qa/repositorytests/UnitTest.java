@@ -6,29 +6,29 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import com.qa.persistance.repository.CharacterMapRepository;
+import com.qa.persistance.repository.UnitMapRepository;
 import com.qa.util.JSONUtil;
 
-public class CharacterTest {
+public class UnitTest {
 
 	private JSONUtil util;
-	private CharacterMapRepository cmr;
+	private UnitMapRepository cmr;
 
 	@Before
 	public void setup() {
 		util = new JSONUtil();
-		cmr = new CharacterMapRepository();
+		cmr = new UnitMapRepository();
 
 	}
 	
 	@Test
 	public void findCharId() {
 
-		assertEquals(0, cmr.getCharMap().size());
+		assertEquals(0, cmr.getUnitMap().size());
 		
-	cmr.createCharacter(Constants.char1);
+	cmr.createUnit(Constants.char1);
 		
-	assertEquals(1, cmr.getCharMap().size());
+	assertEquals(1, cmr.getUnitMap().size());
 		
 	}
 	

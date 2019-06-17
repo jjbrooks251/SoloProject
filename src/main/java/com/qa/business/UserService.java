@@ -12,6 +12,6 @@ public interface UserService {
 	
 	public String deleteUser(int id);
 	
-	public int findAUserName(String username)
+	public String findAUserName(String username)
 	;
 }

@@ -1,6 +1,8 @@
 package com.qa.persistance.repository;
 
 import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.enterprise.inject.Default;
 import javax.inject.Inject;
@@ -46,9 +48,21 @@ public class RarityDatabaseRepository implements RarityRepository{
 	
 	}
 
-	public int getRarityName(String name) {
+	public String getRarityName(String name) {
 	
-		return 0;
+		Query query = manager.createQuery("SELECT r FROM Rarity r");
+
+		Collection<Rarity> rarities = (Collection<Rarity>) query.getResultList();
+		
+		List<Rarity> result = rarities.stream().filter(n -> n.getName().contains(name)).collect(Collectors.toList());
+
+		if (result.isEmpty()) {
+
+			return "{\"message\": \"Searched rarity does not exist\"}";
+
+		} else {
+			return util.getJSONForObject(result);
+		}
 	}
 
 }

@@ -31,7 +31,7 @@ public class RarityControl {
 	@Path("/getRarityName/{name}")
 	@GET
 	@Produces({ "application/json" })
-	public int getRarityName(@PathParam("name") String name) {
+	public String getRarityName(@PathParam("name") String name) {
 		return service.getRarityName(name);
 	}
 

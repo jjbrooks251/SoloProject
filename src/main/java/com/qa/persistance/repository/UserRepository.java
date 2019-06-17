@@ -8,7 +8,7 @@ public interface UserRepository {
 	
 	public String findAUserId(int id);
 	
-	public int findAUserName(String username);
+	public String findAUserName(String username);
 	
 	public String updateUser(int id, String user);
 	
