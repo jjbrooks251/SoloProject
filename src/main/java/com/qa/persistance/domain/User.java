@@ -1,8 +1,8 @@
 package com.qa.persistance.domain;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,7 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class User {
@@ -25,20 +26,21 @@ public class User {
 	@Column(length = 255)
 	private String email;
 	
-//	@JoinColumn(name = "User_ID", referencedColumnName = "User_uID")
-//    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-//	private List<Team> teams;
-
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "user_character", joinColumns = @JoinColumn(name = "user_uId"), inverseJoinColumns = @JoinColumn(name = "character_cId"))
+	private Set<Character> characters = new HashSet<>();
+	
 	public User() {
 		super();
 	}
 
-	public User(int uId, String username, String password, String email) {
+	public User(int uId, String username, String password, String email, Set<Character> characters) {
 		super();
 		this.uId = uId;
 		this.username = username;
 		this.password = password;
 		this.email = email;
+		this.characters = characters;
 	}
 
 	public int getuId() {
@@ -72,18 +74,18 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-//	public List<Team> getTeams() {
-//		return teams;
-//	}
-//
-//	public void setTeams(List<Team> teams) {
-//		this.teams = teams;
-//	}
+
+	public Set<Character> getCharacters() {
+		return characters;
+	}
+
+	public void setCharacters(Set<Character> characters) {
+		this.characters = characters;
+	}
 
 	@Override
 	public String toString() {
-		return "User: " + uId + ", " + username + ", " + password + ", " + email;
+		return "User: " + uId + ", " + username + ", " + password + ", " + email + ", " + characters;
 	}
 	
 	

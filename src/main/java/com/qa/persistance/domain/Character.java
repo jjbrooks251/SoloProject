@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Character {
@@ -14,33 +15,32 @@ public class Character {
 	private int cId;
 	@Column(length = 30)
 	private String name;
-	private int typeId;
 	private String alignment;
-	private int rId;
 	private int hp;
 	private int atk;
 	private int def;
-	private int lId;
-	private int catId;
+	
+//	@ManyToOne
+//	private Type type;
+	
+//	@ManyToOne
+//	private Rarity rarity;
 
 	public Character() {
 		super();
 	}
 
-	public Character(int cId, String name, int typeId, String alignment, int rId, int hp, int atk, int def, int lId,
-			int catId) {
-		super();
-		this.cId = cId;
-		this.name = name;
-		this.typeId = typeId;
-		this.alignment = alignment;
-		this.rId = rId;
-		this.hp = hp;
-		this.atk = atk;
-		this.def = def;
-		this.lId = lId;
-		this.catId = catId;
-	}
+	public Character(int cId, String name, String alignment, int hp, int atk, int def) {
+	super();
+	this.cId = cId;
+	this.name = name;
+	this.alignment = alignment;
+	this.hp = hp;
+	this.atk = atk;
+	this.def = def;
+}
+
+
 
 	public int getcId() {
 		return cId;
@@ -58,14 +58,6 @@ public class Character {
 		this.name = name;
 	}
 
-	public int getTypeId() {
-		return typeId;
-	}
-
-	public void setTypeId(int typeId) {
-		this.typeId = typeId;
-	}
-
 	public String getAlignment() {
 		return alignment;
 	}
@@ -74,13 +66,6 @@ public class Character {
 		this.alignment = alignment;
 	}
 
-	public int getrId() {
-		return rId;
-	}
-
-	public void setrId(int rId) {
-		this.rId = rId;
-	}
 
 	public int getHp() {
 		return hp;
@@ -106,20 +91,10 @@ public class Character {
 		this.def = def;
 	}
 
-	public int getlId() {
-		return lId;
-	}
-
-	public void setlId(int lId) {
-		this.lId = lId;
-	}
-
-	public int getCatId() {
-		return catId;
-	}
-
-	public void setCatId(int catId) {
-		this.catId = catId;
+	@Override
+	public String toString() {
+		return "Unit [cId=" + cId + ", name=" + name + ", alignment=" + alignment + ", hp=" + hp + ", atk=" + atk
+				+ ", def=" + def + "]";
 	}
 
 	
