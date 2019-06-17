@@ -70,15 +70,6 @@ public class UserMapTest {
 
 	}
 
-	@Ignore
-	public void getMultipleUsers() {
-		ump.createUser(Constants.user1);
-		ump.createUser(Constants.user2);
-		ump.createUser(Constants.user3);
-
-		assertEquals("{\"message\": \"later\"}", ump.findAUserName("jbro95"));
-	}
-
 	@Test
 	public void createUserSameId() {
 		
@@ -86,41 +77,6 @@ public class UserMapTest {
 		
 		
 		assertEquals("{\"message\": \"Conflicting User Id\"}", ump.createUser(Constants.sameId));
-
-	}
-
-	@Ignore
-	public void createUserSameName() {
-
-	}
-
-	@Ignore
-	public void createUserSameEmail() {
-
-	}
-
-	@Ignore
-	public void createMissingInfo() {
-
-	}
-
-	@Ignore
-	public void createSmallPassword() {
-
-	}
-
-	@Ignore
-	public void createPasswordNoNumber() {
-
-	}
-
-	@Ignore
-	public void createPasswordNoUpper() {
-
-	}
-
-	@Ignore
-	public void createPasswordNoLower() {
 
 	}
 
@@ -163,41 +119,6 @@ public class UserMapTest {
 		
 		assertEquals("{\"message\": \"User does not exist\"}", ump.updateUser(1, Constants.user1));
 		
-	}
-
-	@Ignore
-	public void updateUserSameName() {
-
-	}
-
-	@Ignore
-	public void updateUserSameEmail() {
-
-	}
-
-	@Ignore
-	public void updateMissingInfo() {
-
-	}
-
-	@Ignore
-	public void updateSmallPassword() {
-
-	}
-
-	@Ignore
-	public void updatePasswordNoNumber() {
-
-	}
-
-	@Ignore
-	public void updatePasswordNoUpper() {
-
-	}
-
-	@Ignore
-	public void updatePasswordNoLower() {
-
 	}
 
 }

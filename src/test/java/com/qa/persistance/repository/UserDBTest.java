@@ -126,12 +126,12 @@ public class UserDBTest {
 
 		users.add(new User(1, "jbro95", "Jbrooks95", "jbro95@qa.com", null));
 		users.add(new User(2, "cTatum94", "Mynamegeoff25", "cTatum94@qa.com", null));
-		users.add(new User(3, "jbro951", "Jbrooks95", "jbro951@qa.com", null));
+		users.add(new User(3, "jbro951", "Jbrooks95", "jbrok951@qa.com", null));
 
 		Mockito.when(query.getResultList()).thenReturn(users);
 		
 		Assert.assertEquals(3, users.size());
-		Assert.assertEquals("[{\"uId\":1,\"username\":\"jbro95\",\"password\":\"Jbrooks95\",\"email\":\"jbro95@qa.com\"},{\"uId\":3,\"username\":\"jbro951\",\"password\":\"Jbrooks95\",\"email\":\"jbro951@qa.com\"}]", repo.findAUserName("j"));
+		Assert.assertEquals("[" +MOCK_OBJECT1 + "," + MOCK_OBJECT3 + "]", repo.findAUserName("j"));
 
 	}
 
