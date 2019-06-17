@@ -69,3 +69,5 @@ INSERT INTO TEAM_CHARACTER (team_tId, character_cId) VALUES (3, 5)
 
 INSERT INTO USER_CHARACTER (user_uId, character_cId) VALUES (1, 1)
 
+INSERT INTO STORAGE (user_uId, Character_cId, lv) VALUES (1, 1, 56)
+

@@ -47,9 +47,9 @@ public class UserDatabaseRepository implements UserRepository {
 
 		int id = clas1.getuId();
 
-			manager.persist(clas1);
+		manager.persist(clas1);
 
-			return "{\"message\": \"New User Created\"}";
+		return "{\"message\": \"New User Created\"}";
 
 	}
 
