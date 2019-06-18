@@ -1,7 +1,9 @@
 package com.qa.business;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Ignore;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -10,25 +12,25 @@ import org.mockito.runners.MockitoJUnitRunner;
 public class TypeSerTest {
 
 	@InjectMocks
-	private TypeServiceImpl service;
+	public TypeServiceImpl service;
 
 	@Before
 	public void setup() {
 
 	}
 
+	@Test
+	public void getAllTypes() {
+		Assert.assertEquals(1, 1);
+	}
+
 	@Ignore
-	private void getAllTypes() {
+	public void getTypeId() {
 
 	}
 
 	@Ignore
-	private void getTypeId() {
-
-	}
-
-	@Ignore
-	private void getTypeName() {
+	public void getTypeName() {
 
 	}
 

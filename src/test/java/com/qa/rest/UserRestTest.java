@@ -1,7 +1,9 @@
 package com.qa.rest;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Ignore;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -10,40 +12,40 @@ import org.mockito.runners.MockitoJUnitRunner;
 public class UserRestTest {
 
 	@InjectMocks
-	private UserControl control;
+	public UserControl control;
 	
 	@Before
 	public void setup() {
 		
 	}
 	
+	@Test
+	public void createUser() {
+		Assert.assertEquals(1, 1);
+	}
+	
 	@Ignore
-	private void createUser() {
+	public void findAllUsers() {
 		
 	}
 	
 	@Ignore
-	private void findAllUsers() {
+	public void findAUserId() {
 		
 	}
 	
 	@Ignore
-	private void findAUserId() {
+	public void updateUser() {
 		
 	}
 	
 	@Ignore
-	private void updateUser() {
+	public void deleteUser() {
 		
 	}
 	
 	@Ignore
-	private void deleteUser() {
-		
-	}
-	
-	@Ignore
-	private void findAUserName() {
+	public void findAUserName() {
 		
 	}
 }

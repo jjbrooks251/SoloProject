@@ -1,7 +1,9 @@
 package com.qa.business;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Ignore;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -10,25 +12,25 @@ import org.mockito.runners.MockitoJUnitRunner;
 public class UnitSerTest {
 
 	@InjectMocks
-	private UnitServiceImpl service;
+	public UnitServiceImpl service;
 
 	@Before
 	public void setup() {
 
 	}
 
+	@Test
+	public void getAllUnits() {
+		Assert.assertEquals(1, 1);
+	}
+	
 	@Ignore
-	private void getAllUnits() {
+	public void getUnitId() {
 
 	}
 	
 	@Ignore
-	private void getUnitId() {
-
-	}
-	
-	@Ignore
-	private void getUnitName() {
+	public void getUnitName() {
 
 	}
 }

@@ -1,9 +1,16 @@
 package com.qa.business;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Ignore;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import com.qa.persistance.domain.User;
@@ -34,32 +41,33 @@ public class UserSerTest {
 	}
 	
 	@Ignore
-	private void createUser() {
+	public void createUser() {
 		
 	}
 	
 	@Ignore
-	private void findAllUsers() {
+	public void findAllUsers() {
+		Mockito.when(service.findAllUsers()).thenReturn("{\"message\": \"User Field is empty\"}");
+		Assert.assertEquals("{\"message\": \"User Field is empty\"}", service.findAllUsers());
+	}
+	
+	@Test
+	public void findAUserId() {
+		Assert.assertEquals(1, 1);
+	}
+	
+	@Ignore
+	public void updateUser() {
 		
 	}
 	
 	@Ignore
-	private void findAUserId() {
+	public void deleteUser() {
 		
 	}
 	
 	@Ignore
-	private void updateUser() {
-		
-	}
-	
-	@Ignore
-	private void deleteUser() {
-		
-	}
-	
-	@Ignore
-	private void findAUserName() {
+	public void findAUserName() {
 		
 	}
 }
