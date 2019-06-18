@@ -4,7 +4,7 @@ import com.qa.persistance.domain.User;
 
 public class Constants {
 	
-	public final static String user1 = "{\"uId\":1,\"username\":\"jbro95\",\"password\":\"Jbrooks95\",\"email\":\"jbro95@qa.com\"}";
+	public final static String user1 = "{\"uId\":1,\"username\":\"jbro95\",\"password\":\"Jbrooks95\",\"email\":\"jbro95@qa.com\",\"characters\":[]}";
 	public final static String user2 = "{\"uId\":2,\"username\":\"cTatum94\",\"password\":\"Mynamegeoff25\",\"email\":\"cTatum94@qa.com\"}";
 	public final static String user3 = "{\"uId\":3,\"username\":\"jbro951\",\"password\":\"Jbrooks95\",\"email\":\"jbrok951@qa.com\"}";
 	public final static String sameId = "{\"uId\":1,\"username\":\"jbro951\",\"password\":\"Jbrooks95\",\"email\":\"jbrok95@qa.com\"}";

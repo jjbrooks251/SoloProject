@@ -57,10 +57,6 @@ INSERT INTO TYPE (tId, name) VALUES (3, 'Int')
 INSERT INTO TYPE (tId, name) VALUES (4, 'Teq')
 INSERT INTO TYPE (tId, name) VALUES (5, 'Agl')
 
-INSERT INTO LEADER (lId, which, boost) VALUES (100)
-
-INSERT INTO CATEGORY (catId, name) VALUES (1, 'trial')
-
 INSERT INTO TEAM_Unit (team_tId, Unit_cId) VALUES (1, 1)
 INSERT INTO TEAM_Unit (team_tId, Unit_cId) VALUES (1, 17)
 INSERT INTO TEAM_Unit (team_tId, Unit_cId) VALUES (1, 5)
@@ -68,6 +64,4 @@ INSERT INTO TEAM_Unit (team_tId, Unit_cId) VALUES (2, 20)
 INSERT INTO TEAM_Unit (team_tId, Unit_cId) VALUES (3, 5)
 
 INSERT INTO USER_Unit (user_uId, Unit_cId) VALUES (1, 1)
-
-INSERT INTO STORAGE (user_uId, Unit_cId, lv) VALUES (1, 1, 56)
 
