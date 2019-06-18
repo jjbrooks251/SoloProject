@@ -1,4 +1,4 @@
-package com.qa.repositorytests;
+package com.qa.persistance.repository;
 
 import com.qa.persistance.domain.User;
 
@@ -16,4 +16,6 @@ public class Constants {
 	
 	public final static String char1 = "{\"cId\":1,\"name\":\"SSJ3 Gotenks\",\"alignment\":\"Super\",\"hp\":9578,\"atk\":10453,\"def\":5478}";
 
+	
+	
 }

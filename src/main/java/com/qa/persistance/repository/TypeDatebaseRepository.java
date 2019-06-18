@@ -26,14 +26,34 @@ public class TypeDatebaseRepository implements TypeRepository {
 	@Inject
 	private JSONUtil util;
 
+	public EntityManager getManager() {
+		return manager;
+	}
+
+	public void setManager(EntityManager manager) {
+		this.manager = manager;
+	}
+
+	public JSONUtil getUtil() {
+		return util;
+	}
+
+	public void setUtil(JSONUtil util) {
+		this.util = util;
+	}
+
 	@Override
 	public String getAllTypes() {
 		Query query = manager.createQuery("SELECT t FROM Type t");
 
 		Collection<Type> types = (Collection<Type>) query.getResultList();
 
+		if (types.isEmpty()) {
+			return "{\"Message\": \"Table empty\"}";
+		} else {
+		
 		return util.getJSONForObject(types);
-
+		}
 	}
 
 	@Override
@@ -53,12 +73,12 @@ public class TypeDatebaseRepository implements TypeRepository {
 		Query query = manager.createQuery("SELECT t FROM Type t");
 
 		Collection<Type> types = (Collection<Type>) query.getResultList();
-		
+
 		List<Type> result = types.stream().filter(n -> n.getName().contains(name)).collect(Collectors.toList());
 
 		if (result.isEmpty()) {
 
-			return "{\"message\": \"User does not exist\"}";
+			return "{\"message\": \"Searched Type does not exist\"}";
 
 		} else {
 			return util.getJSONForObject(result);

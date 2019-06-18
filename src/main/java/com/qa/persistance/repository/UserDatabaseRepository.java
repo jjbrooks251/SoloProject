@@ -25,20 +25,31 @@ public class UserDatabaseRepository implements UserRepository {
 	@Inject
 	private JSONUtil util;
 
+	public EntityManager getManager() {
+		return manager;
+	}
+
+	public void setManager(EntityManager manager) {
+		this.manager = manager;
+	}
+
+	public JSONUtil getUtil() {
+		return util;
+	}
+
+	public void setUtil(JSONUtil util) {
+		this.util = util;
+	}
+
 	@Transactional(TxType.REQUIRED)
 	public String createUser(String user) {
 		User clas1 = util.getObjectForJSON(user, User.class);
 
 		int id = clas1.getuId();
 
-		if (manager.find(User.class, id) != null) {
-			return "{\"message\": \"User with this id already exists\"}";
-		} else {
+		manager.persist(clas1);
 
-			manager.persist(clas1);
-
-			return "{\"message\": \"New User Created\"}";
-		}
+		return "{\"message\": \"New User Created\"}";
 
 	}
 
@@ -47,7 +58,12 @@ public class UserDatabaseRepository implements UserRepository {
 
 		Collection<User> users = (Collection<User>) query.getResultList();
 
-		return util.getJSONForObject(users);
+		if (users.isEmpty()) {
+			return "{\"message\": \"User Field is empty\"}";
+		} else {
+
+			return util.getJSONForObject(users);
+		}
 	}
 
 	public String findAUserId(int id) {
@@ -65,7 +81,7 @@ public class UserDatabaseRepository implements UserRepository {
 		Query query = manager.createQuery("SELECT a FROM User a");
 
 		Collection<User> users = (Collection<User>) query.getResultList();
-		
+
 		List<User> result = users.stream().filter(n -> n.getUsername().contains(username)).collect(Collectors.toList());
 
 		if (result.isEmpty()) {

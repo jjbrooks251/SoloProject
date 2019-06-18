@@ -1,6 +1,8 @@
 package com.qa.persistance.repository;
 
 import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.enterprise.inject.Default;
 import javax.inject.Inject;
@@ -11,6 +13,7 @@ import javax.transaction.Transactional;
 import javax.transaction.Transactional.TxType;
 
 import com.qa.persistance.domain.Unit;
+import com.qa.persistance.domain.User;
 import com.qa.util.JSONUtil;
 
 @Transactional(TxType.SUPPORTS)
@@ -22,14 +25,35 @@ public class UnitDatabaseRepository implements UnitRepository {
 
 	@Inject
 	private JSONUtil util;
+	
+	public EntityManager getManager() {
+		return manager;
+	}
+
+	public void setManager(EntityManager manager) {
+		this.manager = manager;
+	}
+
+	public JSONUtil getUtil() {
+		return util;
+	}
+
+	public void setUtil(JSONUtil util) {
+		this.util = util;
+	}
 
 	public String getAllUnits() {
 
 		Query query = manager.createQuery("SELECT c FROM Unit c");
 
-		Collection<Unit> Units = (Collection<Unit>) query.getResultList();
+		Collection<Unit> units = (Collection<Unit>) query.getResultList();
 
-		return util.getJSONForObject(Units);
+		if (units.isEmpty()) {
+			return "{\"Message\": \"Table empty\"}";
+		} else {
+		
+		return util.getJSONForObject(units);
+		}
 	}
 
 	public String getUnitId(int cId) {
@@ -47,7 +71,19 @@ public class UnitDatabaseRepository implements UnitRepository {
 
 	public String getUnitName(String name) {
 
-		return "hello";
+		Query query = manager.createQuery("SELECT c FROM Unit c");
+
+		Collection<Unit> units = (Collection<Unit>) query.getResultList();
+
+		List<Unit> result = units.stream().filter(n -> n.getName().contains(name)).collect(Collectors.toList());
+
+		if (result.isEmpty()) {
+
+			return "{\"message\": \"Unit does not exist\"}";
+
+		} else {
+			return util.getJSONForObject(result);
+		}
 	}
 
 }

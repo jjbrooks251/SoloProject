@@ -1,4 +1,4 @@
-package com.qa.repositorytests;
+package com.qa.persistance.repository;
 
 import static org.junit.Assert.assertEquals;
 
@@ -6,11 +6,10 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import com.qa.persistance.domain.User;
 import com.qa.persistance.repository.UserMapRepository;
 import com.qa.util.JSONUtil;
 
-public class UserTest {
+public class UserMapTest {
 
 	private JSONUtil util;
 	private UserMapRepository ump;
@@ -71,15 +70,6 @@ public class UserTest {
 
 	}
 
-	@Ignore
-	public void getMultipleUsers() {
-		ump.createUser(Constants.user1);
-		ump.createUser(Constants.user2);
-		ump.createUser(Constants.user3);
-
-		assertEquals("{\"message\": \"later\"}", ump.findAUserName("jbro95"));
-	}
-
 	@Test
 	public void createUserSameId() {
 		
@@ -87,41 +77,6 @@ public class UserTest {
 		
 		
 		assertEquals("{\"message\": \"Conflicting User Id\"}", ump.createUser(Constants.sameId));
-
-	}
-
-	@Ignore
-	public void createUserSameName() {
-
-	}
-
-	@Ignore
-	public void createUserSameEmail() {
-
-	}
-
-	@Ignore
-	public void createMissingInfo() {
-
-	}
-
-	@Ignore
-	public void createSmallPassword() {
-
-	}
-
-	@Ignore
-	public void createPasswordNoNumber() {
-
-	}
-
-	@Ignore
-	public void createPasswordNoUpper() {
-
-	}
-
-	@Ignore
-	public void createPasswordNoLower() {
 
 	}
 
@@ -164,41 +119,6 @@ public class UserTest {
 		
 		assertEquals("{\"message\": \"User does not exist\"}", ump.updateUser(1, Constants.user1));
 		
-	}
-
-	@Ignore
-	public void updateUserSameName() {
-
-	}
-
-	@Ignore
-	public void updateUserSameEmail() {
-
-	}
-
-	@Ignore
-	public void updateMissingInfo() {
-
-	}
-
-	@Ignore
-	public void updateSmallPassword() {
-
-	}
-
-	@Ignore
-	public void updatePasswordNoNumber() {
-
-	}
-
-	@Ignore
-	public void updatePasswordNoUpper() {
-
-	}
-
-	@Ignore
-	public void updatePasswordNoLower() {
-
 	}
 
 }
