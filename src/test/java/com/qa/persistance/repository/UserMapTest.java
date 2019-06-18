@@ -47,19 +47,29 @@ public class UserMapTest {
 	}
 
 	@Test
-	public void getAUser() {
+	public void getAUserId() {
 
 		ump.createUser(Constants.user1);
 		assertEquals("User: 1, jbro95, Jbrooks95, jbro95@qa.com, []", ump.findAUserId(1));
 	}
 
 	@Test
-	public void getUserNotExist() {
+	public void getUserIdNotExist() {
 
 		assertEquals("{\"message\": \"User does not exist\"}", ump.findAUserId(1));
 
 	}
 
+	@Test
+	public void getUserNameOne() {
+		ump.createUser(Constants.user1);
+		ump.createUser(Constants.user2);
+		
+		assertEquals("[{\"hash\":1,\"key\":1,\"value\":" + Constants.user1 + "}]", ump.findAUserName("j"));
+		
+	}
+	
+	
 	@Test
 	public void create2Users() {
 

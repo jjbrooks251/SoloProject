@@ -18,6 +18,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import com.qa.persistance.domain.Rarity;
 import com.qa.persistance.domain.Type;
+import com.qa.persistance.domain.Unit;
 import com.qa.util.JSONUtil;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -55,7 +56,7 @@ public class TypeTest {
 	}
 	
 	@Test
-	public void getAllRarities() {
+	public void getAllTypes() {
 		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
 		List<Type> type = new ArrayList<>();
 		type.add(type1);
@@ -63,10 +64,8 @@ public class TypeTest {
 		Assert.assertEquals(MOCK_DATA_ARRAY1, repo.getAllTypes());
 	}
 	
-
-	
 	@Test
-	public void getEmptyUsers() {
+	public void getEmptyTypes() {
 		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
 		List<Rarity> rarity = new ArrayList<>();
 		
@@ -76,25 +75,26 @@ public class TypeTest {
 
 	}
 
-	@Ignore
+	@Test
 	public void getIdExist() {
-		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
 		List<Type> type = new ArrayList<>();
 		type.add(type1);
 		type.add(type2);
-		Mockito.when(query.getResultList()).thenReturn(type);
+	
+		Mockito.when(manager.find(Type.class, 2)).thenReturn(type2);
 
 		Assert.assertEquals(2, type.size());
-		Assert.assertEquals(MOCK_DATA_ARRAY2, repo.getTypeId(2));
+		Assert.assertEquals(MOCK_OBJECT2, repo.getTypeId(2));
 	}
 
-	@Ignore
+	@Test
 	public void getIdFail() {
 		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
 		List<Type> type = new ArrayList<>();
 		type.add(type1);
 		type.add(type2);
-		Mockito.when(query.getResultList()).thenReturn(type);
+	
+		Mockito.when(manager.find(Type.class, 2)).thenReturn(type2);
 
 		Assert.assertEquals(2, type.size());
 		Assert.assertEquals("{\"message\": \"Chosen Type id doesn't exist\"}", repo.getTypeId(3));
