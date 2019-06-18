@@ -37,22 +37,24 @@ public class UserDBTest {
 
 	private static final String MOCK_DATA_ARRAY1 = "[{\"uId\":1,\"username\":\"jbro95\",\"password\":\"Jbrooks95\",\"email\":\"jbro95@qa.com\"}]";
 	private static final String MOCK_OBJECT1 = "{\"uId\":1,\"username\":\"jbro95\",\"password\":\"Jbrooks95\",\"email\":\"jbro95@qa.com\"}";
-	private static final User user1 = new User(1, "jbro95", "Jbrooks95", "jbro95@qa.com", null);
-
+	
 	private static final String MOCK_DATA_ARRAY2 = "[{\"uId\":2,\"username\":\"cTatum94\",\"password\":\"Mynamegeoff25\",\"email\":\"cTatum94@qa.com\"}]";
 	private static final String MOCK_OBJECT2 = "{\"uId\":2,\"username\":\"cTatum94\",\"password\":\"Mynamegeoff25\",\"email\":\"cTatum94@qa.com\"}";
-	private static final User user2 = new User(2, "cTatum94", "Mynamegeoff25", "cTatum94@qa.com", null);
-
+	
 	private static final String MOCK_DATA_ARRAY3 = "[{\"uId\":3,\"username\":\"jbro951\",\"password\":\"Jbrooks95\",\"email\":\"jbrok951@qa.com\"}]";
 	private static final String MOCK_OBJECT3 = "{\"uId\":3,\"username\":\"jbro951\",\"password\":\"Jbrooks95\",\"email\":\"jbrok951@qa.com\"}";
+	
+	private static final User user1 = new User(1, "jbro95", "Jbrooks95", "jbro95@qa.com", null);
+	private static final User user2 = new User(2, "cTatum94", "Mynamegeoff25", "cTatum94@qa.com", null);
 	private static final User user3 = new User(3, "jbro951", "Jbrooks95", "jbrok951@qa.com", null);
 
+	
 	@Before
 	public void setup() {
 		repo.setManager(manager);
 		util = new JSONUtil();
 		repo.setUtil(util);
-
+		
 	}
 
 	@Test
@@ -78,8 +80,6 @@ public class UserDBTest {
 
 	@Test
 	public void getIdExist() {
-		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
-
 		List<User> users = new ArrayList<>();
 
 		users.add(user1);
@@ -87,12 +87,11 @@ public class UserDBTest {
 
 		Mockito.when(manager.find(User.class, 2)).thenReturn(user2);
 
-		System.out.println(repo.findAllUsers());
 		Assert.assertEquals(2, users.size());
 		Assert.assertEquals(MOCK_OBJECT2, repo.findAUserId(2));
 	}
 
-	@Ignore
+	@Test
 	public void getIdFail() {
 		List<User> users = new ArrayList<>();
 
@@ -128,6 +127,10 @@ public class UserDBTest {
 
 		List<User> users = new ArrayList<>();
 
+		final User user1 = new User(1, "jbro95", "Jbrooks95", "jbro95@qa.com", null);
+		final User user2 = new User(2, "cTatum94", "Mynamegeoff25", "cTatum94@qa.com", null);
+		final User user3 = new User(3, "jbro951", "Jbrooks95", "jbrok951@qa.com", null);
+		
 		users.add(user1);
 		users.add(user2);
 		users.add(user3);
@@ -152,22 +155,33 @@ public class UserDBTest {
 
 	}
 
-	@Ignore
+	@Test
 	public void createUser() {
-		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
-		List<User> users = new ArrayList<>();
-		Mockito.when(query.getResultList()).thenReturn(users);
-
-		//User user4 = new User(2, "cTatum94", "Mynamegeoff25", "cTatum94@qa.com", null);
-		// Mockito.when(manager.persist(user4));
-
+	
 		Assert.assertEquals("{\"message\": \"New User Created\"}", repo.createUser(MOCK_OBJECT2));
-		Assert.assertEquals(MOCK_DATA_ARRAY2, repo.findAllUsers());
+		
 	}
 
-	@Ignore
+	@Test
 	public void deleteUser() {
+		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
+		List<User> users = new ArrayList<>();
 
+		users.add(user1);
+		users.add(user2);
+
+		Mockito.when(manager.find(User.class, 2)).thenReturn(user2);
+
+		Mockito.when(query.getResultList()).thenReturn(users);
+		
+		Assert.assertEquals(2, users.size());
+		Assert.assertEquals("{\"message\": \"User Deleted\"}", repo.deleteUser(2));
+
+	}
+
+	@Test
+	public void deleteFail() {
+		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
 		List<User> users = new ArrayList<>();
 
 		users.add(user1);
@@ -176,43 +190,36 @@ public class UserDBTest {
 		Mockito.when(manager.find(User.class, 2)).thenReturn(user2);
 	//	Mockito.when(manager.remove(user2)).thenReturn("{\"message\": \"User Deleted\"}");
 
-		Assert.assertEquals(2, users.size());
-		Assert.assertEquals("{\"message\": \"User Deleted\"}", repo.deleteUser(2));
-		Assert.assertEquals(1, users.size());
-
-	}
-
-	@Ignore
-	public void deleteFail() {
-		List<User> users = new ArrayList<>();
-
-		users.add(user1);
-		users.add(user2);
-
+		Mockito.when(query.getResultList()).thenReturn(users);
+		
 		Assert.assertEquals(2, users.size());
 		Assert.assertEquals("{\"message\": \"User with this id doesn't exist\"}", repo.deleteUser(3));
-		Assert.assertEquals(2, users.size());
 	}
 
-	@Ignore
+	@Test
 	public void updateUser() {
 		List<User> users = new ArrayList<>();
 
 		users.add(user1);
 		users.add(user2);
 
+		Mockito.when(manager.find(User.class, 2)).thenReturn(user2);
+
 		Assert.assertEquals(2, users.size());
 		Assert.assertEquals("{\"message\": \"User Updated\"}", repo.updateUser(2, MOCK_OBJECT3));
+		Assert.assertEquals("{\"uId\":2,\"username\":\"jbro951\",\"password\":\"Jbrooks95\",\"email\":\"jbrok951@qa.com\"}", repo.findAUserId(2));
 
 	}
 
-	@Ignore
+	@Test
 	public void updateFail() {
 
 		List<User> users = new ArrayList<>();
 
 		users.add(user1);
 		users.add(user2);
+
+		Mockito.when(manager.find(User.class, 2)).thenReturn(user2);
 
 		Assert.assertEquals(2, users.size());
 		Assert.assertEquals("{\"message\": \"User does not exist\"}", repo.updateUser(3, MOCK_OBJECT3));
