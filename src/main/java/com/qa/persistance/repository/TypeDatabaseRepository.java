@@ -18,7 +18,7 @@ import com.qa.util.JSONUtil;
 
 @Transactional(TxType.SUPPORTS)
 @Default
-public class TypeDatebaseRepository implements TypeRepository {
+public class TypeDatabaseRepository implements TypeRepository {
 
 	@PersistenceContext(unitName = "primary")
 	private EntityManager manager;

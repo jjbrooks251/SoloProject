@@ -1,7 +1,9 @@
 package com.qa.rest;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Ignore;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -9,25 +11,25 @@ import org.mockito.runners.MockitoJUnitRunner;
 @RunWith(MockitoJUnitRunner.class)
 public class RareRestTest {
 	@InjectMocks
-	private RarityControl control;
+	public RarityControl control;
 
 	@Before
 	public void setup() {
 
 	}
 
+	@Test
+	public void getAllRarity() {
+		Assert.assertEquals(1, 1);
+	}
+
 	@Ignore
-	private void getAllRarity() {
+	public void getRarityId() {
 
 	}
 
 	@Ignore
-	private void getRarityId() {
-
-	}
-
-	@Ignore
-	private void getRarityName() {
+	public void getRarityName() {
 
 	}
 }
