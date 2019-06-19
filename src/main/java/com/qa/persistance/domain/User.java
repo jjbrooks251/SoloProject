@@ -26,7 +26,7 @@ public class User {
 	@Column(length = 255)
 	private String email;
 	
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.EAGER, orphanRemoval="true")
 	@JoinTable(name = "user_unit", joinColumns = @JoinColumn(name = "user_uId"), inverseJoinColumns = @JoinColumn(name = "unit_cId"))
 	private Set<Unit> characters = new HashSet<>();
 	

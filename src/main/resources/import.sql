@@ -64,4 +64,10 @@ INSERT INTO TEAM_Unit (team_tId, Unit_cId) VALUES (2, 20)
 INSERT INTO TEAM_Unit (team_tId, Unit_cId) VALUES (3, 5)
 
 INSERT INTO USER_Unit (user_uId, Unit_cId) VALUES (1, 1)
+INSERT INTO USER_Unit (user_uId, Unit_cId) VALUES (1, 12)
+INSERT INTO USER_Unit (user_uId, Unit_cId) VALUES (1, 18)
+INSERT INTO USER_Unit (user_uId, Unit_cId) VALUES (1, 14)
+INSERT INTO USER_Unit (user_uId, Unit_cId) VALUES (2, 5)
+INSERT INTO USER_Unit (user_uId, Unit_cId) VALUES (2, 11)
+INSERT INTO USER_Unit (user_uId, Unit_cId) VALUES (3, 1)
 
