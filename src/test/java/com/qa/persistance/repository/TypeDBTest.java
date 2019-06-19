@@ -22,7 +22,7 @@ import com.qa.persistance.domain.Unit;
 import com.qa.util.JSONUtil;
 
 @RunWith(MockitoJUnitRunner.class)
-public class TypeTest {
+public class TypeDBTest {
 
 	@InjectMocks
 	private TypeDatabaseRepository repo;

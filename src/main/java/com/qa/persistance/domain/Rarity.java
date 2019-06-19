@@ -51,4 +51,11 @@ public class Rarity {
 		this.lvMax = lvMax;
 	}
 
+	@Override
+	public String toString() {
+		return "Rarity [rId=" + rId + ", name=" + name + ", lvMax=" + lvMax + "]";
+	}
+	
+	
+
 }

@@ -23,7 +23,7 @@ import com.qa.persistance.domain.User;
 import com.qa.util.JSONUtil;
 
 @RunWith(MockitoJUnitRunner.class)
-public class UnitTest {
+public class UnitDBTest {
 
 	@InjectMocks
 	private UnitDatabaseRepository repo;

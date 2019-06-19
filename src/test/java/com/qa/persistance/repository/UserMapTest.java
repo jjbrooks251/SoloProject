@@ -44,6 +44,7 @@ public class UserMapTest {
 
 		ump.createUser(Constants.user1);
 		assertEquals(1, ump.getUserMap().size());
+		assertEquals("{\"1\":" + Constants.user1 +"}", ump.findAllUsers());
 	}
 
 	@Test
@@ -66,6 +67,15 @@ public class UserMapTest {
 		ump.createUser(Constants.user2);
 		
 		assertEquals("[{\"hash\":1,\"key\":1,\"value\":" + Constants.user1 + "}]", ump.findAUserName("j"));
+		
+	}
+	
+	@Test
+	public void getUserNameNone() {
+		ump.createUser(Constants.user1);
+		ump.createUser(Constants.user2);
+		
+		assertEquals("{\"message\": \"User does not exist\"}", ump.findAUserName("z"));
 		
 	}
 	

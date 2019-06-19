@@ -15,58 +15,52 @@ import com.qa.util.JSONUtil;
 @Alternative
 public class UnitMapRepository implements UnitRepository {
 
-	private Map<Integer, Unit> UnitMap = new HashMap<Integer, Unit>();
+	private Map<Integer, Unit> unitMap = new HashMap<Integer, Unit>();
 
 	JSONUtil json = new JSONUtil();
 
 	public Map<Integer, Unit> getUnitMap() {
-		return UnitMap;
+		return unitMap;
 	}
 
 	public void setUnitMap(Map<Integer, Unit> UnitMap) {
-		this.UnitMap = UnitMap;
+		this.unitMap = UnitMap;
 	}
 
 	public String getAllUnits() {
 
-		return json.getJSONForObject(UnitMap);
+		if (unitMap.isEmpty()) {
+			return "{\"message\": \"Unit Map is empty\"}";
+		} else {
+
+			return json.getJSONForObject(unitMap);
+		}
 	}
 
 	public String getUnitId(int cId) {
 
-		Unit Units = getUnitMap().get(cId);
+		Unit units = getUnitMap().get(cId);
 
-		if (getUnitMap().containsKey(cId) != false) {
+		if (getUnitMap().containsKey(cId) == true) {
 
-			return Units.toString();
+			return units.toString();
 
 		} else {
 
-			return "{\"message\": \"Unit does not exist\"}";
+			return "{\"Message\": \"Unit does not exist\"}";
 		}
 	}
 
 	public String getUnitName(String name) {
 
-		List<Entry<Integer, Unit>> result = UnitMap.entrySet().stream()
+		List<Entry<Integer, Unit>> result = unitMap.entrySet().stream()
 				.filter(n -> n.getValue().getName().contains(name)).collect(Collectors.toList());
 
-		return json.getJSONForObject(result);
-	}
-	
-	public String createUnit(String user) {
-		Unit acc = json.getObjectForJSON(user, Unit.class);
-
-		int id = acc.getcId();
-
-		if (getUnitMap().containsKey(id) != false) {
-
-			return "{\"message\": \"Conflicting User Id\"}";
-
+		if (result.isEmpty()) {
+			return "{\"message\": \"Result is empty\"}";
 		} else {
-			UnitMap.put(acc.getcId(), acc);
 
-			return "{\"message\": \"User Created\"}";
+			return json.getJSONForObject(result);
 		}
 	}
 

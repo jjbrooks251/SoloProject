@@ -71,7 +71,12 @@ public class UserMapRepository implements UserRepository {
 		List<Entry<Integer, User>> result = userMap.entrySet().stream()
 				.filter(n -> n.getValue().getUsername().contains(username)).collect(Collectors.toList());
 
-		return json.getJSONForObject(result);
+		if (result.isEmpty()) {
+			return "{\"message\": \"User does not exist\"}";
+		} else {
+
+			return json.getJSONForObject(result);
+		}
 	}
 
 	public String updateUser(int id, String user) {
