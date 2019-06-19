@@ -66,10 +66,9 @@ public class StorageDBTest {
 	@Test
 	public void createStorage() {
 		Mockito.when(manager.createNativeQuery(Mockito.anyString())).thenReturn(query);
-		List<User> users = new ArrayList<User>();
+		List<User> users = new ArrayList<>();
 		Set<Unit> units = new HashSet<>();
 		
-		Unit unit = new Unit(1, "unit", "super", 30, 30, 30);
 		User user = new User(1, "jjbro", "jjbro", "jjbro@qa.com", units);
 		
 		users.add(user);

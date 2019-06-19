@@ -70,7 +70,6 @@ public class UserDatabaseRepository implements UserRepository {
 		User user1 = manager.find(User.class, id);
 
 		if (user1 != null) {
-
 			return util.getJSONForObject(user1);
 		} else {
 			return "{\"message\": \"User doesn't exist\"}";

@@ -1,6 +1,9 @@
 package com.qa.persistance.repository;
 
 import java.util.Collection;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.enterprise.inject.Default;
 import javax.inject.Inject;
@@ -10,6 +13,7 @@ import javax.persistence.Query;
 import javax.transaction.Transactional;
 import javax.transaction.Transactional.TxType;
 
+import com.qa.persistance.domain.Unit;
 import com.qa.persistance.domain.User;
 import com.qa.util.JSONUtil;
 
@@ -41,8 +45,8 @@ public class StorageDatabaseRepository implements StorageRepository {
 
 	@Transactional(TxType.REQUIRED)
 	public String createStorage(int uId, int cId) {
-		Query query = manager
-				.createNativeQuery(String.format("INSERT INTO User_Character(USER_uId, UNIT_cId) VALUES (%s,%s)", uId, cId));
+		Query query = manager.createNativeQuery(
+				String.format("INSERT INTO User_Character(USER_uId, UNIT_cId) VALUES (%s,%s)", uId, cId));
 
 		query.executeUpdate();
 		return "{\"message\": \"Unit has been added to your storage\"}";
@@ -60,11 +64,31 @@ public class StorageDatabaseRepository implements StorageRepository {
 	}
 
 	public String findAStorageId(int uId, int cId) {
-		return null;
+		User user1 = manager.find(User.class, uId);
+
+		Set<Unit> unit = user1.getCharacters();
+
+		List<Unit> result = unit.stream().filter(n -> n.getcId() == cId).collect(Collectors.toList());
+
+		if (result.isEmpty()) {
+			return "{\"message\": \"Unit does not appear in users storage\"}";
+		} else {
+			return util.getJSONForObject(result);
+
+		}
+
 	}
 
 	@Transactional(TxType.REQUIRED)
 	public String deleteStorage(int uId, int cID) {
+		User user1 = manager.find(User.class, uId);
+
+		Set<Unit> unit = user1.getCharacters();
+		
+		user1.getCharacters().remove(cID);
+		
+		
+		
 		return "{\"message\": \"Unit has been added deleted from your storage\"}";
 	}
 
