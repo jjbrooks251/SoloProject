@@ -25,7 +25,7 @@ import com.qa.util.JSONUtil;
 public class TypeTest {
 
 	@InjectMocks
-	private TypeDatebaseRepository repo;
+	private TypeDatabaseRepository repo;
 
 	@Mock
 	private EntityManager manager;

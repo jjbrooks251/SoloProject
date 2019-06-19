@@ -6,7 +6,10 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
+
+import com.qa.persistance.repository.RarityDatabaseRepository;
 
 @RunWith(MockitoJUnitRunner.class)
 public class RareSerTest {
@@ -14,6 +17,9 @@ public class RareSerTest {
 	@InjectMocks
 	public RarityServiceImpl service;
 
+	@Mock
+	public RarityDatabaseRepository repo;
+	
 	@Before
 	public void setup() {
 
