@@ -164,7 +164,6 @@ public class UserDBTest {
 
 	@Test
 	public void deleteUser() {
-		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
 		List<User> users = new ArrayList<>();
 
 		users.add(user1);
@@ -172,8 +171,6 @@ public class UserDBTest {
 
 		Mockito.when(manager.find(User.class, 2)).thenReturn(user2);
 
-		Mockito.when(query.getResultList()).thenReturn(users);
-		
 		Assert.assertEquals(2, users.size());
 		Assert.assertEquals("{\"message\": \"User Deleted\"}", repo.deleteUser(2));
 

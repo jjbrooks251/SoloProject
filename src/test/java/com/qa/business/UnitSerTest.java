@@ -6,7 +6,12 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
+
+import com.qa.persistance.repository.UnitDatabaseRepository;
+import com.qa.persistance.repository.UserDatabaseRepository;
 
 @RunWith(MockitoJUnitRunner.class)
 public class UnitSerTest {
@@ -14,6 +19,12 @@ public class UnitSerTest {
 	@InjectMocks
 	public UnitServiceImpl service;
 
+	@Mock
+	private UnitDatabaseRepository repo;
+	
+	private static final String MOCK_DATA_ARRAY1 = "[{\"cId\":1,\"name\":\"SSJ3 Gotenks\",\"alignment\":\"Super\",\"hp\":20,\"atk\":20,\"def\":20}]";
+	
+	
 	@Before
 	public void setup() {
 
@@ -21,16 +32,22 @@ public class UnitSerTest {
 
 	@Test
 	public void getAllUnits() {
-		Assert.assertEquals(1, 1);
+		Mockito.when(repo.getAllUnits()).thenReturn("{\"Message\": \"Table empty\"}");
+		Assert.assertEquals("{\"Message\": \"Table empty\"}", service.getAllUnits());
+	
 	}
 	
-	@Ignore
+	@Test
 	public void getUnitId() {
-
+		Mockito.when(repo.getUnitId(1)).thenReturn(MOCK_DATA_ARRAY1);
+		Assert.assertEquals(MOCK_DATA_ARRAY1, service.getUnitId(1));
+	
 	}
 	
-	@Ignore
+	@Test
 	public void getUnitName() {
-
+		Mockito.when(repo.getUnitName("j")).thenReturn(MOCK_DATA_ARRAY1);
+		Assert.assertEquals(MOCK_DATA_ARRAY1, service.getUnitName("j"));
+	
 	}
 }

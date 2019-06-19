@@ -21,22 +21,18 @@ public class UnitControl {
 		return service.getAllUnits();
 	}
 	
-	@Path("/getUserId/{cId}")
+	@Path("/getUnitId/{cId}")
 	@GET
 	@Produces({ "application/json" })
-	public String getUserId(@PathParam("cId") int cId) {
+	public String getUnitId(@PathParam("cId") int cId) {
 		return service.getUnitId(cId);
 	}
 	
-	@Path("/getUserName/{name}")
+	@Path("/getUnitName/{name}")
 	@GET
 	@Produces({ "application/json" })
-	public String getUserName(@PathParam("name") String name) {
+	public String getUnitName(@PathParam("name") String name) {
 		return service.getUnitName(name);
 	}
-	
-	
-	
-	
 	
 }
