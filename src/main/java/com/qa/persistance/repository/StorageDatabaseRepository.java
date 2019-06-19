@@ -40,39 +40,32 @@ public class StorageDatabaseRepository implements StorageRepository {
 	}
 
 	@Transactional(TxType.REQUIRED)
-	public String createStorage(String storage) {
-		return null;
+	public String createStorage(int uId, int cId) {
+		Query query = manager
+				.createNativeQuery(String.format("INSERT INTO User_Character(USER_uId, UNIT_cId) VALUES (%s,%s)", uId, cId));
+
+		query.executeUpdate();
+		return "{\"message\": \"Unit has been added to your storage\"}";
 	}
 
 	public String findAllStorages() {
 		Query query = manager.createQuery("SELECT s FROM User_Unit s");
 
-		Collection<User> users = (Collection<User>) query.getResultList();
-		
-		if (users.isEmpty()) {
+		if (query.getResultList().isEmpty()) {
 			return "{\"message\": \"Table is empty\"}";
-		}else {
-		
-		return util.getJSONForObject(users);
-	}
+		} else {
+
+			return util.getJSONForObject(query.getResultList());
+		}
 	}
 
-	public String findAStorageId(int id) {
-		return null;
-	}
-
-	public String findAStorageName(String storagename) {
+	public String findAStorageId(int uId, int cId) {
 		return null;
 	}
 
 	@Transactional(TxType.REQUIRED)
-	public String updateStorage(int id, String storage) {
-		return null;
-	}
-
-	@Transactional(TxType.REQUIRED)
-	public String deleteStorage(int id) {
-		return null;
+	public String deleteStorage(int uId, int cID) {
+		return "{\"message\": \"Unit has been added deleted from your storage\"}";
 	}
 
 }
