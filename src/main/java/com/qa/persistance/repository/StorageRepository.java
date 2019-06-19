@@ -2,16 +2,12 @@ package com.qa.persistance.repository;
 
 public interface StorageRepository {
 
-	public String createStorage(String storage);
+	public String createStorage(int uId, int cId);
 
 	public String findAllStorages();
 
-	public String findAStorageId(int id);
+	public String findAStorageId(int uId, int cId);
 
-	public String findAStorageName(String storagename);
-
-	public String updateStorage(int id, String storage);
-
-	public String deleteStorage(int id);
+	public String deleteStorage(int uId, int cID);
 
 }
