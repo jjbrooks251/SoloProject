@@ -30,7 +30,12 @@ public class RarityMapRepository implements RarityRepository {
 	@Override
 	public String getAllRarity() {
 
-		return json.getJSONForObject(rarityMap);
+		if (getRarityMap().size() == 0) {
+			return "{\"message\": \"Rarity Map is empty\"}";
+		} else {
+
+			return json.getJSONForObject(rarityMap);
+		}
 	}
 
 	@Override
@@ -53,7 +58,12 @@ public class RarityMapRepository implements RarityRepository {
 		List<Entry<Integer, Rarity>> result = rarityMap.entrySet().stream()
 				.filter(n -> n.getValue().getName().contains(name)).collect(Collectors.toList());
 
-		return json.getJSONForObject(result);
+		if (result.isEmpty()) {
+			return "{\"message\": \"Result is empty\"}";
+		} else {
+
+			return json.getJSONForObject(result);
+		}
 	}
 
 }

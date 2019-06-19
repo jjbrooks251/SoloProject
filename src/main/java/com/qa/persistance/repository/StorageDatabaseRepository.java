@@ -47,9 +47,14 @@ public class StorageDatabaseRepository implements StorageRepository {
 	public String findAllStorages() {
 		Query query = manager.createQuery("SELECT s FROM User_Unit s");
 
-		// Collection<User_Unit> users = (Collection<User_Unit>) query.getResultList();
+		Collection<User> users = (Collection<User>) query.getResultList();
 		
-		return null;
+		if (users.isEmpty()) {
+			return "{\"message\": \"Table is empty\"}";
+		}else {
+		
+		return util.getJSONForObject(users);
+	}
 	}
 
 	public String findAStorageId(int id) {

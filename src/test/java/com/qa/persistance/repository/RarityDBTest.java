@@ -20,7 +20,7 @@ import com.qa.persistance.repository.RarityDatabaseRepository;
 import com.qa.util.JSONUtil;
 
 @RunWith(MockitoJUnitRunner.class)
-public class RarityTest {
+public class RarityDBTest {
 
 	@InjectMocks
 	private RarityDatabaseRepository repo;

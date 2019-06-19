@@ -6,12 +6,21 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
+
+import com.qa.business.TypeServiceImpl;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TypeRestTest {
 	@InjectMocks
 	public TypeControl control;
+
+	@Mock
+	public TypeServiceImpl service;
+
+	private static final String MOCK_DATA_ARRAY1 = "[{\"tId\":1,\"name\":\"AGL\"}]";
 
 	@Before
 	public void setup() {
@@ -20,16 +29,19 @@ public class TypeRestTest {
 
 	@Test
 	public void getAllTypes() {
-		Assert.assertEquals(1, 1);
+		Mockito.when(service.getAllTypes()).thenReturn("{\"Message\": \"Table empty\"}");
+		Assert.assertEquals("{\"Message\": \"Table empty\"}", control.getAllTypes());
 	}
 
-	@Ignore
+	@Test
 	public void getTypeId() {
-
+		Mockito.when(service.getTypeId(1)).thenReturn(MOCK_DATA_ARRAY1);
+		Assert.assertEquals(MOCK_DATA_ARRAY1, control.getTypeId(1));
 	}
 
-	@Ignore
+	@Test
 	public void getTypeName() {
-
+		Mockito.when(service.getTypeName("A")).thenReturn(MOCK_DATA_ARRAY1);
+		Assert.assertEquals(MOCK_DATA_ARRAY1, control.getTypeName("A"));
 	}
 }
