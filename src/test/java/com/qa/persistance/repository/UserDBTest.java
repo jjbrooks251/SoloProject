@@ -40,12 +40,12 @@ public class UserDBTest {
 	private static final String MOCK_DATA_ARRAY2 = "[{\"uId\":2,\"username\":\"cTatum94\",\"password\":\"Mynamegeoff25\",\"email\":\"cTatum94@qa.com\"}]";
 	private static final String MOCK_OBJECT2 = "{\"uId\":2,\"username\":\"cTatum94\",\"password\":\"Mynamegeoff25\",\"email\":\"cTatum94@qa.com\"}";
 	
-	private static final String MOCK_DATA_ARRAY3 = "[{\"uId\":3,\"username\":\"jbro951\",\"password\":\"Jbrooks95\",\"email\":\"jbrok951@qa.com\"}]";
-	private static final String MOCK_OBJECT3 = "{\"uId\":3,\"username\":\"jbro951\",\"password\":\"Jbrooks95\",\"email\":\"jbrok951@qa.com\"}";
+	private static final String MOCK_DATA_ARRAY3 = "[{\"uId\":3,\"username\":\"jbro951\",\"password\":\"Jbrooks951\",\"email\":\"jbrok951@qa.com\"}]";
+	private static final String MOCK_OBJECT3 = "{\"uId\":3,\"username\":\"jbro951\",\"password\":\"Jbrooks951\",\"email\":\"jbrok951@qa.com\"}";
 	
 	private static final User user1 = new User(1, "jbro95", "Jbrooks95", "jbro95@qa.com", null);
 	private static final User user2 = new User(2, "cTatum94", "Mynamegeoff25", "cTatum94@qa.com", null);
-	private static final User user3 = new User(3, "jbro951", "Jbrooks95", "jbrok951@qa.com", null);
+	private static final User user3 = new User(3, "jbro951", "Jbrooks951", "jbrok951@qa.com", null);
 
 	
 	@Before
@@ -184,8 +184,7 @@ public class UserDBTest {
 		users.add(user2);
 
 		Mockito.when(manager.find(User.class, 2)).thenReturn(user2);
-	//	Mockito.when(manager.remove(user2)).thenReturn("{\"message\": \"User Deleted\"}");
-
+	
 		Mockito.when(query.getResultList()).thenReturn(users);
 		
 		Assert.assertEquals(2, users.size());

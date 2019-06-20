@@ -30,4 +30,10 @@ public class StorageServiceImpl implements StorageService {
 		return repo.deleteStorage(uId, cID);
 	}
 
+	
+	public String findUserStorage(int uId) {
+		
+		return repo.findUserStorage(uId);
+	}
+
 }

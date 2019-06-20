@@ -46,7 +46,7 @@ public class StorageDatabaseRepository implements StorageRepository {
 	@Transactional(TxType.REQUIRED)
 	public String createStorage(int uId, int cId) {
 		Query query = manager.createNativeQuery(
-				String.format("INSERT INTO User_Character(USER_uId, UNIT_cId) VALUES (%s,%s)", uId, cId));
+				String.format("INSERT INTO User_Unit(USER_uId, UNIT_cId) VALUES (%s,%s)", uId, cId));
 
 		query.executeUpdate();
 		return "{\"message\": \"Unit has been added to your storage\"}";
@@ -90,6 +90,20 @@ public class StorageDatabaseRepository implements StorageRepository {
 		
 		
 		return "{\"message\": \"Unit has been added deleted from your storage\"}";
+	}
+
+	@Override
+	public String findUserStorage(int uId) {
+		User user1 = manager.find(User.class, uId);
+
+		Set<Unit> unit = user1.getCharacters();
+		
+		if (unit.isEmpty()) {
+			return "{\"message\": \"User has no Units in storage\"}";
+		} else {
+			return util.getJSONForObject(unit);
+
+		}
 	}
 
 }
