@@ -128,7 +128,7 @@ public class UserDBTest {
 
 		final User user1 = new User(1, "jbro95", "Jbrooks95", "jbro95@qa.com", null);
 		final User user2 = new User(2, "cTatum94", "Mynamegeoff25", "cTatum94@qa.com", null);
-		final User user3 = new User(3, "jbro951", "Jbrooks95", "jbrok951@qa.com", null);
+		final User user3 = new User(3, "jbro951", "Jbrooks951", "jbrok951@qa.com", null);
 		
 		users.add(user1);
 		users.add(user2);
@@ -202,7 +202,7 @@ public class UserDBTest {
 
 		Assert.assertEquals(2, users.size());
 		Assert.assertEquals("{\"message\": \"User Updated\"}", repo.updateUser(2, MOCK_OBJECT3));
-		Assert.assertEquals("{\"uId\":2,\"username\":\"jbro951\",\"password\":\"Jbrooks95\",\"email\":\"jbrok951@qa.com\"}", repo.findAUserId(2));
+		Assert.assertEquals("{\"uId\":2,\"username\":\"jbro951\",\"password\":\"Jbrooks951\",\"email\":\"jbrok951@qa.com\"}", repo.findAUserId(2));
 
 	}
 

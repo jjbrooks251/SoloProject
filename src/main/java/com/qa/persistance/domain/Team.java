@@ -24,7 +24,7 @@ public class Team {
 	private User user;
 
 	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "team_character", joinColumns = @JoinColumn(name = "team_tId"), inverseJoinColumns = @JoinColumn(name = "character_cId"))
+	@JoinTable(name = "team_unit", joinColumns = @JoinColumn(name = "team_tId"), inverseJoinColumns = @JoinColumn(name = "character_cId"))
 	private Set<Unit> characters = new HashSet<>();
 
 	public Team() {

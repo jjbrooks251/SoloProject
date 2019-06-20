@@ -10,6 +10,7 @@ import javax.persistence.Query;
 
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -77,5 +78,34 @@ public class StorageDBTest {
 		Assert.assertEquals("{\"message\": \"Unit has been added to your storage\"}", repo.createStorage(1, 1));
 		
 	}
+	
+	@Ignore
+	public void findAStoreId() {
+		
+	}
+	
+	@Ignore
+	public void findAStoreIdFail() {
+		
+	}
+	
+	@Ignore
+	public void deleteAStore() {
+		
+	}
+	
+	@Ignore
+	public void deleteAStoreFail() {
+		
+	}
+	
+	@Ignore
+	public void findUserStorage() {
+		
+	}
 
+	@Ignore
+	public void findUserStorageFail() {
+		
+	}
 }
