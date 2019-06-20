@@ -9,7 +9,7 @@
 
     </head>
 
-    <body>
+    <body onload="getAllUnits()">
 
         <nav class="navbar navbar-expand-md bg-dark navbar-dark">
             <a class="navbar-brand" href="index.html">DBD Team Resource</a>
@@ -51,20 +51,29 @@
             </div>
         </nav>
 
-        <p> database </p>
+        <h> database </h>
 
-        <table id="unitTable" border="1">
-            <tr>
-                <th>unitid</th>
-                <th>Name</th>
-                <th>rarity</th>
-                <th>type</th>
-                <th>alignment</th>
-                <th>hp</th>
-                <th>atk</th>
-                <th>def</th>
-            </tr>
-        </table>
+        <div class="contianer">
+            <p> sfstsr </p>
+
+        </div>
+
+        <br>
+
+        <div class="container">
+            <table id="unitTable" border="1">
+                <tr>
+                    <th>unitid</th>
+                    <th>Name</th>
+                    <th>rarity</th>
+                    <th>type</th>
+                    <th>alignment</th>
+                    <th>hp</th>
+                    <th>atk</th>
+                    <th>def</th>
+                </tr>
+            </table>
+        </div>
 
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -75,7 +84,9 @@
             crossorigin="anonymous">
 
             </script>
+        <script src="scripts/units.js">
 
+        </script>
     </body>
 
 
