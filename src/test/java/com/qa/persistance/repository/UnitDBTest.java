@@ -18,6 +18,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import com.qa.persistance.domain.Team;
 import com.qa.persistance.domain.Unit;
 import com.qa.persistance.domain.User;
 import com.qa.util.JSONUtil;
@@ -36,17 +37,19 @@ public class UnitDBTest {
 	@Mock
 	private Query query;
 
-	private static final String MOCK_DATA_ARRAY1 = "[{\"cId\":1,\"name\":\"SSJ3 Gotenks\",\"alignment\":\"Super\",\"hp\":20,\"atk\":20,\"def\":20}]";
-	private static final String MOCK_OBJECT1 = "{\"cId\":1,\"name\":\"SSJ3 Gotenks\",\"alignment\":\"Super\",\"hp\":20,\"atk\":20,\"def\":20}";
-	private static final Unit unit1 = new Unit(1, "SSJ3 Gotenks", "Super", 20, 20, 20);
+	private static final String MOCK_DATA_ARRAY1 = "[{\"cId\":1,\"name\":\"SSJ3 Gotenks\",\"alignment\":\"Super\",\"hp\":20,\"atk\":20,\"def\":20,\"type\":1,\"rarity\":1}]";
+	private static final String MOCK_OBJECT1 = "{\"cId\":1,\"name\":\"SSJ3 Gotenks\",\"alignment\":\"Super\",\"hp\":20,\"atk\":20,\"def\":20,\"type\":1,\"rarity\":1}";
+	private static final Unit unit1 = new Unit(1, "SSJ3 Gotenks", "Super", 20, 20, 20, 1, 1);
 
-	private static final String MOCK_DATA_ARRAY2 = "[{\"cId\":2,\"name\":\"SSJ Gotenks\",\"alignment\":\"Super\",\"hp\":20,\"atk\":20,\"def\":20}]";
-	private static final String MOCK_OBJECT2 = "{\"cId\":2,\"name\":\"SSJ Gotenks\",\"alignment\":\"Super\",\"hp\":20,\"atk\":20,\"def\":20}";
-	private static final Unit unit2 = new Unit(2, "SSJ Gotenks", "Super", 20, 20, 20);
+	private static final String MOCK_DATA_ARRAY2 = "[{\"cId\":2,\"name\":\"SSJ Gotenks\",\"alignment\":\"Super\",\"hp\":20,\"atk\":20,\"def\":20,\"type\":1,\"rarity\":1}]";
+	private static final String MOCK_OBJECT2 = "{\"cId\":2,\"name\":\"SSJ Gotenks\",\"alignment\":\"Super\",\"hp\":20,\"atk\":20,\"def\":20,\"type\":1,\"rarity\":1}";
+	private static final Unit unit2 = new Unit(2, "SSJ Gotenks", "Super", 20, 20, 20, 1, 1);
 
-	private static final String MOCK_DATA_ARRAY3 = "[{\"cId\":13,\"name\":\"goku\",\"alignment\":\"Super\",\"hp\":20,\"atk\":20,\"def\":20}]";
-	private static final String MOCK_OBJECT3 = "{\"cId\":13,\"name\":\"goku\",\"alignment\":\"Super\",\"hp\":20,\"atk\":20,\"def\":20}";
-	private static final Unit unit3 = new Unit(13, "N", "goku", 20, 20, 20);
+	private static final String MOCK_DATA_ARRAY3 = "[{\"cId\":13,\"name\":\"goku\",\"alignment\":\"Super\",\"hp\":20,\"atk\":20,\"def\":20,\"type\":1,\"rarity\":1]";
+	private static final String MOCK_OBJECT3 = "{\"cId\":13,\"name\":\"goku\",\"alignment\":\"Super\",\"hp\":20,\"atk\":20,\"def\":20,\"type\":1,\"rarity\":1}";
+	private static final Unit unit3 = new Unit(13, "N", "goku", 20, 20, 20, 1, 1);
+	
+//	private static final Team t1 = new Team(1, null, null);
 
 	@Before
 	public void setup() {
