@@ -94,7 +94,7 @@ public class StorageDatabaseRepository implements StorageRepository {
 		
 		query.executeUpdate();
 		
-		return "{\"message\": \"Unit has been added deleted from your storage\"}";
+		return "{\"message\": \"Unit has been deleted from your storage\"}";
 	}
 	}
 

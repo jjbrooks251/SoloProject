@@ -16,6 +16,13 @@ public class StorageControl {
 	@Inject
 	StorageService service; 
 	
+	@Path("/findAllStorages/")
+	@GET
+	@Produces({ "application/json" })
+	public String findAllStorages() {
+		return service.findAllStorages();
+	}
+	
 	@Path("/getStore/{uId}/{cId}")
 	@GET
 	@Produces({ "application/json" })

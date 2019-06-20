@@ -39,6 +39,11 @@ public class StorageDBTest {
 	private static final String MOCK_DATA_ARRAY1 = "[{\\\"uId\\\":1,\\\"cId\\\":1}]";
 	private static final String MOCK_OBJECT1 = "{\"uId\":1,\"cId\":1}";
 
+	private static final String MOCK_DATA_ARRAY2 = "[{\"uId\":2,\"username\":\"cTatum94\",\"password\":\"Mynamegeoff25\",\"email\":\"cTatum94@qa.com\"}]";
+	private static final String MOCK_OBJECT2 = "{\"uId\":2,\"username\":\"cTatum94\",\"password\":\"Mynamegeoff25\",\"email\":\"cTatum94@qa.com\"}";
+	private static final User user2 = new User(2, "cTatum94", "Mynamegeoff25", "cTatum94@qa.com", null);
+	
+	
 	@Before
 	public void setup() {
 		repo.setManager(manager);
@@ -81,16 +86,32 @@ public class StorageDBTest {
 	
 	@Ignore
 	public void findAStoreId() {
-		
+		List<User> users = new ArrayList<>();
+		Set<Unit> units = new HashSet<>();
+		users.add(user2);
+
+		Mockito.when(manager.find(User.class, 2)).thenReturn(user2);
+
+		Assert.assertEquals(2, users.size());
+		Assert.assertEquals(MOCK_OBJECT1, repo.findAStorageId(2, 1));
+	
 	}
 	
 	@Ignore
 	public void findAStoreIdFail() {
 		
 	}
-	
+		
 	@Ignore
 	public void deleteAStore() {
+		Mockito.when(manager.createNativeQuery(Mockito.anyString())).thenReturn(query);
+		List<User> users = new ArrayList<>();
+		Set<Unit> units = new HashSet<>();
+		
+		User user = new User(1, "jjbro", "jjbro", "jjbro@qa.com", units);
+		
+		users.add(user);
+		Mockito.when(query.getResultList()).thenReturn(users);
 		
 	}
 	
