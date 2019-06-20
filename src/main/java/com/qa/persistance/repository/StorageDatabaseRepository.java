@@ -84,15 +84,20 @@ public class StorageDatabaseRepository implements StorageRepository {
 		User user1 = manager.find(User.class, uId);
 
 		Set<Unit> unit = user1.getCharacters();
+
+		List<Unit> result = unit.stream().filter(n -> n.getcId() == cID).collect(Collectors.toList());
+
+		if (result.isEmpty()) {
+			return "{\"message\": \"Unit does not appear in users storage\"}";
+		} else {
+		Query query = manager.createNativeQuery(String.format("DELETE FROM User_Unit WHERE user_uID = %s AND unit_cId = %s", uId, cID));
 		
-		user1.getCharacters().remove(cID);
+		query.executeUpdate();
 		
-		
-		
-		return "{\"message\": \"Unit has been added deleted from your storage\"}";
+		return "{\"message\": \"Unit has been deleted from your storage\"}";
+	}
 	}
 
-	@Override
 	public String findUserStorage(int uId) {
 		User user1 = manager.find(User.class, uId);
 
