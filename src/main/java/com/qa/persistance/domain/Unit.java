@@ -19,18 +19,14 @@ public class Unit {
 	private int hp;
 	private int atk;
 	private int def;
-	
-//	@ManyToOne
-//	private Type type;
-	
-//	@ManyToOne
-//	private Rarity rarity;
+	private int type;
+	private int rarity;
 
 	public Unit() {
 		super();
 	}
 
-	public Unit(int cId, String name, String alignment, int hp, int atk, int def) {
+	public Unit(int cId, String name, String alignment, int hp, int atk, int def, int type, int rarity) {
 	super();
 	this.cId = cId;
 	this.name = name;
@@ -38,6 +34,8 @@ public class Unit {
 	this.hp = hp;
 	this.atk = atk;
 	this.def = def;
+	this.type = type;
+	this.rarity = rarity;
 }
 
 
@@ -91,10 +89,26 @@ public class Unit {
 		this.def = def;
 	}
 
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
+	}
+	
+	public int getRarity() {
+		return rarity;
+	}
+
+	public void setRarity(int rarity) {
+		this.rarity = rarity;
+	}
+
 	@Override
 	public String toString() {
 		return "Unit [cId=" + cId + ", name=" + name + ", alignment=" + alignment + ", hp=" + hp + ", atk=" + atk
-				+ ", def=" + def + "]";
+				+ ", def=" + def + ", type=" + type + ", rarity=" + rarity + "]";
 	}
 
 	

@@ -51,38 +51,60 @@
             </div>
         </nav>
 
-        <div class="container" id="logreg">
-            <div class="row">
-                <div class="col-sm-3">
-                    <div class="container" id="register">
-                       
-                            Username:<br>
-                            <input type="text" name="firstname" id="username">
-                            <br> Password:<br>
-                            <input type="text" name="lastname" id="password">
-                            <br> Password Confirmation:<br>
-                            <input type="text" name="passconf" id="passcon">
-                            <br> email:<br>
-                            <input type="text" name="email" id="email">
-                            <br><br>
-                            <button class="button" type="submit" onclick="createUser()"> Register </button>
-                       
+        <div class="container" id="forms">
+            <div class="container mx-auto">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <input class="align-center" id="find" type="text" name="num1" placeholder="Enter id to search for"></input>
+                    </div>
+                    <div class="col-sm-3">
+                        <button class="button btn-outline-success" onclick="getUser()"> get a User </button>
                     </div>
                 </div>
-                <div class="col-sm-3">
-                    <div class="container" id="login">
-                        
-                            Username:<br>
-                            <input type="text" name="logname" value="">
-                            <br> Password:<br>
-                            <input type="text" name="logpass" value="">
-                            <br>
-                            <button class="button" type="submit" onclick="login()"> Login </button>
-                        
+                <div class="row">
+                    <button class="btn btn-outline-success" onclick="getAllUsers()"> get all users</button>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <input class="align-center" id="username" type="text" name="num1" placeholder="Enter Username"></input>
+                    </div>
+                    <div class="col-sm-3">
+                        <input class="align-center" id="password" type="password" name="num1" placeholder="Enter Password"></input>
+                    </div>
+                    <div class="col-sm-3">
+                        <input class="align-center" id="email" type="text" name="num1" placeholder="Enter Email"></input>
+                    </div>
+
+                    <button class="btn btn-outline-success" onclick="createUser()"> Create User </button>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <input class="align-center" id="delete" type="text" name="num1" placeholder="Enter User account to delete"></input>
+                    </div>
+                    <div class="col-sm-3">
+                        <button class="btn btn-outline-success" onclick="deleteUser()"> Delete User</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <input class="align-center" id="id" type="text" name="num1" placeholder="Enter id"></input>
+                    </div>
+                    <div class="col-sm-3">
+                        <input class="align-center" id="upuser" type="text" name="num1" placeholder="Enter Username"></input>
+                    </div>
+                    <div class="col-sm-3">
+                        <input class="align-center" id="uppass" type="password" name="num1" placeholder="Enter Password"></input>
+                    </div>
+                    <div class="col-sm-3">
+                        <input class="align-center" id="upemail" type="text" name="num1" placeholder="Enter Email"></input>
+                    </div>
+                    <div class="col-sm-3">
+                        <button class="btn btn-outline-success" onclick="updateUser()"> Update User </button>
                     </div>
                 </div>
             </div>
         </div>
+
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
             crossorigin="anonymous"></script>
