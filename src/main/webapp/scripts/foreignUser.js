@@ -1,5 +1,4 @@
-const pathloc = "http://localhost:8080/SoloProject/api/";
-const pathser = "http://35.198.82.58:8888/SoloProject/api/";
+const userId = sessionStorage.getItem('searchedUserId');
 
 function createPromise(method, url, body) {
     return new Promise(function (resolve, reject) {
@@ -24,9 +23,22 @@ function createPromise(method, url, body) {
 
 }
 
+function displayUsers() {
+
+    createPromise("GET", pathloc + "User/findAUserId/" + userId).then(value => {
+
+        let data = JSON.parse(value);
+        const container = document.getElementById('userTable');
+
+
+        document.getElementById('foreignName').innerText = data.username;
+
+
+    })
+}
 
 function getAllUnits() {
-    createPromise("GET", pathloc + "Unit/getAllUnits").then(value => {
+    createPromise("GET", pathloc + "Storage/getUserStore/" + userId).then(value => {
 
         let data = JSON.parse(value);
         const container = document.getElementById('unitTable');
@@ -88,9 +100,6 @@ function getAllUnits() {
             let mydef = document.createElement('td');
             mydef.innerHTML = data[i].def;
 
-
-
-
             myRow.appendChild(myunitid);
             myRow.appendChild(myName);
             myRow.appendChild(myrarity);
@@ -99,16 +108,6 @@ function getAllUnits() {
             myRow.appendChild(myhp);
             myRow.appendChild(myatk);
             myRow.appendChild(mydef);
-
-            // let detail = document.createElement('td');
-            // let detailButton = document.createElement('button');
-
-            // detailButton.id = value[i].memberid;
-            // detailButton.innerText = "Add to Storage";
-            // detailButton.onclick = detailButtonHandler;
-            // detail.innerHTML = detailButton;
-
-            // myRow.appendChild(detailButton);
 
         }
     })

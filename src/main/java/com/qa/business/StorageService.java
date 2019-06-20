@@ -6,6 +6,8 @@ public interface StorageService {
 	
 	public String findAllStorages();
 
+	public String findUserStorage(int uId);
+	
 	public String findAStorageId(int uId, int cId);
 
 	public String deleteStorage(int uId, int cID);	
