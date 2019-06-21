@@ -5,6 +5,7 @@ pipeline{
                         steps{
                                 sh "sudo rm -rf /var/lib/wildfly-10.1.0.Final/standalone/deployments/*"
                         }
+                        }
         
                 stage('---clean---'){
                         steps{
@@ -41,7 +42,7 @@ pipeline{
                         steps{
                                 sh "cd /"
 				sh "pwd"
-				sh "sudo cp target/SoloProject.war /home/jjbrooks251/wildfly-10.1.0.Final/standalone/deployments/"
+				sh "sudo cp target/SoloProject.war /var/lib/wildfly-10.1.0.Final/standalone/deployments/"
                         }
                 }
         }
