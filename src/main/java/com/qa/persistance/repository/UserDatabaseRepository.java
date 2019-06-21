@@ -81,7 +81,7 @@ public class UserDatabaseRepository implements UserRepository {
 
 		Collection<User> users = (Collection<User>) query.getResultList();
 
-		List<User> result = users.stream().filter(n -> n.getUsername().contains(username)).collect(Collectors.toList());
+		List<User> result = users.stream().filter(n -> n.getUsername().toLowerCase().contains(username.toLowerCase())).collect(Collectors.toList());
 
 		if (result.isEmpty()) {
 
@@ -97,6 +97,10 @@ public class UserDatabaseRepository implements UserRepository {
 		User old = manager.find(User.class, id);
 		User update = util.getObjectForJSON(user, User.class);
 
+		if (update.getPassword() == null) {
+			update.setPassword(old.getPassword());
+		}
+		
 		if (old != null) {
 			old.setUsername(update.getUsername());
 			old.setPassword(update.getPassword());
@@ -118,6 +122,23 @@ public class UserDatabaseRepository implements UserRepository {
 			return "{\"message\": \"User Deleted\"}";
 		} else {
 			return "{\"message\": \"User with this id doesn't exist\"}";
+		}
+	}
+
+	@Override
+	public String findAUserNameExact(String username) {
+		Query query = manager.createQuery("SELECT a FROM User a");
+
+		Collection<User> users = (Collection<User>) query.getResultList();
+
+		List<User> result = users.stream().filter(n -> n.getUsername().equals(username)).collect(Collectors.toList());
+
+		if (result.isEmpty()) {
+
+			return "{\"message\": \"User does not exist\"}";
+
+		} else {
+			return util.getJSONForObject(result);
 		}
 	}
 

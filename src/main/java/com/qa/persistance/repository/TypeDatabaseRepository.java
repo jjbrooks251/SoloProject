@@ -74,7 +74,7 @@ public class TypeDatabaseRepository implements TypeRepository {
 
 		Collection<Type> types = (Collection<Type>) query.getResultList();
 
-		List<Type> result = types.stream().filter(n -> n.getName().contains(name)).collect(Collectors.toList());
+		List<Type> result = types.stream().filter(n -> n.getName().toLowerCase().contains(name.toLowerCase())).collect(Collectors.toList());
 
 		if (result.isEmpty()) {
 

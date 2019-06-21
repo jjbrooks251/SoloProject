@@ -9,7 +9,7 @@
 
     </head>
 
-    <body onload="getAllUnits()">
+    <body onload="loadDetails()">
 
         <nav class="navbar navbar-expand-md bg-dark navbar-dark">
             <a class="navbar-brand" href="index.html">DBD Team Resource</a>
@@ -51,59 +51,56 @@
             </div>
         </nav>
 
-        <h> database </h>
-
-        <div class="contianer">
-            <p> sfstsr </p>
-
-        </div>
-
+        <p id="errormess"> </p>
+        <br>
+        <p> Enter your new deailts below: </p>
         <br>
         <div class="container">
             <div class="row">
                 <div class="column">
-                    <div>
-                        <input type="text" id="searchName"></input>
-                    </div>
-                    <br>
-                    <button class="button" onclick="filterTable()">Search Name</button>
+                    <p> Username: </p>
                 </div>
                 <div class="column">
-                    <div>
-                        <input type="text" id="searchType"></input>
-                    </div>
-                    <br>
-                    <button class="button" onclick="ftype()">Search Type</button>
-                </div>
-                <div class="column">
-                    <div>
-                        <input type="text" id="searchRarity"></input>
-                    </div>
-                    <br>
-                    <button class="button" onclick="rarity()">Search Rarity</button>
+                    <input id="upuser"></input>
                 </div>
             </div>
-        </div>
-        <button class="button" onclick="getAllUnits()">Reset Table</button>
-        <br>
-        <br>
-        <br>
-        <br>
-
-        <div class="container">
-            <table id="unitTable" border="1">
-                <tr>
-                    <th>unitid</th>
-                    <th>Name</th>
-                    <th>rarity</th>
-                    <th>type</th>
-                    <th>alignment</th>
-                    <th>hp</th>
-                    <th>atk</th>
-                    <th>def</th>
-                    <th>Options</th>
-                </tr>
-            </table>
+            <div class="row">
+                <div class="column">
+                    <p> Password: </p>
+                </div>
+                <div class="column">
+                    <input id="uppass"></input>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <p> Confirm Password: </p>
+                </div>
+                <div class="column">
+                    <input id="conuppass"></input>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <p> Email: </p>
+                </div>
+                <div class="column">
+                    <input id="upemail"></input>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <p> Confirm Email: </p>
+                </div>
+                <div class="column">
+                    <input id="conupemail"></input>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <button onclick="updateUser()"> Update Details </button>
+                </div>
+            </div>
         </div>
 
 
@@ -115,11 +112,8 @@
             crossorigin="anonymous">
 
             </script>
-        <script src="scripts/units.js">
 
-        </script>
+        <script src="scripts/userCRUD.js"></script>
+        <script src="scripts/ownUser.js"></script>
     </body>
-
-
-
 </http>

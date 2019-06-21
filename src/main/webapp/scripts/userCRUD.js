@@ -60,27 +60,36 @@ function createUser() {
 
 function deleteUser() {
 
-    let delId = Number(document.getElementById('delete').value);
+    let delId = sessionStorage.getItem("userLogin");
     createPromise("DELETE", pathloc + "User/deleteUser/" + delId).then(resolve => { console.log(resolve) });
+    sessionStorage.removeItem("userLogin");
 }
 
 function updateUser() {
 
-    let user = {
-        uId: Number(document.getElementById('id').value),
-        username: document.getElementById('upuser').value,
-        password: document.getElementById('uppass').value,
-        email: document.getElementById('upemail').value
-    };
+    if (document.getElementById('uppass').value == document.getElementById('conuppass').value && document.getElementById('upemail').value == document.getElementById('conupemail').value) {
 
-    createPromise("PUT", pathloc + "User/updateUser/" + user.uId, JSON.stringify(user)).then(resolve => { console.log(resolve) });
+        let user = {
+            uId: sessionStorage.getItem('userLogin'),
+            username: document.getElementById('upuser').value,
+            password: document.getElementById('uppass').value,
+            email: document.getElementById('upemail').value
+        }
+
+        console.log(user);
+
+        createPromise("PUT", pathloc + "User/updateUser/" + user.uId, JSON.stringify(user)).then(resolve => { console.log(resolve) });
+        window.location.href = 'ownaccount.html';
+    } else {
+        document.getElementById('errormess').innerText = "Entered password or email does not match, please try again"
+    }
 }
 
 function login() {
 
     let username = document.getElementById("logname").value;
 
-    createPromise("GET", pathloc + "User/findAUserName/" + username).then(value => {
+    createPromise("GET", pathloc + "User/findAUserNameExact/" + username).then(value => {
         let data = JSON.parse(value);
 
         console.log(data[0].uId);

@@ -53,7 +53,7 @@ public class TypeMapRepository implements TypeRepository {
 	public String getTypeName(String name) {
 
 		List<Entry<Integer, Type>> result = typeMap.entrySet().stream()
-				.filter(n -> n.getValue().getName().contains(name)).collect(Collectors.toList());
+				.filter(n -> n.getValue().getName().toLowerCase().contains(name.toLowerCase())).collect(Collectors.toList());
 
 		if (result.isEmpty()) {
 			return "{\"message\": \"Result is empty\"}";

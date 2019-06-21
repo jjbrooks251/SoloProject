@@ -10,6 +10,7 @@ import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import com.qa.business.StorageServiceImpl;
+import com.qa.persistance.repository.Constants;
 
 @RunWith(MockitoJUnitRunner.class)
 public class StoreRestTest {
@@ -20,14 +21,6 @@ public class StoreRestTest {
 	@Mock
 	private StorageServiceImpl service;
 
-	private static final String MOCK_DATA_ARRAY1 = "[{\"uId\":1,\"cId\":1}]";
-	private static final String MOCK_OBJECT1 = "{\"uId\":1,\"cId\":1}";
-
-	private static final String MOCK_DATA_ARRAY2 = "[{\"uId\":2,\"cId\":1}]";
-	private static final String MOCK_OBJECT2 = "{\"uId\":2,\"cId\":1}";
-
-	private static final String MOCK_DATA_ARRAY3 = "[{\"cId\":1,\"name\":\"SSJ3 Gotenks\",\"alignment\":\"Super\",\"hp\":20,\"atk\":20,\"def\":20}]";
-	
 	@Before
 	public void setup() {
 
@@ -50,8 +43,8 @@ public class StoreRestTest {
 	
 	@Test
 	public void findAStorageId() {
-		Mockito.when(service.findAStorageId(1, 1)).thenReturn(MOCK_DATA_ARRAY3);
-		Assert.assertEquals(MOCK_DATA_ARRAY3, control.findAStorageId(1, 1));
+		Mockito.when(service.findAStorageId(1, 1)).thenReturn(Constants.MOCK_STORE_DATA_ARRAY3);
+		Assert.assertEquals(Constants.MOCK_STORE_DATA_ARRAY3, control.findAStorageId(1, 1));
 	
 	}
 	
@@ -66,8 +59,8 @@ public class StoreRestTest {
 	
 	@Test
 	public void findUserStorage() {
-		Mockito.when(service.findUserStorage(1)).thenReturn(MOCK_DATA_ARRAY3);
-		Assert.assertEquals(MOCK_DATA_ARRAY3, control.findUserStorage(1));
+		Mockito.when(service.findUserStorage(1)).thenReturn(Constants.MOCK_STORE_DATA_ARRAY3);
+		Assert.assertEquals(Constants.MOCK_STORE_DATA_ARRAY3, control.findUserStorage(1));
 	
 	}
 }

@@ -27,4 +27,18 @@ public class UnitServiceImpl implements UnitService {
 		return repo.getUnitName(name);
 	}
 
+
+	
+	public String getUnitType(int tId) {
+		
+		return repo.getUnitType(tId);
+	}
+
+
+	
+	public String getUnitRarity(int rId) {
+		
+		return repo.getUnitRarity(rId);
+	}
+
 }

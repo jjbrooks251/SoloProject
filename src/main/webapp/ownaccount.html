@@ -51,11 +51,22 @@
             </div>
         </nav>
 
-        <p> own </p>
-
         <p id="ownName"></p>
-
         <br>
+        <p> If you wish to delete your account or update its details select the buttons below</p>
+        <br>
+        <div class="container">
+            <div class="row">
+                <div class="column">
+                    <button class="button" onclick="deleteUser()"> Delete account </button>
+                </div>
+                <div class="column">
+                    <button class="button" onclick = "loadUpdate()"> Update details </button>
+                </div>
+            </div>
+        </div>
+<br>
+<br>
 
         <div class="container">
             <table id="unitTable" border="1">
@@ -71,6 +82,8 @@
                 </tr>
             </table>
         </div>
+
+        <p> Teams </p>
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
             crossorigin="anonymous"></script>

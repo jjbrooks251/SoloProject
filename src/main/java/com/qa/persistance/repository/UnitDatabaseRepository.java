@@ -25,7 +25,7 @@ public class UnitDatabaseRepository implements UnitRepository {
 
 	@Inject
 	private JSONUtil util;
-	
+
 	public EntityManager getManager() {
 		return manager;
 	}
@@ -51,8 +51,8 @@ public class UnitDatabaseRepository implements UnitRepository {
 		if (units.isEmpty()) {
 			return "{\"Message\": \"Table empty\"}";
 		} else {
-		
-		return util.getJSONForObject(units);
+
+			return util.getJSONForObject(units);
 		}
 	}
 
@@ -75,11 +75,48 @@ public class UnitDatabaseRepository implements UnitRepository {
 
 		Collection<Unit> units = (Collection<Unit>) query.getResultList();
 
-		List<Unit> result = units.stream().filter(n -> n.getName().contains(name)).collect(Collectors.toList());
+		List<Unit> result = units.stream().filter(n -> n.getName().toLowerCase().contains(name.toLowerCase()))
+				.collect(Collectors.toList());
 
 		if (result.isEmpty()) {
 
 			return "{\"message\": \"Unit does not exist\"}";
+
+		} else {
+			return util.getJSONForObject(result);
+		}
+	}
+
+	public String getUnitType(int tId) {
+
+		Query query = manager.createQuery("SELECT c FROM Unit c");
+
+		Collection<Unit> units = (Collection<Unit>) query.getResultList();
+
+		List<Unit> result = units.stream().filter(n -> n.getType() == tId)
+				.collect(Collectors.toList());
+
+		if (result.isEmpty()) {
+
+			return "{\"message\": \"Type does not exist\"}";
+
+		} else {
+			return util.getJSONForObject(result);
+		}
+	}
+
+	public String getUnitRarity(int rId) {
+
+		Query query = manager.createQuery("SELECT c FROM Unit c");
+
+		Collection<Unit> units = (Collection<Unit>) query.getResultList();
+
+		List<Unit> result = units.stream().filter(n -> n.getRarity() == rId)
+				.collect(Collectors.toList());
+
+		if (result.isEmpty()) {
+
+			return "{\"message\": \"Rarity does not exist\"}";
 
 		} else {
 			return util.getJSONForObject(result);

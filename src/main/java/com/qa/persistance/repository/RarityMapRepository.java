@@ -56,7 +56,7 @@ public class RarityMapRepository implements RarityRepository {
 	public String getRarityName(String name) {
 
 		List<Entry<Integer, Rarity>> result = rarityMap.entrySet().stream()
-				.filter(n -> n.getValue().getName().contains(name)).collect(Collectors.toList());
+				.filter(n -> n.getValue().getName().toLowerCase().contains(name.toLowerCase())).collect(Collectors.toList());
 
 		if (result.isEmpty()) {
 			return "{\"message\": \"Result is empty\"}";

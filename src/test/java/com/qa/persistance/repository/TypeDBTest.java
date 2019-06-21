@@ -8,7 +8,6 @@ import javax.persistence.Query;
 
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -18,7 +17,6 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import com.qa.persistance.domain.Rarity;
 import com.qa.persistance.domain.Type;
-import com.qa.persistance.domain.Unit;
 import com.qa.util.JSONUtil;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -35,17 +33,7 @@ public class TypeDBTest {
 	@Mock
 	private Query query;
 	
-	private static final String MOCK_DATA_ARRAY1 = "[{\"tId\":1,\"name\":\"AGL\"}]";
-	private static final String MOCK_OBJECT1 = "{\"tId\":1,\"name\":\"AGL\"}";
-	private static final Type type1 = new Type(1, "AGL");
 	
-	private static final String MOCK_DATA_ARRAY2 = "[{\"tId\":2,\"name\":\"STR\"}]";
-	private static final String MOCK_OBJECT2 = "{\"tId\":2,\"name\":\"STR\"}";
-	private static final Type type2 = new Type(2, "STR");
-	
-	private static final String MOCK_DATA_ARRAY3 = "[{\"tId\":3,\"name\":\"TEQ\"}]";
-	private static final String MOCK_OBJECT3 = "{\"tId\":3,\"name\":\"TEQ\"}";
-	private static final Type type3 = new Type(3, "TEQ");
 	
 	@Before
 	public void setup() {
@@ -59,9 +47,9 @@ public class TypeDBTest {
 	public void getAllTypes() {
 		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
 		List<Type> type = new ArrayList<>();
-		type.add(type1);
+		type.add(Constants.type1);
 		Mockito.when(query.getResultList()).thenReturn(type);
-		Assert.assertEquals(MOCK_DATA_ARRAY1, repo.getAllTypes());
+		Assert.assertEquals(Constants.MOCK_TYPE_DATA_ARRAY1, repo.getAllTypes());
 	}
 	
 	@Test
@@ -78,23 +66,23 @@ public class TypeDBTest {
 	@Test
 	public void getIdExist() {
 		List<Type> type = new ArrayList<>();
-		type.add(type1);
-		type.add(type2);
+		type.add(Constants.type1);
+		type.add(Constants.type2);
 	
-		Mockito.when(manager.find(Type.class, 2)).thenReturn(type2);
+		Mockito.when(manager.find(Type.class, 2)).thenReturn(Constants.type2);
 
 		Assert.assertEquals(2, type.size());
-		Assert.assertEquals(MOCK_OBJECT2, repo.getTypeId(2));
+		Assert.assertEquals(Constants.MOCK_TYPE_OBJECT2, repo.getTypeId(2));
 	}
 
 	@Test
 	public void getIdFail() {
 		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
 		List<Type> type = new ArrayList<>();
-		type.add(type1);
-		type.add(type2);
+		type.add(Constants.type1);
+		type.add(Constants.type2);
 	
-		Mockito.when(manager.find(Type.class, 2)).thenReturn(type2);
+		Mockito.when(manager.find(Type.class, 2)).thenReturn(Constants.type2);
 
 		Assert.assertEquals(2, type.size());
 		Assert.assertEquals("{\"message\": \"Chosen Type id doesn't exist\"}", repo.getTypeId(3));
@@ -104,12 +92,12 @@ public class TypeDBTest {
 	public void getNameSingle() {
 		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
 		List<Type> type = new ArrayList<>();
-		type.add(type1);
-		type.add(type2);
+		type.add(Constants.type1);
+		type.add(Constants.type2);
 		Mockito.when(query.getResultList()).thenReturn(type);
 
 		Assert.assertEquals(2, type.size());
-		Assert.assertEquals(MOCK_DATA_ARRAY1, repo.getTypeName("A"));
+		Assert.assertEquals(Constants.MOCK_TYPE_DATA_ARRAY1, repo.getTypeName("A"));
 	
 	}
 
@@ -117,14 +105,14 @@ public class TypeDBTest {
 	public void getNameMulti() {
 		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
 		List<Type> type = new ArrayList<>();
-		type.add(type1);
-		type.add(type2);
-		type.add(type3);
+		type.add(Constants.type1);
+		type.add(Constants.type2);
+		type.add(Constants.type3);
 		
 		Mockito.when(query.getResultList()).thenReturn(type);
 
 		Assert.assertEquals(3, type.size());
-		Assert.assertEquals("[" + MOCK_OBJECT2 + "," + MOCK_OBJECT3 + "]", repo.getTypeName("T"));
+		Assert.assertEquals("[" + Constants.MOCK_TYPE_OBJECT2 + "," + Constants.MOCK_TYPE_OBJECT3 + "]", repo.getTypeName("T"));
 	
 	}
 
@@ -132,8 +120,8 @@ public class TypeDBTest {
 	public void getNameNothing() {
 		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
 		List<Type> type = new ArrayList<>();
-		type.add(type1);
-		type.add(type2);
+		type.add(Constants.type1);
+		type.add(Constants.type2);
 		Mockito.when(query.getResultList()).thenReturn(type);
 
 		Assert.assertEquals(2, type.size());

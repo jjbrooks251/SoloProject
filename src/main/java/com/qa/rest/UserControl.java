@@ -59,4 +59,11 @@ public class UserControl {
 		return service.updateUser(id, username);
 	}
 	
+	@Path("/findAUserNameExact/{username}")
+	@GET
+	@Produces({ "application/json" })
+	public String findAUserNameExact(@PathParam("username") String username) {
+		return service.findAUserNameExact(username);
+	}
+	
 }

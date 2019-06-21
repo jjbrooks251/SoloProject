@@ -33,16 +33,13 @@ public class RarityDBTest {
 	@Mock
 	private Query query;
 
-	private static final String MOCK_DATA_ARRAY1 = "[{\"rId\":1,\"name\":\"N\",\"lvMax\":20}]";
-	private static final String MOCK_OBJECT1 = "{\"rId\":1,\"name\":\"N\",\"lvMax\":20}";
+	private static final String MOCK_STORE_DATA_ARRAY1 = "[{\"rId\":1,\"name\":\"N\",\"lvMax\":20}]";
 	private static final Rarity rare1 = new Rarity(1, "N", 20);
 
-	private static final String MOCK_DATA_ARRAY2 = "[{\"rId\":2,\"name\":\"R\",\"lvMax\":40}]";
-	private static final String MOCK_OBJECT2 = "{\"rId\":2,\"name\":\"R\",\"lvMax\":40}";
+	private static final String MOCK_STORE_OBJECT2 = "{\"rId\":2,\"name\":\"R\",\"lvMax\":40}";
 	private static final Rarity rare2 = new Rarity(2, "R", 40);
 
-	private static final String MOCK_DATA_ARRAY3 = "[{\"rId\":3,\"name\":\"SR\",\"lvMax\":60}]";
-	private static final String MOCK_OBJECT3 = "{\"rId\":3,\"name\":\"SR\",\"lvMax\":60}";
+	private static final String MOCK_STORE_OBJECT3 = "{\"rId\":3,\"name\":\"SR\",\"lvMax\":60}";
 	private static final Rarity rare3 = new Rarity(3, "SR", 60);
 
 	@Before
@@ -57,9 +54,9 @@ public class RarityDBTest {
 	public void getAllRarities() {
 		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
 		List<Rarity> rarity = new ArrayList<>();
-		rarity.add(new Rarity(1, "N", 20));
+		rarity.add(rare1);
 		Mockito.when(query.getResultList()).thenReturn(rarity);
-		Assert.assertEquals(MOCK_DATA_ARRAY1, repo.getAllRarity());
+		Assert.assertEquals(MOCK_STORE_DATA_ARRAY1, repo.getAllRarity());
 	}
 
 	@Test
@@ -83,7 +80,7 @@ public class RarityDBTest {
 		Mockito.when(manager.find(Rarity.class, 2)).thenReturn(rare2);
 
 		Assert.assertEquals(2, rarity.size());
-		Assert.assertEquals(MOCK_OBJECT2, repo.getRarityId(2));
+		Assert.assertEquals(MOCK_STORE_OBJECT2, repo.getRarityId(2));
 	}
 
 	@Test
@@ -109,7 +106,7 @@ public class RarityDBTest {
 		Mockito.when(query.getResultList()).thenReturn(rarity);
 
 		Assert.assertEquals(2, rarity.size());
-		Assert.assertEquals(MOCK_DATA_ARRAY1, repo.getRarityName("N"));
+		Assert.assertEquals(MOCK_STORE_DATA_ARRAY1, repo.getRarityName("N"));
 
 	}
 
@@ -125,7 +122,7 @@ public class RarityDBTest {
 		Mockito.when(query.getResultList()).thenReturn(rarity);
 
 		Assert.assertEquals(3, rarity.size());
-		Assert.assertEquals("[" + MOCK_OBJECT2 + "," + MOCK_OBJECT3 + "]", repo.getRarityName("R"));
+		Assert.assertEquals("[" + MOCK_STORE_OBJECT2 + "," + MOCK_STORE_OBJECT3 + "]", repo.getRarityName("R"));
 
 	}
 

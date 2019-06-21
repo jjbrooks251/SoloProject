@@ -67,9 +67,9 @@ public class UserMapRepository implements UserRepository {
 	}
 
 	public String findAUserName(String username) {
-
+		
 		List<Entry<Integer, User>> result = userMap.entrySet().stream()
-				.filter(n -> n.getValue().getUsername().contains(username)).collect(Collectors.toList());
+				.filter(n -> n.getValue().getUsername().toLowerCase().contains(username.toLowerCase())).collect(Collectors.toList());
 
 		if (result.isEmpty()) {
 			return "{\"message\": \"User does not exist\"}";
@@ -104,6 +104,12 @@ public class UserMapRepository implements UserRepository {
 
 			return "{\"Message\": \"Account does not exist\"}";
 		}
+	}
+
+	@Override
+	public String findAUserNameExact(String username) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
