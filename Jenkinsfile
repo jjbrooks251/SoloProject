@@ -1,6 +1,11 @@
 pipeline{
         agent any
         stages{
+        		stage('---setup---'){
+                        steps{
+                                sh "sudo rm -rf /var/lib/wildfly-10.1.0.Final/standalone/deployments/*"
+                        }
+        
                 stage('---clean---'){
                         steps{
                                 sh "mvn clean"
@@ -16,23 +21,23 @@ pipeline{
                                 sh "mvn package"
                         }
                 }
-		stage('--sonar--'){
+				stage('--sonar--'){
                         steps{
                                 sh "mvn sonar:sonar"
                         }
                 }
-		stage('--verify--'){
+				stage('--verify--'){
                         steps{
                                 sh "mvn verify"
                         }
                 }
-		stage('--surefire--'){
+				stage('--surefire--'){
                         steps{
                                 sh "mvn surefire-report:report"
 				sh "mvn site"
                         }
                 }
-		stage('--deploy--'){
+				stage('--deploy--'){
                         steps{
                                 sh "cd /"
 				sh "pwd"
