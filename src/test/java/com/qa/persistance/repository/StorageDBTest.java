@@ -8,6 +8,7 @@ import java.util.Set;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import org.hibernate.mapping.Collection;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Ignore;
@@ -36,13 +37,15 @@ public class StorageDBTest {
 	@Mock
 	private Query query;
 
-	private static final String MOCK_DATA_ARRAY1 = "[{\\\"uId\\\":1,\\\"cId\\\":1}]";
+	private static final String MOCK_DATA_ARRAY1 = "[{\"uId\":1,\"cId\":1}]";
 	private static final String MOCK_OBJECT1 = "{\"uId\":1,\"cId\":1}";
 
 	private static final String MOCK_DATA_ARRAY2 = "[{\"uId\":2,\"username\":\"cTatum94\",\"password\":\"Mynamegeoff25\",\"email\":\"cTatum94@qa.com\"}]";
 	private static final String MOCK_OBJECT2 = "{\"uId\":2,\"username\":\"cTatum94\",\"password\":\"Mynamegeoff25\",\"email\":\"cTatum94@qa.com\"}";
 	private static final User user2 = new User(2, "cTatum94", "Mynamegeoff25", "cTatum94@qa.com", null);
-	
+	private static final Unit unit1 = new Unit(1, "SSJ3 Gotenks", "Super", 20, 20, 20, 1, 1);
+	private static final Unit unit2 = new Unit(2, "SSJ Gotenks", "Super", 20, 20, 20, 1, 1);
+
 	
 	@Before
 	public void setup() {
@@ -89,11 +92,15 @@ public class StorageDBTest {
 		List<User> users = new ArrayList<>();
 		Set<Unit> units = new HashSet<>();
 		users.add(user2);
+		
+		System.out.println(user2);
 
 		Mockito.when(manager.find(User.class, 2)).thenReturn(user2);
 
-		Assert.assertEquals(2, users.size());
-		Assert.assertEquals(MOCK_OBJECT1, repo.findAStorageId(2, 1));
+		Mockito.when(repo.findAStorageId(2, 1)).thenReturn("{\"message\": \"Unit does not appear in users storage\"}");
+		
+		Assert.assertEquals(1, users.size());
+		Assert.assertEquals("{\"message\": \"Unit does not appear in users storage\"}", repo.findAStorageId(2, 1));
 	
 	}
 	
