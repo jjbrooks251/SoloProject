@@ -48,8 +48,6 @@ public class UnitDBTest {
 	private static final String MOCK_DATA_ARRAY3 = "[{\"cId\":13,\"name\":\"goku\",\"alignment\":\"Super\",\"hp\":20,\"atk\":20,\"def\":20,\"type\":1,\"rarity\":1]";
 	private static final String MOCK_OBJECT3 = "{\"cId\":13,\"name\":\"goku\",\"alignment\":\"Super\",\"hp\":20,\"atk\":20,\"def\":20,\"type\":1,\"rarity\":1}";
 	private static final Unit unit3 = new Unit(13, "N", "goku", 20, 20, 20, 1, 1);
-	
-//	private static final Team t1 = new Team(1, null, null);
 
 	@Before
 	public void setup() {
