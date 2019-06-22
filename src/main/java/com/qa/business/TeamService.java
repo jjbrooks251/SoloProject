@@ -6,8 +6,6 @@ public interface TeamService {
 	
 	public String findAllTeams();
 
-	public String findATeamId(int id);
-
 	public String findATeamName(String team);
 
 	public String updateTeam(int id, String team);

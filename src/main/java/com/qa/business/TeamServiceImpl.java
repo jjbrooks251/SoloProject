@@ -13,10 +13,6 @@ public class TeamServiceImpl implements TeamService {
 		return repo.findAllTeams();
 	}
 	
-	public String findATeamId(int id) {
-		return repo.findATeamId(id);
-	}
-	
 	public String findATeamName(String team) {
 		return repo.findATeamName(team);
 	}

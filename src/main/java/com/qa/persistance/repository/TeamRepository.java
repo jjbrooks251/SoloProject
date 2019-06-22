@@ -6,8 +6,6 @@ public interface TeamRepository {
 	
 	public String findAllTeams();
 	
-	public String findATeamId(int id);
-	
 	public String findATeamName(String name);
 	
 	public String updateTeam(int id, String team);

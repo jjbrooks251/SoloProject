@@ -43,11 +43,9 @@ public class UserDatabaseRepository implements UserRepository {
 
 	@Transactional(TxType.REQUIRED)
 	public String createUser(String user) {
-		User clas1 = util.getObjectForJSON(user, User.class);
+		User user1 = util.getObjectForJSON(user, User.class);
 
-		int id = clas1.getuId();
-
-		manager.persist(clas1);
+		manager.persist(user1);
 
 		return "{\"message\": \"New User Created\"}";
 
