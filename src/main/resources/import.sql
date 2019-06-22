@@ -4,14 +4,6 @@ INSERT INTO USER (uId, username, password, email) VALUES (3, 'mmist96', 'Netflix
 INSERT INTO USER (uId, username, password, email) VALUES (4, 'kpatel95', 'Password95', 'kpatel95@qa.com')
 INSERT INTO USER (uId, username, password, email) VALUES (5, 'omiller92', 'Magics92', 'omiller92@qa.com')
 
-INSERT INTO TEAM (tId, name, user_uId) VALUES (1, 'team1', 1)
-INSERT INTO TEAM (tId, name, user_uId) VALUES (2, 'tam2', 1)
-INSERT INTO TEAM (tId, name, user_uId) VALUES (3, 'team', 1)
-INSERT INTO TEAM (tId, name, user_uId) VALUES (4, 'trial', 2)
-INSERT INTO TEAM (tId, name, user_uId) VALUES (5, 'grdg', 2)
-INSERT INTO TEAM (tId, name, user_uId) VALUES (6, 'rga', 3)
-INSERT INTO TEAM (tId, name, user_uId) VALUES (7, 'rag', 4)
-
 INSERT INTO Unit (cId, name, alignment, hp, atk, def, type, rarity) VALUES (1, 'SSJ3 Gotenks', 'Super', 9578, 10453, 5478, 2, 6)
 INSERT INTO Unit (cId, name, alignment, hp, atk, def, type, rarity) VALUES (2, 'SSJ Goku and Vegeta', 'Super', 15348, 14573, 7854, 2, 7)
 INSERT INTO Unit (cId, name, alignment, hp, atk, def, type, rarity) VALUES (3, 'SSJ Gotenks', 'Super', 8697, 9645, 4677, 2, 6)
@@ -56,12 +48,6 @@ INSERT INTO TYPE (tId, name) VALUES (2, 'Phy')
 INSERT INTO TYPE (tId, name) VALUES (3, 'Int')
 INSERT INTO TYPE (tId, name) VALUES (4, 'Teq')
 INSERT INTO TYPE (tId, name) VALUES (5, 'Agl')
-
-INSERT INTO TEAM_Unit (team_tId, Character_cId) VALUES (1, 1)
-INSERT INTO TEAM_Unit (team_tId, Character_cId) VALUES (1, 17)
-INSERT INTO TEAM_Unit (team_tId, Character_cId) VALUES (1, 5)
-INSERT INTO TEAM_Unit (team_tId, Character_cId) VALUES (2, 20)
-INSERT INTO TEAM_Unit (team_tId, Character_cId) VALUES (3, 5)
 
 INSERT INTO USER_Unit (user_uId, Unit_cId) VALUES (1, 1)
 INSERT INTO USER_Unit (user_uId, Unit_cId) VALUES (1, 12)

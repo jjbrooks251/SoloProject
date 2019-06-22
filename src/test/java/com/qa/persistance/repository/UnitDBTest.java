@@ -1,7 +1,5 @@
 package com.qa.persistance.repository;
 
-import static org.junit.Assert.assertEquals;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +8,6 @@ import javax.persistence.Query;
 
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -18,9 +15,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import com.qa.persistance.domain.Team;
 import com.qa.persistance.domain.Unit;
-import com.qa.persistance.domain.User;
 import com.qa.util.JSONUtil;
 
 @RunWith(MockitoJUnitRunner.class)
