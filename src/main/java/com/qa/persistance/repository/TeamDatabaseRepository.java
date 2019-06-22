@@ -13,6 +13,7 @@ import javax.transaction.Transactional;
 import javax.transaction.Transactional.TxType;
 
 import com.qa.persistance.domain.Team;
+import com.qa.persistance.domain.Unit;
 import com.qa.util.JSONUtil;
 
 @Transactional(TxType.SUPPORTS)
@@ -28,22 +29,18 @@ public class TeamDatabaseRepository implements TeamRepository {
 	public EntityManager getManager() {
 		return manager;
 	}
-	
 
 	public void setManager(EntityManager manager) {
 		this.manager = manager;
 	}
-	
 
 	public JSONUtil getUtil() {
 		return util;
 	}
-	
 
 	public void setUtil(JSONUtil util) {
 		this.util = util;
 	}
-	
 
 	@Transactional(TxType.REQUIRED)
 	public String createTeam(String team) {
@@ -110,6 +107,27 @@ public class TeamDatabaseRepository implements TeamRepository {
 
 			return "{\"message\": \"Chosen team does not exist\"}";
 		}
+	}
+
+	public String findATeamUser(int uId) {
+		Query query = manager.createNativeQuery(String.format("SELECT TID FROM TEAM WHERE user_uId = " + uId));
+
+		Collection<Team> teams = (Collection<Team>) query.getResultList();
+
+		if (teams.isEmpty()) {
+			return "{\"message\": \"No Teams assigned to this user\"}";
+		} else {
+			return util.getJSONForObject(teams);
+		}
+	}
+
+	public String getTeamUnits(int tId) {
+		
+		Query query = manager.createNativeQuery(String.format("SELECT chaRACTER_CID FROM TEAM_UNIT WHERE TEAM_TID =" + tId));
+
+		Collection<Unit> units = (Collection<Unit>) query.getResultList();
+		
+		return util.getJSONForObject(units);
 	}
 
 }

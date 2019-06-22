@@ -11,5 +11,9 @@ public interface TeamService {
 	public String updateTeam(int id, String team);
 
 	public String deleteTeam(int id);
+	
+	public String findATeamUser(int uId);
+	
+	public String getTeamUnits(int tId);
 
 }

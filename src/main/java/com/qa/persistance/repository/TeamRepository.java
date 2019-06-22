@@ -12,4 +12,8 @@ public interface TeamRepository {
 	
 	public String deleteTeam(int id);
 	
+	public String findATeamUser(int uId);
+	
+	public String getTeamUnits(int tId);
+	
 }

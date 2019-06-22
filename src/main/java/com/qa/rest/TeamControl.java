@@ -51,5 +51,18 @@ public class TeamControl {
 	public String updateTeam(@PathParam("id") int id, String team) {
 		return service.updateTeam(id, team);
 	}
-
+	
+	@Path("/findATeamUser/{id}")
+	@GET
+	@Produces({ "application/json" })
+	public String findATeamUser(@PathParam("id") int id) {
+		return service.findATeamUser(id);
+	}
+	
+	@Path("/getTeamUnits/{tId}")
+	@GET
+	@Produces({ "application/json" })
+	public String getTeamUnits(@PathParam("tId") int tId) {
+		return service.getTeamUnits(tId);
+	}
 }

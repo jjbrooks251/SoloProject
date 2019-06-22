@@ -8,15 +8,15 @@ public class TeamServiceImpl implements TeamService {
 
 	@Inject
 	TeamRepository repo;
-	
+
 	public String findAllTeams() {
 		return repo.findAllTeams();
 	}
-	
+
 	public String findATeamName(String team) {
 		return repo.findATeamName(team);
 	}
-	
+
 	public String updateTeam(int id, String team) {
 		return repo.updateTeam(id, team);
 	}
@@ -27,6 +27,14 @@ public class TeamServiceImpl implements TeamService {
 
 	public String createTeam(String team) {
 		return repo.createTeam(team);
+	}
+
+	public String findATeamUser(int uId) {
+		return repo.findATeamUser(uId);
+	}
+
+	public String getTeamUnits(int tId) {
+		return repo.getTeamUnits(tId);
 	}
 
 }

@@ -33,6 +33,65 @@ function displayUsers() {
         document.getElementById('ownName').innerText = "Welcome " + data.username + " see the units in your storage on this page";
     })
 }
+function getAllTeams() {
+    createPromise("GET", pathloc + "Team/findATeamUser/" + userId).then(value => {
+        let data = JSON.parse(value);
+        const container = document.getElementById('unitTable');
+
+        if (container.rows.length > 1) {
+
+            let tableSize = container.rows.length;
+            for (i = tableSize; i > 1; i--) {
+                container.deleteRow(i - 1);
+            }
+        }
+
+        console.log(data[1]);
+
+        for (let i = 0; i < value.length; i++) {
+            let tId = data[i];
+            let myRow = document.createElement('tr');
+            container.appendChild(myRow);
+            createPromise("GET", pathloc + "Team/getTeamUnits/" + tId).then(result => {
+                let unit = JSON.parse(result);
+                console.log(unit[1]);
+
+                for (let i = 0; i < result.length; i++) {
+                    let cId = unit[i];
+                    createPromise("GET", pathloc + "Unit/getUnitId/" + cId).then(result1 => {
+                        let unit1 = JSON.parse(result);
+
+                        for (let i = 0; i < value.length; i++) {
+
+                            let myLeader = document.createElement('th');
+                            myunitid.innerHTML = unit1[i].name;
+                            let myLeader = document.createElement('th');
+                            myunitid.innerHTML = unit1[i].name;
+                            let myLeader = document.createElement('th');
+                            myunitid.innerHTML = unit1[i].name;
+                            let myLeader = document.createElement('th');
+                            myunitid.innerHTML = unit1[i].name;
+                            let myLeader = document.createElement('th');
+                            myunitid.innerHTML = unit1[i].name;
+                            let myLeader = document.createElement('th');
+                            myunitid.innerHTML = unit1[i].name;
+
+                            myRow.appendChild(myName);
+                            myRow.appendChild(myLeader);
+                            myRow.appendChild(myUnit1);
+                            myRow.appendChild(myUnit2);
+                            myRow.appendChild(myUnit3);
+                            myRow.appendChild(myUnit4);
+                            myRow.appendChild(myUnit5);
+
+
+                        }
+                    })
+                }
+            })
+        }
+    })
+}
 
 function getAllUnits() {
     createPromise("GET", pathloc + "Storage/getUserStore/" + userId).then(value => {
@@ -112,13 +171,15 @@ function getAllUnits() {
     return false;
 }
 
+
+
 function loadUpdate() {
     window.location.href = 'update.html';
 }
 
 function loadDetails() {
 
-createPromise("GET", pathloc + "User/findAUserId/" + userId).then(value => {
+    createPromise("GET", pathloc + "User/findAUserId/" + userId).then(value => {
 
         let data = JSON.parse(value);
         const container = document.getElementById('userTable');
