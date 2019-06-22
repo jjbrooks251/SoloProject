@@ -1,5 +1,4 @@
-const pathloc = "http://localhost:8080/SoloProject/api/";
-const pathser = "http://35.198.82.58:8888/SoloProject/api/";
+const path = "http://http://35.242.191.29:8888//SoloProject/api/";
 
 function createPromise(method, url, body) {
     return new Promise(function (resolve, reject) {
@@ -26,7 +25,7 @@ function createPromise(method, url, body) {
 
 
 function getAllUnits() {
-    createPromise("GET", pathloc + "Unit/getAllUnits").then(value => {
+    createPromise("GET", path + "Unit/getAllUnits").then(value => {
 
         let data = JSON.parse(value);
         const container = document.getElementById('unitTable');
@@ -42,8 +41,6 @@ function getAllUnits() {
         for (let i = 0; i < value.length; i++) {
             let myRow = document.createElement('tr');
             container.appendChild(myRow);
-            let myunitid = document.createElement('td');
-            myunitid.innerHTML = data[i].cId;
             let myName = document.createElement('td');
             myName.innerHTML = data[i].name;
             let myrarity = document.createElement('td');
@@ -88,10 +85,6 @@ function getAllUnits() {
             let mydef = document.createElement('td');
             mydef.innerHTML = data[i].def;
 
-
-
-
-            myRow.appendChild(myunitid);
             myRow.appendChild(myName);
             myRow.appendChild(myrarity);
             myRow.appendChild(mytype);
@@ -120,7 +113,7 @@ function filterTable() {
 
     let name = document.getElementById('searchName').value;
 
-    createPromise("GET", pathloc + "Unit/getUnitName/" + name).then(value => {
+    createPromise("GET", path + "Unit/getUnitName/" + name).then(value => {
 
         let data = JSON.parse(value);
         const container = document.getElementById('unitTable');
@@ -234,7 +227,7 @@ var path = "Unit/getUnitType/";
 
 function filter(path, type) {
 
-    createPromise("GET", pathloc + path + type).then(value => {
+    createPromise("GET", path + path + type).then(value => {
 
         let data = JSON.parse(value);
         const container = document.getElementById('unitTable');

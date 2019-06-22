@@ -1,5 +1,4 @@
-const pathloc = "http://localhost:8080/SoloProject/api/";
-//const pathser = "http://35.198.82.58:8888/SoloProject/api/";
+const path = "http://http://35.242.191.29:8888//SoloProject/api/";
 
 function createPromise(method, url, body) {
     return new Promise(function (resolve, reject) {
@@ -26,7 +25,7 @@ function createPromise(method, url, body) {
 
 
 function displayUsers() {
-    createPromise("GET", pathloc + "User/findAllUsers").then(value => {
+    createPromise("GET", path + "User/findAllUsers").then(value => {
 
         let data = JSON.parse(value);
         const container = document.getElementById('userTable');
@@ -84,7 +83,7 @@ function filterTable() {
 
 console.log(search);
 
-    createPromise("GET", pathloc + "User/findAUserName/" + search).then(value => {
+    createPromise("GET", path + "User/findAUserName/" + search).then(value => {
         let data = JSON.parse(value);
         const container = document.getElementById('userTable');
         if (container.rows.length > 1) {

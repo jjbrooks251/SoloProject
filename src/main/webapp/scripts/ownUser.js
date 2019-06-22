@@ -25,7 +25,7 @@ function createPromise(method, url, body) {
 
 function displayUsers() {
 
-    createPromise("GET", pathloc + "User/findAUserId/" + userId).then(value => {
+    createPromise("GET", path + "User/findAUserId/" + userId).then(value => {
 
         let data = JSON.parse(value);
         const container = document.getElementById('userTable');
@@ -35,7 +35,7 @@ function displayUsers() {
 }
 
 function getAllUnits() {
-    createPromise("GET", pathloc + "Storage/getUserStore/" + userId).then(value => {
+    createPromise("GET", path + "Storage/getUserStore/" + userId).then(value => {
 
         let data = JSON.parse(value);
         const container = document.getElementById('unitTable');
@@ -51,8 +51,6 @@ function getAllUnits() {
         for (let i = 0; i < value.length; i++) {
             let myRow = document.createElement('tr');
             container.appendChild(myRow);
-            let myunitid = document.createElement('td');
-            myunitid.innerHTML = data[i].cId;
             let myName = document.createElement('td');
             myName.innerHTML = data[i].name;
             let myrarity = document.createElement('td');
@@ -97,7 +95,6 @@ function getAllUnits() {
             let mydef = document.createElement('td');
             mydef.innerHTML = data[i].def;
 
-            myRow.appendChild(myunitid);
             myRow.appendChild(myName);
             myRow.appendChild(myrarity);
             myRow.appendChild(mytype);
@@ -118,7 +115,7 @@ function loadUpdate() {
 
 function loadDetails() {
 
-createPromise("GET", pathloc + "User/findAUserId/" + userId).then(value => {
+createPromise("GET", path + "User/findAUserId/" + userId).then(value => {
 
         let data = JSON.parse(value);
         const container = document.getElementById('userTable');
@@ -127,4 +124,11 @@ createPromise("GET", pathloc + "User/findAUserId/" + userId).then(value => {
         document.getElementById('upemail').value = data.email;
         document.getElementById('conupemail').value = data.email;
     })
+}
+
+function logout() {
+    sessionStorage.clear("userLogin");
+
+    window.location.href = "index.html";
+
 }
