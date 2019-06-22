@@ -1,4 +1,4 @@
-<http>
+<html>
 
     <head>
 
@@ -59,9 +59,9 @@
                             Username:<br>
                             <input type="text" name="firstname" id="username">
                             <br> Password:<br>
-                            <input type="text" name="lastname" id="password">
+                            <input type="password" name="lastname" id="password">
                             <br> Password Confirmation:<br>
-                            <input type="text" name="passconf" id="passcon">
+                            <input type="password" name="passconf" id="passcon">
                             <br> email:<br>
                             <input type="text" name="email" id="email">
                             <br><br>
@@ -75,13 +75,14 @@
                             Username:<br>
                             <input type="text" name="logname" id="logname">
                             <br> Password:<br>
-                            <input type="text" name="logpass" id="logpass">
+                            <input type="password" name="logpass" id="logpass">
+                            <br>
                             <br>
                             <button class="button" type="submit" onclick="login()"> Login </button>
-                        
                     </div>
                 </div>
             </div>
+            <p id="errorpass"> </p>
         </div>
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -95,4 +96,4 @@
 
         <script src="scripts/userCRUD.js"></script>
     </body>
-</http>
+</html>

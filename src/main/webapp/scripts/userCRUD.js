@@ -1,6 +1,5 @@
 
-const pathloc = "http://localhost:8080/SoloProject/api/";
-const pathser = "http://35.198.82.58:8888/SoloProject/api/";
+const path = "http://http://35.242.191.29:8888//SoloProject/api/";
 
 function createPromise(method, url, body) {
     return new Promise(function (resolve, reject) {
@@ -26,13 +25,13 @@ function createPromise(method, url, body) {
 }
 
 function getAllUsers() {
-    createPromise("GET", pathloc + "User/findAllUsers").then(resolve => { console.log(resolve) });
+    createPromise("GET", path + "User/findAllUsers").then(resolve => { console.log(resolve) });
 }
 
 function getUser() {
     let getId = Number(document.getElementById('find').value);
 
-    createPromise("GET", pathloc + "User/findAUserId/" + getId).then(resolve => { console.log(resolve) });
+    createPromise("GET", path + "User/findAUserId/" + getId).then(resolve => { console.log(resolve) });
 }
 
 function createUser() {
@@ -47,9 +46,18 @@ function createUser() {
 
         console.log(user);
 
-        createPromise("POST", pathloc + "User/createUser", JSON.stringify(user)).then(resolve => { console.log(resolve) });
+        createPromise("POST", path + "User/createUser", JSON.stringify(user)).then(resolve => { console.log(resolve) });
 
-        window.location.href = 'index.html';
+        createPromise("GET", path + "User/findAUserNameExact/" + user.username).then(value => {
+            let data = JSON.parse(value);
+
+            console.log(data[0].uId);
+
+            sessionStorage.setItem('userLogin', data[0].uId);
+
+            window.location.href = 'ownaccount.html';
+        })
+
 
     } else {
 
@@ -61,8 +69,10 @@ function createUser() {
 function deleteUser() {
 
     let delId = sessionStorage.getItem("userLogin");
-    createPromise("DELETE", pathloc + "User/deleteUser/" + delId).then(resolve => { console.log(resolve) });
+    createPromise("DELETE", path + "User/deleteUser/" + delId).then(resolve => { console.log(resolve) });
     sessionStorage.removeItem("userLogin");
+
+    window.location.href = 'index.html';
 }
 
 function updateUser() {
@@ -78,7 +88,7 @@ function updateUser() {
 
         console.log(user);
 
-        createPromise("PUT", pathloc + "User/updateUser/" + user.uId, JSON.stringify(user)).then(resolve => { console.log(resolve) });
+        createPromise("PUT", path + "User/updateUser/" + user.uId, JSON.stringify(user)).then(resolve => { console.log(resolve) });
         window.location.href = 'ownaccount.html';
     } else {
         document.getElementById('errormess').innerText = "Entered password or email does not match, please try again"
@@ -89,14 +99,19 @@ function login() {
 
     let username = document.getElementById("logname").value;
 
-    createPromise("GET", pathloc + "User/findAUserNameExact/" + username).then(value => {
+    createPromise("GET", path + "User/findAUserNameExact/" + username).then(value => {
         let data = JSON.parse(value);
 
         console.log(data[0].uId);
 
-        sessionStorage.setItem('userLogin', data[0].uId);
+        if (data[0].password == document.getElementById("logpass").value) {
 
-        window.location.href = 'ownaccount.html';
+            sessionStorage.setItem('userLogin', data[0].uId);
+
+            window.location.href = 'ownaccount.html';
+        } else {
+            document.getElementById("errorpass").innerText = "Entered username/password is incorrect"
+        }
 
     });
 

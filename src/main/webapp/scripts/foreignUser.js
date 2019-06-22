@@ -25,7 +25,7 @@ function createPromise(method, url, body) {
 
 function displayUsers() {
 
-    createPromise("GET", pathloc + "User/findAUserId/" + userId).then(value => {
+    createPromise("GET", path + "User/findAUserId/" + userId).then(value => {
 
         let data = JSON.parse(value);
         const container = document.getElementById('userTable');
@@ -38,7 +38,7 @@ function displayUsers() {
 }
 
 function getAllUnits() {
-    createPromise("GET", pathloc + "Storage/getUserStore/" + userId).then(value => {
+    createPromise("GET", path + "Storage/getUserStore/" + userId).then(value => {
 
         let data = JSON.parse(value);
         const container = document.getElementById('unitTable');
