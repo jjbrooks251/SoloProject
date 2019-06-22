@@ -30,10 +30,7 @@ function displayUsers() {
         let data = JSON.parse(value);
         const container = document.getElementById('userTable');
 
-
-        document.getElementById('foreignName').innerText = data.username;
-
-
+        document.getElementById('ownName').innerText = "Welcome " + data.username + " see the units in your storage on this page";
     })
 }
 
@@ -115,3 +112,19 @@ function getAllUnits() {
     return false;
 }
 
+function loadUpdate() {
+    window.location.href = 'update.html';
+}
+
+function loadDetails() {
+
+createPromise("GET", pathloc + "User/findAUserId/" + userId).then(value => {
+
+        let data = JSON.parse(value);
+        const container = document.getElementById('userTable');
+
+        document.getElementById('upuser').value = data.username;
+        document.getElementById('upemail').value = data.email;
+        document.getElementById('conupemail').value = data.email;
+    })
+}

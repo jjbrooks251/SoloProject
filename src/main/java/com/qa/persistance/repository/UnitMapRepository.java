@@ -54,7 +54,33 @@ public class UnitMapRepository implements UnitRepository {
 	public String getUnitName(String name) {
 
 		List<Entry<Integer, Unit>> result = unitMap.entrySet().stream()
-				.filter(n -> n.getValue().getName().contains(name)).collect(Collectors.toList());
+				.filter(n -> n.getValue().getName().toLowerCase().contains(name.toLowerCase())).collect(Collectors.toList());
+
+		if (result.isEmpty()) {
+			return "{\"message\": \"Result is empty\"}";
+		} else {
+
+			return json.getJSONForObject(result);
+		}
+	}
+
+	@Override
+	public String getUnitType(int tId) {
+		List<Entry<Integer, Unit>> result = unitMap.entrySet().stream()
+				.filter(n -> n.getValue().getType() == tId).collect(Collectors.toList());
+
+		if (result.isEmpty()) {
+			return "{\"message\": \"Result is empty\"}";
+		} else {
+
+			return json.getJSONForObject(result);
+		}
+	}
+
+	@Override
+	public String getUnitRarity(int rId) {
+		List<Entry<Integer, Unit>> result = unitMap.entrySet().stream()
+				.filter(n -> n.getValue().getRarity() == rId).collect(Collectors.toList());
 
 		if (result.isEmpty()) {
 			return "{\"message\": \"Result is empty\"}";

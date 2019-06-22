@@ -9,54 +9,55 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
-import com.qa.business.UserService;
-import com.qa.persistance.repository.TeamRepository;
+import com.qa.business.TeamService;
+
 @Path("/Team")
 public class TeamControl {
 
 	@Inject
-	private TeamRepository service;
+	private TeamService service;
 
 	@Path("/findAllTeams")
 	@GET
 	@Produces({ "application/json" })
-	public String findAllUsers() {
+	public String findAllTeams() {
 		return service.findAllTeams();
 	}
-	
+
 	@Path("/findATeamId/{id}")
 	@GET
 	@Produces({ "application/json" })
-	public String findAUserId(@PathParam("id") int id) {
+	public String findATeamId(@PathParam("id") int id) {
 		return service.findATeamId(id);
 	}
-	
+
 	@Path("/findATeamName/{teamname}")
 	@GET
 	@Produces({ "application/json" })
-	public int findAUserName(@PathParam("teamname") String teamname) {
+	public String findATeamName(@PathParam("teamname") String teamname) {
 		return service.findATeamName(teamname);
 	}
 	
+
 	@Path("/createTeam")
 	@POST
 	@Produces({ "application/json" })
-	public String createUser(String team) {
+	public String createTeam(String team) {
 		return service.createTeam(team);
 	}
-	
+
 	@Path("/deleteTeam/{id}")
 	@DELETE
 	@Produces({ "application/json" })
-	public String deleteUser(@PathParam("id") int id) {
+	public String deleteTeam(@PathParam("id") int id) {
 		return service.deleteTeam(id);
 	}
-	
+
 	@Path("/updateTeam /{id}")
 	@PUT
 	@Produces({ "application/json" })
-	public String updateUser(@PathParam("id") int id, String team) {
+	public String updateTeam(@PathParam("id") int id, String team) {
 		return service.updateTeam(id, team);
 	}
-	
+
 }

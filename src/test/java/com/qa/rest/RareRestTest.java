@@ -2,7 +2,6 @@ package com.qa.rest;
 
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -11,6 +10,7 @@ import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import com.qa.business.RarityServiceImpl;
+import com.qa.persistance.repository.Constants;
 
 @RunWith(MockitoJUnitRunner.class)
 public class RareRestTest {
@@ -20,7 +20,6 @@ public class RareRestTest {
 	@Mock
 	public RarityServiceImpl service;
 	
-	private static final String MOCK_DATA_ARRAY1 = "[{\"rId\":1,\"name\":\"N\",\"lvMax\":20}]";
 	
 	
 	@Before
@@ -37,13 +36,13 @@ public class RareRestTest {
 
 	@Test
 	public void getRarityId() {
-		Mockito.when(service.getRarityId(1)).thenReturn(MOCK_DATA_ARRAY1);
-		Assert.assertEquals(MOCK_DATA_ARRAY1, control.getRarityId(1));
+		Mockito.when(service.getRarityId(1)).thenReturn(Constants.MOCK_RARE_DATA_ARRAY1);
+		Assert.assertEquals(Constants.MOCK_RARE_DATA_ARRAY1, control.getRarityId(1));
 	}
 
 	@Test
 	public void getRarityName() {
-		Mockito.when(service.getRarityName("N")).thenReturn(MOCK_DATA_ARRAY1);
-		Assert.assertEquals(MOCK_DATA_ARRAY1, control.getRarityName("N"));
+		Mockito.when(service.getRarityName("N")).thenReturn(Constants.MOCK_RARE_DATA_ARRAY1);
+		Assert.assertEquals(Constants.MOCK_RARE_DATA_ARRAY1, control.getRarityName("N"));
 	}
 }

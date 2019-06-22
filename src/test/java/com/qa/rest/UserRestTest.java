@@ -11,6 +11,7 @@ import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import com.qa.business.UserServiceImpl;
+import com.qa.persistance.repository.Constants;
 
 @RunWith(MockitoJUnitRunner.class)
 public class UserRestTest {
@@ -20,11 +21,7 @@ public class UserRestTest {
 	
 	@Mock
 	private UserServiceImpl service;
-	
-	private static final String MOCK_DATA_ARRAY1 = "[{\"uId\":1,\"username\":\"jbro95\",\"password\":\"Jbrooks95\",\"email\":\"jbro95@qa.com\"}]";
-	private static final String MOCK_OBJECT3 = "{\"uId\":3,\"username\":\"jbro951\",\"password\":\"Jbrooks95\",\"email\":\"jbrok951@qa.com\"}";
 
-	
 	@Before
 	public void setup() {
 		
@@ -32,8 +29,8 @@ public class UserRestTest {
 	
 	@Test
 	public void createUser() {
-		Mockito.when(service.createUser(MOCK_OBJECT3)).thenReturn("{\"message\": \"New User Created\"}");
-		Assert.assertEquals("{\"message\": \"New User Created\"}", control.createUser(MOCK_OBJECT3));
+		Mockito.when(service.createUser(Constants.MOCK_USER_OBJECT3)).thenReturn("{\"message\": \"New User Created\"}");
+		Assert.assertEquals("{\"message\": \"New User Created\"}", control.createUser(Constants.MOCK_USER_OBJECT3));
 	
 	}
 	
@@ -46,15 +43,15 @@ public class UserRestTest {
 	
 	@Test
 	public void findAUserId() {
-		Mockito.when(service.findAUserId(1)).thenReturn(MOCK_DATA_ARRAY1);
-		Assert.assertEquals(MOCK_DATA_ARRAY1, control.findAUserId(1));
+		Mockito.when(service.findAUserId(1)).thenReturn(Constants.MOCK_USER_DATA_ARRAY1);
+		Assert.assertEquals(Constants.MOCK_USER_DATA_ARRAY1, control.findAUserId(1));
 	
 	}
 	
 	@Test
 	public void updateUser() {
-		Mockito.when(service.updateUser(1, MOCK_OBJECT3)).thenReturn("{\"message\": \"User Updated\"}");
-		Assert.assertEquals("{\"message\": \"User Updated\"}", control.updateUser(1, MOCK_OBJECT3));
+		Mockito.when(service.updateUser(1, Constants.MOCK_USER_OBJECT3)).thenReturn("{\"message\": \"User Updated\"}");
+		Assert.assertEquals("{\"message\": \"User Updated\"}", control.updateUser(1, Constants.MOCK_USER_OBJECT3));
 	
 	}
 	
@@ -67,8 +64,14 @@ public class UserRestTest {
 	
 	@Test
 	public void findAUserName() {
-		Mockito.when(service.findAUserName("j")).thenReturn(MOCK_DATA_ARRAY1);
-		Assert.assertEquals(MOCK_DATA_ARRAY1, control.findAUserName("j"));
+		Mockito.when(service.findAUserName("j")).thenReturn(Constants.MOCK_USER_DATA_ARRAY1);
+		Assert.assertEquals(Constants.MOCK_USER_DATA_ARRAY1, control.findAUserName("j"));
 	
+	}
+	
+	@Test
+	public void findAUserNameExact() {
+		Mockito.when(service.findAUserNameExact("jbro95")).thenReturn(Constants.MOCK_USER_DATA_ARRAY1);
+		Assert.assertEquals(Constants.MOCK_USER_DATA_ARRAY1, control.findAUserNameExact("jbro95"));
 	}
 }

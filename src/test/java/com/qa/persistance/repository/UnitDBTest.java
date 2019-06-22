@@ -37,20 +37,6 @@ public class UnitDBTest {
 	@Mock
 	private Query query;
 
-	private static final String MOCK_DATA_ARRAY1 = "[{\"cId\":1,\"name\":\"SSJ3 Gotenks\",\"alignment\":\"Super\",\"hp\":20,\"atk\":20,\"def\":20,\"type\":1,\"rarity\":1}]";
-	private static final String MOCK_OBJECT1 = "{\"cId\":1,\"name\":\"SSJ3 Gotenks\",\"alignment\":\"Super\",\"hp\":20,\"atk\":20,\"def\":20,\"type\":1,\"rarity\":1}";
-	private static final Unit unit1 = new Unit(1, "SSJ3 Gotenks", "Super", 20, 20, 20, 1, 1);
-
-	private static final String MOCK_DATA_ARRAY2 = "[{\"cId\":2,\"name\":\"SSJ Gotenks\",\"alignment\":\"Super\",\"hp\":20,\"atk\":20,\"def\":20,\"type\":1,\"rarity\":1}]";
-	private static final String MOCK_OBJECT2 = "{\"cId\":2,\"name\":\"SSJ Gotenks\",\"alignment\":\"Super\",\"hp\":20,\"atk\":20,\"def\":20,\"type\":1,\"rarity\":1}";
-	private static final Unit unit2 = new Unit(2, "SSJ Gotenks", "Super", 20, 20, 20, 1, 1);
-
-	private static final String MOCK_DATA_ARRAY3 = "[{\"cId\":13,\"name\":\"goku\",\"alignment\":\"Super\",\"hp\":20,\"atk\":20,\"def\":20,\"type\":1,\"rarity\":1]";
-	private static final String MOCK_OBJECT3 = "{\"cId\":13,\"name\":\"goku\",\"alignment\":\"Super\",\"hp\":20,\"atk\":20,\"def\":20,\"type\":1,\"rarity\":1}";
-	private static final Unit unit3 = new Unit(13, "N", "goku", 20, 20, 20, 1, 1);
-	
-//	private static final Team t1 = new Team(1, null, null);
-
 	@Before
 	public void setup() {
 		repo.setManager(manager);
@@ -63,9 +49,9 @@ public class UnitDBTest {
 	public void getAllUnits() {
 		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
 		List<Unit> unit = new ArrayList<>();
-		unit.add(unit1);
+		unit.add(Constants.unit1);
 		Mockito.when(query.getResultList()).thenReturn(unit);
-		Assert.assertEquals(MOCK_DATA_ARRAY1, repo.getAllUnits());
+		Assert.assertEquals(Constants.MOCK_UNIT_DATA_ARRAY1, repo.getAllUnits());
 	}
 
 	@Test
@@ -83,23 +69,23 @@ public class UnitDBTest {
 	public void getIdExist() {
 		List<Unit> unit = new ArrayList<>();
 
-		unit.add(unit1);
-		unit.add(unit2);
+		unit.add(Constants.unit1);
+		unit.add(Constants.unit2);
 
-		Mockito.when(manager.find(Unit.class, 2)).thenReturn(unit2);
+		Mockito.when(manager.find(Unit.class, 2)).thenReturn(Constants.unit2);
 
 		Assert.assertEquals(2, unit.size());
-		Assert.assertEquals(MOCK_OBJECT2, repo.getUnitId(2));
+		Assert.assertEquals(Constants.MOCK_UNIT_OBJECT2, repo.getUnitId(2));
 	}
 
 	@Test
 	public void getIdFail() {
 		List<Unit> unit = new ArrayList<>();
 
-		unit.add(unit1);
-		unit.add(unit2);
+		unit.add(Constants.unit1);
+		unit.add(Constants.unit2);
 
-		Mockito.when(manager.find(Unit.class, 2)).thenReturn(unit2);
+		Mockito.when(manager.find(Unit.class, 2)).thenReturn(Constants.unit2);
 
 		Assert.assertEquals(2, unit.size());
 		Assert.assertEquals("{\"message\": \"Unit doesn't exist\"}", repo.getUnitId(3));
@@ -110,12 +96,12 @@ public class UnitDBTest {
 		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
 		List<Unit> unit = new ArrayList<>();
 
-		unit.add(unit1);
-		unit.add(unit3);
+		unit.add(Constants.unit1);
+		unit.add(Constants.unit3);
 		Mockito.when(query.getResultList()).thenReturn(unit);
 
 		Assert.assertEquals(2, unit.size());
-		Assert.assertEquals(MOCK_DATA_ARRAY1, repo.getUnitName("Gotenks"));
+		Assert.assertEquals(Constants.MOCK_UNIT_DATA_ARRAY1, repo.getUnitName("Gotenks"));
 
 	}
 
@@ -124,14 +110,14 @@ public class UnitDBTest {
 		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
 		List<Unit> unit = new ArrayList<>();
 
-		unit.add(unit1);
-		unit.add(unit2);
-		unit.add(unit3);
+		unit.add(Constants.unit1);
+		unit.add(Constants.unit2);
+		unit.add(Constants.unit3);
 
 		Mockito.when(query.getResultList()).thenReturn(unit);
 
 		Assert.assertEquals(3, unit.size());
-		Assert.assertEquals("[" + MOCK_OBJECT1 + "," + MOCK_OBJECT2 + "]", repo.getUnitName("Gotenks"));
+		Assert.assertEquals("[" + Constants.MOCK_UNIT_OBJECT1 + "," +Constants.MOCK_UNIT_OBJECT2 + "]", repo.getUnitName("Gotenks"));
 
 	}
 
@@ -140,12 +126,100 @@ public class UnitDBTest {
 		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
 		List<Unit> unit = new ArrayList<>();
 
-		unit.add(unit1);
-		unit.add(unit2);
+		unit.add(Constants.unit1);
+		unit.add(Constants.unit2);
 		Mockito.when(query.getResultList()).thenReturn(unit);
 
 		Assert.assertEquals(2, unit.size());
 		Assert.assertEquals("{\"message\": \"Unit does not exist\"}", repo.getUnitName("z"));
+
+	}
+
+	@Test
+	public void getTypeSingle() {
+		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
+		List<Unit> unit = new ArrayList<>();
+
+		unit.add(Constants.unit1);
+		unit.add(Constants.unit2);
+		Mockito.when(query.getResultList()).thenReturn(unit);
+
+		Assert.assertEquals(2, unit.size());
+		Assert.assertEquals(Constants.MOCK_UNIT_DATA_ARRAY1, repo.getUnitType(2));
+
+	}
+
+	@Test
+	public void getTypeMulti() {
+		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
+		List<Unit> unit = new ArrayList<>();
+
+		unit.add(Constants.unit1);
+		unit.add(Constants.unit2);
+		unit.add(Constants.unit3);
+
+		Mockito.when(query.getResultList()).thenReturn(unit);
+
+		Assert.assertEquals(3, unit.size());
+		Assert.assertEquals("[" + Constants.MOCK_UNIT_OBJECT1 + "," +Constants.MOCK_UNIT_OBJECT3 + "]", repo.getUnitType(2));
+
+	}
+
+	@Test
+	public void getTypeNothing() {
+		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
+		List<Unit> unit = new ArrayList<>();
+
+		unit.add(Constants.unit1);
+		unit.add(Constants.unit2);
+		Mockito.when(query.getResultList()).thenReturn(unit);
+
+		Assert.assertEquals(2, unit.size());
+		Assert.assertEquals("{\"message\": \"Type does not exist\"}", repo.getUnitType(3));
+
+	}
+
+	@Test
+	public void getRaritySingle() {
+		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
+		List<Unit> unit = new ArrayList<>();
+
+		unit.add(Constants.unit1);
+		unit.add(Constants.unit2);
+		Mockito.when(query.getResultList()).thenReturn(unit);
+
+		Assert.assertEquals(2, unit.size());
+		Assert.assertEquals(Constants.MOCK_UNIT_DATA_ARRAY1, repo.getUnitRarity(2));
+
+	}
+
+	@Test
+	public void getRarityMulti() {
+		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
+		List<Unit> unit = new ArrayList<>();
+
+		unit.add(Constants.unit1);
+		unit.add(Constants.unit2);
+		unit.add(Constants.unit3);
+
+		Mockito.when(query.getResultList()).thenReturn(unit);
+
+		Assert.assertEquals(3, unit.size());
+		Assert.assertEquals("[" + Constants.MOCK_UNIT_OBJECT1 + "," + Constants.MOCK_UNIT_OBJECT3 + "]", repo.getUnitRarity(2));
+
+	}
+
+	@Test
+	public void getRarityNothing() {
+		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
+		List<Unit> unit = new ArrayList<>();
+
+		unit.add(Constants.unit1);
+		unit.add(Constants.unit2);
+		Mockito.when(query.getResultList()).thenReturn(unit);
+
+		Assert.assertEquals(2, unit.size());
+		Assert.assertEquals("{\"message\": \"Rarity does not exist\"}", repo.getUnitRarity(3));
 
 	}
 

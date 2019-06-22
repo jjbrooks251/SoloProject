@@ -35,4 +35,18 @@ public class UnitControl {
 		return service.getUnitName(name);
 	}
 	
+	@Path("/getUnitType/{tId}")
+	@GET
+	@Produces({ "application/json" })
+	public String getUnitType(@PathParam("tId") int tId) {
+		return service.getUnitType(tId);
+	}
+	
+	@Path("/getUnitRarity/{rId}")
+	@GET
+	@Produces({ "application/json" })
+	public String getUnitRarity(@PathParam("rId") int rId) {
+		return service.getUnitRarity(rId);
+	}
+	
 }

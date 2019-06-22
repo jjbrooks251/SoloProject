@@ -2,7 +2,6 @@ package com.qa.rest;
 
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -20,7 +19,7 @@ public class TypeRestTest {
 	@Mock
 	public TypeServiceImpl service;
 
-	private static final String MOCK_DATA_ARRAY1 = "[{\"tId\":1,\"name\":\"AGL\"}]";
+	private static final String MOCK_TYPE_DATA_ARRAY1 = "[{\"tId\":1,\"name\":\"AGL\"}]";
 
 	@Before
 	public void setup() {
@@ -35,13 +34,13 @@ public class TypeRestTest {
 
 	@Test
 	public void getTypeId() {
-		Mockito.when(service.getTypeId(1)).thenReturn(MOCK_DATA_ARRAY1);
-		Assert.assertEquals(MOCK_DATA_ARRAY1, control.getTypeId(1));
+		Mockito.when(service.getTypeId(1)).thenReturn(MOCK_TYPE_DATA_ARRAY1);
+		Assert.assertEquals(MOCK_TYPE_DATA_ARRAY1, control.getTypeId(1));
 	}
 
 	@Test
 	public void getTypeName() {
-		Mockito.when(service.getTypeName("A")).thenReturn(MOCK_DATA_ARRAY1);
-		Assert.assertEquals(MOCK_DATA_ARRAY1, control.getTypeName("A"));
+		Mockito.when(service.getTypeName("A")).thenReturn(MOCK_TYPE_DATA_ARRAY1);
+		Assert.assertEquals(MOCK_TYPE_DATA_ARRAY1, control.getTypeName("A"));
 	}
 }

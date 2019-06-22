@@ -12,6 +12,7 @@ public interface UserService {
 	
 	public String deleteUser(int id);
 	
-	public String findAUserName(String username)
-	;
+	public String findAUserName(String username);
+	
+	public String findAUserNameExact(String username);
 }

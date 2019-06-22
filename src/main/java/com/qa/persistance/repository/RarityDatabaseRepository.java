@@ -75,7 +75,7 @@ public class RarityDatabaseRepository implements RarityRepository {
 
 		Collection<Rarity> rarities = (Collection<Rarity>) query.getResultList();
 
-		List<Rarity> result = rarities.stream().filter(n -> n.getName().contains(name)).collect(Collectors.toList());
+		List<Rarity> result = rarities.stream().filter(n -> n.getName().toLowerCase().contains(name.toLowerCase())).collect(Collectors.toList());
 
 		if (result.isEmpty()) {
 

@@ -20,6 +20,8 @@ public class Team {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int tId;
 
+	private String name;
+	
 	@ManyToOne
 	private User user;
 
@@ -31,9 +33,10 @@ public class Team {
 		super();
 	}
 
-	public Team(int tId, User user, Set<Unit> characters) {
+	public Team(int tId, String name, User user, Set<Unit> characters) {
 		super();
 		this.tId = tId;
+		this.name = name;
 		this.user = user;
 		this.characters = characters;
 	}
@@ -44,6 +47,14 @@ public class Team {
 
 	public void settId(int tId) {
 		this.tId = tId;
+	}
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public User getUser() {
@@ -61,5 +72,12 @@ public class Team {
 	 public void setCharacters(Set<Unit> characters) {
 	 this.characters = characters;
 	 }
+
+	@Override
+	public String toString() {
+		return "Team [tId=" + tId + ", name=" + name + ", user=" + user + ", characters=" + characters + "]";
+	}
+	 
+	 
 
 }

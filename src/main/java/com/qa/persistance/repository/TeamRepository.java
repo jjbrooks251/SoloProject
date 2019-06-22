@@ -8,7 +8,7 @@ public interface TeamRepository {
 	
 	public String findATeamId(int id);
 	
-	public int findATeamName(String team);
+	public String findATeamName(String name);
 	
 	public String updateTeam(int id, String team);
 	

@@ -3,20 +3,16 @@ package com.qa.persistance.repository;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import com.qa.persistance.repository.UserMapRepository;
-import com.qa.util.JSONUtil;
 
 public class UserMapTest {
 
-	private JSONUtil util;
 	private UserMapRepository ump;
 
 	@Before
 	public void setup() {
-		util = new JSONUtil();
 		ump = new UserMapRepository();
 
 	}
