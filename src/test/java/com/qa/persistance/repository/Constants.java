@@ -1,6 +1,10 @@
 package com.qa.persistance.repository;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import com.qa.persistance.domain.Rarity;
+import com.qa.persistance.domain.Team;
 import com.qa.persistance.domain.Type;
 import com.qa.persistance.domain.Unit;
 import com.qa.persistance.domain.User;
@@ -62,5 +66,21 @@ public class Constants {
 	public static final User user12 = new User(2, "cTatum94", "Mynamegeoff25", "cTatum94@qa.com", null);
 	public static final User user13 = new User(3, "jbro951", "Jbrooks951", "jbrok951@qa.com", null);
 
+	public static final Set<Unit> units = new HashSet<>();
+	
+	public static final String MOCK_TEAM_DATA_ARRAY1 = "[{\"tId\":1,\"name\":\"team\",\"user\":{\"uId\":1,\"username\":\"jbro95\",\"password\":\"Jbrooks95\",\"email\":\"jbro95@qa.com\"},\"characters\":[{\"cId\":1,\"name\":\"SSJ3 Gotenks\",\"alignment\":\"Super\",\"hp\":20,\"atk\":20,\"def\":20,\"type\":2,\"rarity\":2}]}]";
+	public static final String MOCK_TEAM_OBJECT1 = "{\"tId\":1,\"name\":\"team\",\"user\":{\"uId\":1,\"username\":\"jbro95\",\"password\":\"Jbrooks95\",\"email\":\"jbro95@qa.com\"},\"characters\":[{\"cId\":1,\"name\":\"SSJ3 Gotenks\",\"alignment\":\"Super\",\"hp\":20,\"atk\":20,\"def\":20,\"type\":2,\"rarity\":2}]}";
+	
+	public static final Team team1 = new Team(1, "team", Constants.user11, null); 
+	
+	public static final String MOCK_TEAM_DATA_ARRAY2 = "[{\"tId\":2,\"name\":\"goku\",\"user\":{\"uId\":1,\"username\":\"jbro95\",\"password\":\"Jbrooks95\",\"email\":\"jbro95@qa.com\"},\"characters\":[{\"cId\":1,\"name\":\"SSJ3 Gotenks\",\"alignment\":\"Super\",\"hp\":20,\"atk\":20,\"def\":20,\"type\":2,\"rarity\":2}]}]";
+	public static final Team team2 = new Team(2, "goku", Constants.user11, null); 
+	
+	public static final String MOCK_TEAM_OBJECT3 = "{\"tId\":3,\"name\":\"trial\",\"user\":{\"uId\":1,\"username\":\"jbro95\",\"password\":\"Jbrooks95\",\"email\":\"jbro95@qa.com\"},\"characters\":[{\"cId\":1,\"name\":\"SSJ3 Gotenks\",\"alignment\":\"Super\",\"hp\":20,\"atk\":20,\"def\":20,\"type\":2,\"rarity\":2}]}";
+	public static final String MOCK_TEAM_DATA_ARRAY3 = "[{\"tId\":3,\"name\":\"trial\",\"user\":{\"uId\":1,\"username\":\"jbro95\",\"password\":\"Jbrooks95\",\"email\":\"jbro95@qa.com\"},\"characters\":[{\"cId\":1,\"name\":\"SSJ3 Gotenks\",\"alignment\":\"Super\",\"hp\":20,\"atk\":20,\"def\":20,\"type\":2,\"rarity\":2}]}]";
+	public static final Team team3 = new Team(3, "trial", Constants.user11, null); 
+	
+	public static final String MOCK_TEAM_OBJECT4 = "{\"tId\":4,\"name\":\"z\",\"user\":{\"uId\":1,\"username\":\"jbro95\",\"password\":\"Jbrooks95\",\"email\":\"jbro95@qa.com\"},\"characters\":[{\"cId\":1,\"name\":\"SSJ3 Gotenks\",\"alignment\":\"Super\",\"hp\":20,\"atk\":20,\"def\":20,\"type\":2,\"rarity\":2}]}";
+	
 	
 }

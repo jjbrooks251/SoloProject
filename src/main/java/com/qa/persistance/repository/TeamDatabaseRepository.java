@@ -13,44 +13,63 @@ import javax.transaction.Transactional;
 import javax.transaction.Transactional.TxType;
 
 import com.qa.persistance.domain.Team;
-import com.qa.persistance.domain.Unit;
-import com.qa.persistance.domain.User;
 import com.qa.util.JSONUtil;
 
 @Transactional(TxType.SUPPORTS)
 @Default
-public class TeamDatabaseRepository implements TeamRepository{
+public class TeamDatabaseRepository implements TeamRepository {
 
 	@PersistenceContext(unitName = "primary")
 	private EntityManager manager;
 
 	@Inject
 	private JSONUtil util;
+
+	public EntityManager getManager() {
+		return manager;
+	}
 	
+
+	public void setManager(EntityManager manager) {
+		this.manager = manager;
+	}
 	
+
+	public JSONUtil getUtil() {
+		return util;
+	}
+	
+
+	public void setUtil(JSONUtil util) {
+		this.util = util;
+	}
+	
+
+	@Transactional(TxType.REQUIRED)
 	public String createTeam(String team) {
-	
-		return null;
+
+		Team teams = util.getObjectForJSON(team, Team.class);
+
+		manager.persist(teams);
+
+		return "{\"message\": \"New Team has been Created\"}";
 	}
 
-	
 	public String findAllTeams() {
 		Query query = manager.createQuery("SELECT t FROM Team t");
 
 		Collection<Team> teams = (Collection<Team>) query.getResultList();
 
-		return util.getJSONForObject(teams);
+		if (teams.isEmpty()) {
+			return "{\"Message\": \"There are no teams to return\"}";
+		} else {
+
+			return util.getJSONForObject(teams);
+		}
 	}
 
-	
-	public String findATeamId(int id) {
-		
-		return null;
-	}
-
-	
 	public String findATeamName(String name) {
-		
+
 		Query query = manager.createQuery("SELECT t FROM Team t");
 
 		Collection<Team> teams = (Collection<Team>) query.getResultList();
@@ -67,18 +86,30 @@ public class TeamDatabaseRepository implements TeamRepository{
 		}
 	}
 
-	
+	@Transactional(TxType.REQUIRED)
 	public String updateTeam(int id, String team) {
-		
-		return null;
+		Team old = manager.find(Team.class, id);
+		Team update = util.getObjectForJSON(team, Team.class);
+
+		old.setName(update.getName());
+
+		manager.persist(old);
+		return "{\"message\": \"Team Name Updated\"}";
 	}
 
-	
+	@Transactional(TxType.REQUIRED)
 	public String deleteTeam(int id) {
-		
-		return null;
+
+		Team team = manager.find(Team.class, id);
+
+		if (team != null) {
+			manager.remove(team);
+			return "{\"message\": \"Team deleted\"}";
+
+		} else {
+
+			return "{\"message\": \"Chosen team does not exist\"}";
+		}
 	}
-	
-	
 
 }

@@ -24,13 +24,6 @@ public class TeamControl {
 		return service.findAllTeams();
 	}
 
-	@Path("/findATeamId/{id}")
-	@GET
-	@Produces({ "application/json" })
-	public String findATeamId(@PathParam("id") int id) {
-		return service.findATeamId(id);
-	}
-
 	@Path("/findATeamName/{teamname}")
 	@GET
 	@Produces({ "application/json" })
@@ -38,7 +31,6 @@ public class TeamControl {
 		return service.findATeamName(teamname);
 	}
 	
-
 	@Path("/createTeam")
 	@POST
 	@Produces({ "application/json" })
@@ -53,7 +45,7 @@ public class TeamControl {
 		return service.deleteTeam(id);
 	}
 
-	@Path("/updateTeam /{id}")
+	@Path("/updateTeam/{id}")
 	@PUT
 	@Produces({ "application/json" })
 	public String updateTeam(@PathParam("id") int id, String team) {
