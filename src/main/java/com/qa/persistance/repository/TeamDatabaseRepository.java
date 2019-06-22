@@ -1,6 +1,8 @@
 package com.qa.persistance.repository;
 
 import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.enterprise.inject.Default;
 import javax.inject.Inject;
@@ -11,6 +13,7 @@ import javax.transaction.Transactional;
 import javax.transaction.Transactional.TxType;
 
 import com.qa.persistance.domain.Team;
+import com.qa.persistance.domain.Unit;
 import com.qa.persistance.domain.User;
 import com.qa.util.JSONUtil;
 
@@ -24,42 +27,55 @@ public class TeamDatabaseRepository implements TeamRepository{
 	@Inject
 	private JSONUtil util;
 	
-	@Override
+	
 	public String createTeam(String team) {
-		// TODO Auto-generated method stub
+	
 		return null;
 	}
 
-	@Override
+	
 	public String findAllTeams() {
-		Query query = manager.createQuery("SELECT a FROM Team a");
+		Query query = manager.createQuery("SELECT t FROM Team t");
 
 		Collection<Team> teams = (Collection<Team>) query.getResultList();
 
 		return util.getJSONForObject(teams);
 	}
 
-	@Override
+	
 	public String findATeamId(int id) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
-	@Override
-	public int findATeamName(String team) {
-		// TODO Auto-generated method stub
-		return 0;
+	
+	public String findATeamName(String name) {
+		
+		Query query = manager.createQuery("SELECT t FROM Team t");
+
+		Collection<Team> teams = (Collection<Team>) query.getResultList();
+
+		List<Team> result = teams.stream().filter(n -> n.getName().toLowerCase().contains(name.toLowerCase()))
+				.collect(Collectors.toList());
+
+		if (result.isEmpty()) {
+
+			return "{\"message\": \"Searched Team does not exist\"}";
+
+		} else {
+			return util.getJSONForObject(result);
+		}
 	}
 
-	@Override
+	
 	public String updateTeam(int id, String team) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
-	@Override
+	
 	public String deleteTeam(int id) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 	
