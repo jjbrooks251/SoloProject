@@ -31,7 +31,7 @@ public class Constants {
 
 	public static final Unit unit1 = new Unit(1, "SSJ3 Gotenks", "Super", 20, 20, 20, 2, 2);
 	public static final Unit unit2 = new Unit(2, "SSJ Gotenks", "Super", 20, 20, 20, 1, 1);
-	public static final String MOCK_STORE_DATA_ARRAY3 = "[{\"cId\":1,\"name\":\"SSJ3 Gotenks\",\"alignment\":\"Super\",\"hp\":20,\"atk\":20,\"def\":20,\"type\":1,\"rarity\":1}]";
+	public static final String MOCK_STORE_DATA_ARRAY3 = "[{\"cId\":1,\"name\":\"SSJ3 Gotenks\",\"alignment\":\"Super\",\"hp\":20,\"atk\":20,\"def\":20,\"type\":2,\"rarity\":2}]";
 	
 	public static final String MOCK_TYPE_OBJECT1 = "{\"tId\":1,\"name\":\"AGL\"}";
 	public static final Type type1 = new Type(1, "AGL");
