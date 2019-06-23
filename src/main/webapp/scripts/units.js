@@ -115,7 +115,7 @@ const detailButtonHandler = () => {
 
     if (check != null) {
 
-        createPromise("POST", path + "Storage/createStorage/" + uId + "/" + event.target.cId).then(resolve => {
+        createPromise("POST", path + "Storage/createStorage/" + check + "/" + event.target.id).then(resolve => {
             console.log(resolve)
         })
 
