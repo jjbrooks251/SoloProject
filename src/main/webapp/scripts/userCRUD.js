@@ -51,9 +51,9 @@ function createUser() {
         createPromise("GET", path + "User/findAUserNameExact/" + user.username).then(value => {
             let data = JSON.parse(value);
 
-            console.log(data[0].uId);
+            console.log(data.uId);
 
-            sessionStorage.setItem('userLogin', data[0].uId);
+            sessionStorage.setItem('userLogin', data.uId);
 
             window.location.href = 'ownaccount.html';
         })
