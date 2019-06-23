@@ -222,19 +222,19 @@ function ftype() {
     var path2 = "Unit/getUnitType/";
     if (document.getElementById("searchType").value == "str") {
         let type = 1;
-        filter(path, type);
+        filter(path2, type);
     } else if (document.getElementById("searchType").value == "phy") {
         let type = 2;
-        filter(path, type);
+        filter(path2, type);
     } else if (document.getElementById("searchType").value == "int") {
         let type = 3;
-        filter(path, type);
+        filter(path2, type);
     } else if (document.getElementById("searchType").value == "teq") {
         let type = 4;
-        filter(path, type);
+        filter(path2, type);
     } else if (document.getElementById("searchType").value == "agl") {
         let type = 5;
-        filter(path, type);
+        filter(path2, type);
     } else {
         document.getElementById("print").innerText = "Incorrect entry";
     }
@@ -337,28 +337,28 @@ function rarity() {
 
     if (document.getElementById("searchRarity").value == "N") {
         let type = 1;
-        filter(path, type);
+        filter(path2, type);
     } else if (document.getElementById("searchRarity").value == "R") {
         let type = 2;
-        filter(path, type);
+        filter(path2, type);
     } else if (document.getElementById("searchRarity").value == "SR") {
         let type = 3;
-        filter(path, type);
+        filter(path2, type);
     } else if (document.getElementById("searchRarity").value == "SSR") {
         let type = 4;
-        filter(path, type);
+        filter(path2, type);
     } else if (document.getElementById("searchRarity").value == "UR") {
         let type = 5;
-        filter(path, type);
+        filter(path2, type);
     } else if (document.getElementById("searchRarity").value == "TUR") {
         let type = 6;
-        filter(path, type);
+        filter(path2, type);
     } else if (document.getElementById("searchRarity").value == "LR") {
         let type = 7;
-        filter(path, type);
+        filter(path2, type);
     } else if (document.getElementById("searchRarity").value == "EZA") {
         let type = 8;
-        filter(path, type);
+        filter(path2, type);
     } else {
         document.getElementById("print").innerText = "Incorrect entry";
     }
