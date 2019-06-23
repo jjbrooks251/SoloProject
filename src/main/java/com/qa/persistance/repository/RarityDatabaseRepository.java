@@ -13,7 +13,6 @@ import javax.transaction.Transactional;
 import javax.transaction.Transactional.TxType;
 
 import com.qa.persistance.domain.Rarity;
-import com.qa.persistance.domain.User;
 import com.qa.util.JSONUtil;
 
 @Transactional(TxType.SUPPORTS)

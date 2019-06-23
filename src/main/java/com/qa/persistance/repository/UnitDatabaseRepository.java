@@ -13,7 +13,6 @@ import javax.transaction.Transactional;
 import javax.transaction.Transactional.TxType;
 
 import com.qa.persistance.domain.Unit;
-import com.qa.persistance.domain.User;
 import com.qa.util.JSONUtil;
 
 @Transactional(TxType.SUPPORTS)
@@ -26,6 +25,8 @@ public class UnitDatabaseRepository implements UnitRepository {
 	@Inject
 	private JSONUtil util;
 
+	String sql = "SELECT c FROM Unit c";
+	
 	public EntityManager getManager() {
 		return manager;
 	}
@@ -44,7 +45,7 @@ public class UnitDatabaseRepository implements UnitRepository {
 
 	public String getAllUnits() {
 
-		Query query = manager.createQuery("SELECT c FROM Unit c");
+		Query query = manager.createQuery(sql);
 
 		Collection<Unit> units = (Collection<Unit>) query.getResultList();
 
@@ -71,9 +72,9 @@ public class UnitDatabaseRepository implements UnitRepository {
 
 	public String getUnitName(String name) {
 
-		Query query = manager.createQuery("SELECT c FROM Unit c");
+		Query query1 = manager.createQuery(sql);
 
-		Collection<Unit> units = (Collection<Unit>) query.getResultList();
+		Collection<Unit> units = (Collection<Unit>) query1.getResultList();
 
 		List<Unit> result = units.stream().filter(n -> n.getName().toLowerCase().contains(name.toLowerCase()))
 				.collect(Collectors.toList());
@@ -89,9 +90,9 @@ public class UnitDatabaseRepository implements UnitRepository {
 
 	public String getUnitType(int tId) {
 
-		Query query = manager.createQuery("SELECT c FROM Unit c");
+		Query query2 = manager.createQuery(sql);
 
-		Collection<Unit> units = (Collection<Unit>) query.getResultList();
+		Collection<Unit> units = (Collection<Unit>) query2.getResultList();
 
 		List<Unit> result = units.stream().filter(n -> n.getType() == tId)
 				.collect(Collectors.toList());
@@ -107,9 +108,9 @@ public class UnitDatabaseRepository implements UnitRepository {
 
 	public String getUnitRarity(int rId) {
 
-		Query query = manager.createQuery("SELECT c FROM Unit c");
+		Query query3 = manager.createQuery(sql);
 
-		Collection<Unit> units = (Collection<Unit>) query.getResultList();
+		Collection<Unit> units = (Collection<Unit>) query3.getResultList();
 
 		List<Unit> result = units.stream().filter(n -> n.getRarity() == rId)
 				.collect(Collectors.toList());

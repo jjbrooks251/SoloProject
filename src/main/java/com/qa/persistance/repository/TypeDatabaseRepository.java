@@ -13,7 +13,6 @@ import javax.transaction.Transactional;
 import javax.transaction.Transactional.TxType;
 
 import com.qa.persistance.domain.Type;
-import com.qa.persistance.domain.User;
 import com.qa.util.JSONUtil;
 
 @Transactional(TxType.SUPPORTS)
@@ -70,9 +69,9 @@ public class TypeDatabaseRepository implements TypeRepository {
 
 	@Override
 	public String getTypeName(String name) {
-		Query query = manager.createQuery("SELECT t FROM Type t");
+		Query query1 = manager.createQuery("SELECT t FROM Type t");
 
-		Collection<Type> types = (Collection<Type>) query.getResultList();
+		Collection<Type> types = (Collection<Type>) query1.getResultList();
 
 		List<Type> result = types.stream().filter(n -> n.getName().toLowerCase().contains(name.toLowerCase())).collect(Collectors.toList());
 

@@ -25,6 +25,9 @@ public class UserDatabaseRepository implements UserRepository {
 	@Inject
 	private JSONUtil util;
 
+	String usersql = "SELECT a FROM User a";
+	String userempty = "{\"message\": \"User doesn't exist\"}";
+	
 	public EntityManager getManager() {
 		return manager;
 	}
@@ -52,7 +55,7 @@ public class UserDatabaseRepository implements UserRepository {
 	}
 
 	public String findAllUsers() {
-		Query query = manager.createQuery("SELECT a FROM User a");
+		Query query = manager.createQuery(usersql);
 
 		Collection<User> users = (Collection<User>) query.getResultList();
 
@@ -70,12 +73,12 @@ public class UserDatabaseRepository implements UserRepository {
 		if (user1 != null) {
 			return util.getJSONForObject(user1);
 		} else {
-			return "{\"message\": \"User doesn't exist\"}";
+			return userempty;
 		}
 	}
 
 	public String findAUserName(String username) {
-		Query query = manager.createQuery("SELECT a FROM User a");
+		Query query = manager.createQuery(usersql);
 
 		Collection<User> users = (Collection<User>) query.getResultList();
 
@@ -83,7 +86,7 @@ public class UserDatabaseRepository implements UserRepository {
 
 		if (result.isEmpty()) {
 
-			return "{\"message\": \"User does not exist\"}";
+			return userempty;
 
 		} else {
 			return util.getJSONForObject(result);
@@ -125,7 +128,7 @@ public class UserDatabaseRepository implements UserRepository {
 
 	@Override
 	public String findAUserNameExact(String username) {
-		Query query = manager.createQuery("SELECT a FROM User a");
+		Query query = manager.createQuery(usersql);
 
 		Collection<User> users = (Collection<User>) query.getResultList();
 
@@ -133,7 +136,7 @@ public class UserDatabaseRepository implements UserRepository {
 
 		if (result.isEmpty()) {
 
-			return "{\"message\": \"User does not exist\"}";
+			return userempty;
 
 		} else {
 			return util.getJSONForObject(result);

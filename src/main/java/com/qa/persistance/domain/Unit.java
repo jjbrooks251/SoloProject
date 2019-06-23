@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 @Entity
 public class Unit {
@@ -27,18 +26,16 @@ public class Unit {
 	}
 
 	public Unit(int cId, String name, String alignment, int hp, int atk, int def, int type, int rarity) {
-	super();
-	this.cId = cId;
-	this.name = name;
-	this.alignment = alignment;
-	this.hp = hp;
-	this.atk = atk;
-	this.def = def;
-	this.type = type;
-	this.rarity = rarity;
-}
-
-
+		super();
+		this.cId = cId;
+		this.name = name;
+		this.alignment = alignment;
+		this.hp = hp;
+		this.atk = atk;
+		this.def = def;
+		this.type = type;
+		this.rarity = rarity;
+	}
 
 	public int getcId() {
 		return cId;

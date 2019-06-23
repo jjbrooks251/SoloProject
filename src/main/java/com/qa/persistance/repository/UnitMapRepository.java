@@ -9,16 +9,17 @@ import java.util.stream.Collectors;
 import javax.enterprise.inject.Alternative;
 
 import com.qa.persistance.domain.Unit;
-import com.qa.persistance.domain.User;
 import com.qa.util.JSONUtil;
 
 @Alternative
 public class UnitMapRepository implements UnitRepository {
 
-	private Map<Integer, Unit> unitMap = new HashMap<Integer, Unit>();
+	private Map<Integer, Unit> unitMap = new HashMap<>();
 
 	JSONUtil json = new JSONUtil();
 
+	String empty = "{\"message\": \"Result is empty\"}";
+	
 	public Map<Integer, Unit> getUnitMap() {
 		return unitMap;
 	}
@@ -41,7 +42,7 @@ public class UnitMapRepository implements UnitRepository {
 
 		Unit units = getUnitMap().get(cId);
 
-		if (getUnitMap().containsKey(cId) == true) {
+		if (getUnitMap().containsKey(cId)) {
 
 			return units.toString();
 
@@ -57,7 +58,7 @@ public class UnitMapRepository implements UnitRepository {
 				.filter(n -> n.getValue().getName().toLowerCase().contains(name.toLowerCase())).collect(Collectors.toList());
 
 		if (result.isEmpty()) {
-			return "{\"message\": \"Result is empty\"}";
+			return empty;
 		} else {
 
 			return json.getJSONForObject(result);
@@ -70,7 +71,7 @@ public class UnitMapRepository implements UnitRepository {
 				.filter(n -> n.getValue().getType() == tId).collect(Collectors.toList());
 
 		if (result.isEmpty()) {
-			return "{\"message\": \"Result is empty\"}";
+			return empty;
 		} else {
 
 			return json.getJSONForObject(result);
@@ -83,7 +84,7 @@ public class UnitMapRepository implements UnitRepository {
 				.filter(n -> n.getValue().getRarity() == rId).collect(Collectors.toList());
 
 		if (result.isEmpty()) {
-			return "{\"message\": \"Result is empty\"}";
+			return empty;
 		} else {
 
 			return json.getJSONForObject(result);

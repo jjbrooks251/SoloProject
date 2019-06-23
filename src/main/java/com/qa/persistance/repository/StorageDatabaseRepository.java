@@ -1,6 +1,5 @@
 package com.qa.persistance.repository;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -81,9 +80,9 @@ public class StorageDatabaseRepository implements StorageRepository {
 
 	@Transactional(TxType.REQUIRED)
 	public String deleteStorage(int uId, int cID) {
-		User user1 = manager.find(User.class, uId);
+		User user2 = manager.find(User.class, uId);
 
-		Set<Unit> unit = user1.getCharacters();
+		Set<Unit> unit = user2.getCharacters();
 
 		List<Unit> result = unit.stream().filter(n -> n.getcId() == cID).collect(Collectors.toList());
 
@@ -100,9 +99,9 @@ public class StorageDatabaseRepository implements StorageRepository {
 	}
 
 	public String findUserStorage(int uId) {
-		User user1 = manager.find(User.class, uId);
+		User user3 = manager.find(User.class, uId);
 
-		Set<Unit> unit = user1.getCharacters();
+		Set<Unit> unit = user3.getCharacters();
 
 		if (unit.isEmpty()) {
 			return "{\"message\": \"User has no Units in storage\"}";

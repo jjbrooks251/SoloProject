@@ -111,7 +111,7 @@ public class UserMapTest {
 	@Test
 	public void deleteDoesntExist() {
 
-		assertEquals("{\"Message\": \"Account does not exist\"}", ump.deleteUser(1));
+		assertEquals("{\"Message\": \"User does not exist\"}", ump.deleteUser(1));
 		
 	}
 
