@@ -29,7 +29,7 @@ function displayUsers() {
 
         let data = JSON.parse(value);
 
-        document.getElementById('foreignName').innerText = "Below is the account deatails for user:" + data.username;
+        document.getElementById('foreignname').innerText = "Below is the account deatails for user:" + data.username;
 
     })
 }
