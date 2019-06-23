@@ -144,8 +144,6 @@ function filterTable() {
         for (let i = 0; i < value.length; i++) {
             let myRow = document.createElement('tr');
             container.appendChild(myRow);
-            let myunitid = document.createElement('td');
-            myunitid.innerHTML = data[i].cId;
             let myName = document.createElement('td');
             myName.innerHTML = data[i].name;
             let myrarity = document.createElement('td');
@@ -202,15 +200,15 @@ function filterTable() {
             myRow.appendChild(myatk);
             myRow.appendChild(mydef);
 
-            // let detail = document.createElement('td');
-            // let detailButton = document.createElement('button');
+            let detail = document.createElement('td');
+            let detailButton = document.createElement('button');
 
-            // detailButton.id = value[i].memberid;
-            // detailButton.innerText = "Add to Storage";
-            // detailButton.onclick = detailButtonHandler;
-            // detail.innerHTML = detailButton;
+            detailButton.id = value[i].memberid;
+            detailButton.innerText = "Add to Storage";
+            detailButton.onclick = detailButtonHandler;
+            detail.innerHTML = detailButton;
 
-            // myRow.appendChild(detailButton);
+            myRow.appendChild(detailButton);
 
         }
     })
@@ -258,8 +256,6 @@ function filter(path2, type) {
         for (let i = 0; i < value.length; i++) {
             let myRow = document.createElement('tr');
             container.appendChild(myRow);
-            let myunitid = document.createElement('td');
-            myunitid.innerHTML = data[i].cId;
             let myName = document.createElement('td');
             myName.innerHTML = data[i].name;
             let myrarity = document.createElement('td');
@@ -316,15 +312,15 @@ function filter(path2, type) {
             myRow.appendChild(myatk);
             myRow.appendChild(mydef);
 
-            // let detail = document.createElement('td');
-            // let detailButton = document.createElement('button');
+            let detail = document.createElement('td');
+            let detailButton = document.createElement('button');
 
-            // detailButton.id = value[i].memberid;
-            // detailButton.innerText = "Add to Storage";
-            // detailButton.onclick = detailButtonHandler;
-            // detail.innerHTML = detailButton;
+            detailButton.id = value[i].memberid;
+            detailButton.innerText = "Add to Storage";
+            detailButton.onclick = detailButtonHandler;
+            detail.innerHTML = detailButton;
 
-            // myRow.appendChild(detailButton);
+            myRow.appendChild(detailButton);
 
         }
     })
