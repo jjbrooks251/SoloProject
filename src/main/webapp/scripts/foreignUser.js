@@ -29,7 +29,7 @@ function displayUsers() {
 
         let data = JSON.parse(value);
 
-        document.getElementById('foreignName').innerText = data.username;
+        document.getElementById('foreignName').innerText = "Below is the account deatails for user:" + data.username;
 
     })
 }
@@ -51,8 +51,6 @@ function getAllUnits() {
         for (let i = 0; i < value.length; i++) {
             let myRow = document.createElement('tr');
             container.appendChild(myRow);
-            let myunitid = document.createElement('td');
-            myunitid.innerHTML = data[i].cId;
             let myName = document.createElement('td');
             myName.innerHTML = data[i].name;
             let myrarity = document.createElement('td');
@@ -97,7 +95,6 @@ function getAllUnits() {
             let mydef = document.createElement('td');
             mydef.innerHTML = data[i].def;
 
-            myRow.appendChild(myunitid);
             myRow.appendChild(myName);
             myRow.appendChild(myrarity);
             myRow.appendChild(mytype);
