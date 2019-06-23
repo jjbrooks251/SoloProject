@@ -30,9 +30,7 @@ function displayUsers() {
         let data = JSON.parse(value);
         const container = document.getElementById('userTable');
 
-
         document.getElementById('foreignName').innerText = data.username;
-
 
     })
 }

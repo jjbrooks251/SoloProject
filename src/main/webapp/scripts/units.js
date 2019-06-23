@@ -93,20 +93,36 @@ function getAllUnits() {
             myRow.appendChild(myatk);
             myRow.appendChild(mydef);
 
-            // let detail = document.createElement('td');
-            // let detailButton = document.createElement('button');
+            let detail = document.createElement('td');
+            let detailButton = document.createElement('button');
 
-            // detailButton.id = value[i].memberid;
-            // detailButton.innerText = "Add to Storage";
-            // detailButton.onclick = detailButtonHandler;
-            // detail.innerHTML = detailButton;
+            detailButton.id = value[i].memberid;
+            detailButton.innerText = "Add to Storage";
+            detailButton.onclick = detailButtonHandler;
+            detail.innerHTML = detailButton;
 
-            // myRow.appendChild(detailButton);
+            myRow.appendChild(detailButton);
 
         }
     })
         .catch((error) => console.log(error.message));
     return false;
+}
+
+const detailButtonHandler = () => {
+
+    let check = sessionStorage.getItem('userLogin')
+
+    if (check != null) {
+
+        createPromise("POST", path + "Storage/createStorage/" + uId + "/" + event.target.cId).then(resolve => {
+            console.log(resolve)
+        })
+
+    } else {
+        document.getElementById("errolog").innerText = "Please log in to add units to your storage";
+    }
+
 }
 
 function filterTable() {
@@ -203,7 +219,7 @@ function filterTable() {
 }
 
 function ftype() {
-var path = "Unit/getUnitType/";
+    var path = "Unit/getUnitType/";
     if (document.getElementById("searchType").value == "str") {
         let type = 1;
         filter(path, type);
@@ -220,7 +236,7 @@ var path = "Unit/getUnitType/";
         let type = 5;
         filter(path, type);
     } else {
-        document.getElementById("print").innerText = "Incorrect entry"; 
+        document.getElementById("print").innerText = "Incorrect entry";
     }
 
 }
@@ -334,16 +350,16 @@ function rarity() {
     } else if (document.getElementById("searchRarity").value == "UR") {
         let type = 5;
         filter(path, type);
-        } else if (document.getElementById("searchRarity").value == "TUR") {
+    } else if (document.getElementById("searchRarity").value == "TUR") {
         let type = 6;
         filter(path, type);
-        } else if (document.getElementById("searchRarity").value == "LR") {
+    } else if (document.getElementById("searchRarity").value == "LR") {
         let type = 7;
         filter(path, type);
-        } else if (document.getElementById("searchRarity").value == "EZA") {
+    } else if (document.getElementById("searchRarity").value == "EZA") {
         let type = 8;
         filter(path, type);
     } else {
-        document.getElementById("print").innerText = "Incorrect entry"; 
+        document.getElementById("print").innerText = "Incorrect entry";
     }
 }
