@@ -250,8 +250,8 @@ function filter(path2, type) {
         if (container.rows.length > 1) {
 
             let tableSize = container.rows.length;
-            for (i = tableSize; i > 1; i--) {
-                container.deleteRow(i - 1);
+            for (let j = tableSize; j > 1; j--) {
+                container.deleteRow(j - 1);
             }
         }
 
