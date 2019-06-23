@@ -24,6 +24,8 @@ public class TypeDatabaseRepository implements TypeRepository {
 
 	@Inject
 	private JSONUtil util;
+	
+	String typesql = "SELECT t FROM Type t";
 
 	public EntityManager getManager() {
 		return manager;
@@ -43,7 +45,7 @@ public class TypeDatabaseRepository implements TypeRepository {
 
 	@Override
 	public String getAllTypes() {
-		Query query = manager.createQuery("SELECT t FROM Type t");
+		Query query = manager.createQuery(typesql);
 
 		Collection<Type> types = (Collection<Type>) query.getResultList();
 
@@ -69,11 +71,11 @@ public class TypeDatabaseRepository implements TypeRepository {
 
 	@Override
 	public String getTypeName(String name) {
-		Query query1 = manager.createQuery("SELECT t FROM Type t");
+		Query query1 = manager.createQuery(typesql);
 
-		Collection<Type> types = (Collection<Type>) query1.getResultList();
+		Collection<Type> types1 = (Collection<Type>) query1.getResultList();
 
-		List<Type> result = types.stream().filter(n -> n.getName().toLowerCase().contains(name.toLowerCase())).collect(Collectors.toList());
+		List<Type> result = types1.stream().filter(n -> n.getName().toLowerCase().contains(name.toLowerCase())).collect(Collectors.toList());
 
 		if (result.isEmpty()) {
 

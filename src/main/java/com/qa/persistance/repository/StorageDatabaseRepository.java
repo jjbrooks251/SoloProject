@@ -82,9 +82,9 @@ public class StorageDatabaseRepository implements StorageRepository {
 	public String deleteStorage(int uId, int cID) {
 		User user2 = manager.find(User.class, uId);
 
-		Set<Unit> unit = user2.getCharacters();
+		Set<Unit> unit2 = user2.getCharacters();
 
-		List<Unit> result = unit.stream().filter(n -> n.getcId() == cID).collect(Collectors.toList());
+		List<Unit> result = unit2.stream().filter(n -> n.getcId() == cID).collect(Collectors.toList());
 
 		if (result.isEmpty()) {
 			return "{\"message\": \"Unit does not appear in users storage\"}";
