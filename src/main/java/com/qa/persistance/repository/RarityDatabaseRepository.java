@@ -25,6 +25,8 @@ public class RarityDatabaseRepository implements RarityRepository {
 	@Inject
 	private JSONUtil util;
 
+	String raresql = "SELECT r FROM Rarity r";
+	
 	public EntityManager getManager() {
 		return manager;
 	}
@@ -43,7 +45,7 @@ public class RarityDatabaseRepository implements RarityRepository {
 
 	public String getAllRarity() {
 
-		Query query = manager.createQuery("SELECT r FROM Rarity r");
+		Query query = manager.createQuery(raresql);
 
 		Collection<Rarity> rare = (Collection<Rarity>) query.getResultList();
 
@@ -70,9 +72,9 @@ public class RarityDatabaseRepository implements RarityRepository {
 
 	public String getRarityName(String name) {
 
-		Query query = manager.createQuery("SELECT r FROM Rarity r");
+		Query query1 = manager.createQuery(raresql);
 
-		Collection<Rarity> rarities = (Collection<Rarity>) query.getResultList();
+		Collection<Rarity> rarities = (Collection<Rarity>) query1.getResultList();
 
 		List<Rarity> result = rarities.stream().filter(n -> n.getName().toLowerCase().contains(name.toLowerCase())).collect(Collectors.toList());
 

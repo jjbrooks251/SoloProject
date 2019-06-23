@@ -33,8 +33,8 @@ function getAllUnits() {
         if (container.rows.length > 1) {
 
             let tableSize = container.rows.length;
-            for (i = tableSize; i > 1; i--) {
-                container.deleteRow(i - 1);
+            for (let j = tableSize; j > 1; j--) {
+                container.deleteRow(j - 1);
             }
         }
 
@@ -219,7 +219,7 @@ function filterTable() {
 }
 
 function ftype() {
-    var path = "Unit/getUnitType/";
+    var path2 = "Unit/getUnitType/";
     if (document.getElementById("searchType").value == "str") {
         let type = 1;
         filter(path, type);
@@ -241,9 +241,9 @@ function ftype() {
 
 }
 
-function filter(path, type) {
+function filter(path2, type) {
 
-    createPromise("GET", path + path + type).then(value => {
+    createPromise("GET", path + path2 + type).then(value => {
 
         let data = JSON.parse(value);
         const container = document.getElementById('unitTable');
@@ -333,7 +333,7 @@ function filter(path, type) {
 }
 
 function rarity() {
-    var path = "Unit/getUnitRarity/";
+    var path2 = "Unit/getUnitRarity/";
 
     if (document.getElementById("searchRarity").value == "N") {
         let type = 1;
