@@ -61,7 +61,7 @@ function createUser() {
 
     } else {
 
-        console.log("passwords dont match");
+        document.getElementById("errorpass").innerText = "Passwords Dont Match"
     }
 
 }
