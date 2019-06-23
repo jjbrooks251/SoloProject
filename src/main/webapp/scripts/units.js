@@ -188,10 +188,6 @@ function filterTable() {
             let mydef = document.createElement('td');
             mydef.innerHTML = data[i].def;
 
-
-
-
-            myRow.appendChild(myunitid);
             myRow.appendChild(myName);
             myRow.appendChild(myrarity);
             myRow.appendChild(mytype);
@@ -300,10 +296,6 @@ function filter(path2, type) {
             let mydef = document.createElement('td');
             mydef.innerHTML = data[i].def;
 
-
-
-
-            myRow.appendChild(myunitid);
             myRow.appendChild(myName);
             myRow.appendChild(myrarity);
             myRow.appendChild(mytype);
