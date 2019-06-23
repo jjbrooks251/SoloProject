@@ -1,4 +1,4 @@
-const path = "http://http://35.242.191.29:8888/SoloProject/api/";
+const path = "http://35.242.191.29:8888/SoloProject/api/";
 
 function createPromise(method, url, body) {
     return new Promise(function (resolve, reject) {
