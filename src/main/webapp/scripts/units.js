@@ -136,8 +136,8 @@ function filterTable() {
         if (container.rows.length > 1) {
 
             let tableSize = container.rows.length;
-            for (i = tableSize; i > 1; i--) {
-                container.deleteRow(i - 1);
+            for (let k = tableSize; k > 1; k--) {
+                container.deleteRow(k - 1);
             }
         }
 
@@ -236,7 +236,7 @@ function ftype() {
         let type = 5;
         filter(path2, type);
     } else {
-        document.getElementById("print").innerText = "Incorrect entry";
+        document.getElementById("errolog").innerText = "Incorrect entry";
     }
 
 }
@@ -360,6 +360,6 @@ function rarity() {
         let type = 8;
         filter(path2, type);
     } else {
-        document.getElementById("print").innerText = "Incorrect entry";
+        document.getElementById("errolog").innerText = "Incorrect entry";
     }
 }
