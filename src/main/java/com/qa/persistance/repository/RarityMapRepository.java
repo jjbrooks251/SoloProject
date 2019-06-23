@@ -9,13 +9,12 @@ import java.util.stream.Collectors;
 import javax.enterprise.inject.Alternative;
 
 import com.qa.persistance.domain.Rarity;
-import com.qa.persistance.domain.User;
 import com.qa.util.JSONUtil;
 
 @Alternative
 public class RarityMapRepository implements RarityRepository {
 
-	private Map<Integer, Rarity> rarityMap = new HashMap<Integer, Rarity>();
+	private Map<Integer, Rarity> rarityMap = new HashMap<>();
 
 	JSONUtil json = new JSONUtil();
 
@@ -30,7 +29,7 @@ public class RarityMapRepository implements RarityRepository {
 	@Override
 	public String getAllRarity() {
 
-		if (getRarityMap().size() == 0) {
+		if (getRarityMap().isEmpty()) {
 			return "{\"message\": \"Rarity Map is empty\"}";
 		} else {
 
@@ -43,7 +42,7 @@ public class RarityMapRepository implements RarityRepository {
 
 		Rarity rarity = getRarityMap().get(rId);
 
-		if (getRarityMap().containsKey(rId) != false) {
+		if (getRarityMap().containsKey(rId)) {
 
 			return rarity.toString();
 

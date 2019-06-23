@@ -14,7 +14,7 @@ import com.qa.util.JSONUtil;
 @Alternative
 public class TypeMapRepository implements TypeRepository {
 
-	private Map<Integer, Type> typeMap = new HashMap<Integer, Type>();
+	private Map<Integer, Type> typeMap = new HashMap<>();
 
 	JSONUtil json = new JSONUtil();
 
@@ -40,7 +40,7 @@ public class TypeMapRepository implements TypeRepository {
 
 		Type type = getTypeMap().get(tId);
 
-		if (getTypeMap().containsKey(tId) != false) {
+		if (getTypeMap().containsKey(tId)) {
 
 			return type.toString();
 

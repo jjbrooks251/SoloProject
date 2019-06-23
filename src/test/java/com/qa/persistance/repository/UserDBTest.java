@@ -136,7 +136,7 @@ public class UserDBTest {
 		users.add(Constants.user12);
 
 		Assert.assertEquals(2, users.size());
-		Assert.assertEquals("{\"message\": \"User does not exist\"}", repo.findAUserName("z"));
+		Assert.assertEquals("{\"message\": \"User doesn't exist\"}", repo.findAUserName("z"));
 
 	}
 
@@ -235,7 +235,7 @@ public class UserDBTest {
 		Mockito.when(query.getResultList()).thenReturn(users);
 
 		Assert.assertEquals(2, users.size());
-		Assert.assertEquals("{\"message\": \"User does not exist\"}", repo.findAUserNameExact("jb"));
+		Assert.assertEquals("{\"message\": \"User doesn't exist\"}", repo.findAUserNameExact("jb"));
 	}
 
 }

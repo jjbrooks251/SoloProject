@@ -14,10 +14,12 @@ import com.qa.util.JSONUtil;
 @Alternative
 public class UserMapRepository implements UserRepository {
 
-	private Map<Integer, User> userMap = new HashMap<Integer, User>();
+	private Map<Integer, User> userMap = new HashMap<>();
 
 	JSONUtil json = new JSONUtil();
 
+	String userexist = "{\"message\": \"User does not exist\"}";
+	
 	public Map<Integer, User> getUserMap() {
 		return userMap;
 	}
@@ -31,7 +33,7 @@ public class UserMapRepository implements UserRepository {
 
 		int id = acc.getuId();
 
-		if (getUserMap().containsKey(id) != false) {
+		if (getUserMap().containsKey(id)) {
 
 			return "{\"message\": \"Conflicting User Id\"}";
 
@@ -44,7 +46,7 @@ public class UserMapRepository implements UserRepository {
 
 	public String findAllUsers() {
 
-		if (getUserMap().size() == 0) {
+		if (getUserMap().isEmpty()) {
 			return "{\"message\": \"Map of Users is empty\"}";
 		} else {
 
@@ -56,13 +58,13 @@ public class UserMapRepository implements UserRepository {
 
 		User user = getUserMap().get(id);
 
-		if (getUserMap().containsKey(id) != false) {
+		if (getUserMap().containsKey(id)) {
 
 			return user.toString();
 
 		} else {
 
-			return "{\"message\": \"User does not exist\"}";
+			return userexist;
 		}
 	}
 
@@ -72,7 +74,7 @@ public class UserMapRepository implements UserRepository {
 				.filter(n -> n.getValue().getUsername().toLowerCase().contains(username.toLowerCase())).collect(Collectors.toList());
 
 		if (result.isEmpty()) {
-			return "{\"message\": \"User does not exist\"}";
+			return userexist;
 		} else {
 
 			return json.getJSONForObject(result);
@@ -89,26 +91,26 @@ public class UserMapRepository implements UserRepository {
 
 			return "{\"message\": \"User Updated\"}";
 		} else {
-			return "{\"message\": \"User does not exist\"}";
+			return userexist;
 		}
 	}
 
 	public String deleteUser(int id) {
 
-		if (getUserMap().containsKey(id) != false) {
+		if (getUserMap().containsKey(id)) {
 			userMap.remove(id);
 
-			return "{\"Message\": \"Account Deleted\"}";
+			return "{\"Message\": \"User Deleted\"}";
 
 		} else {
 
-			return "{\"Message\": \"Account does not exist\"}";
+			return "{\"Message\": \"User does not exist\"}";
 		}
 	}
 
-	@Override
+
 	public String findAUserNameExact(String username) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
