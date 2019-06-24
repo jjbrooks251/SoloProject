@@ -24,8 +24,8 @@ public class UnitMapRepository implements UnitRepository {
 		return unitMap;
 	}
 
-	public void setUnitMap(Map<Integer, Unit> UnitMap) {
-		this.unitMap = UnitMap;
+	public void setUnitMap(Map<Integer, Unit> unitMap) {
+		this.unitMap = unitMap;
 	}
 
 	public String getAllUnits() {

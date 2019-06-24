@@ -96,7 +96,7 @@ function getAllUnits() {
             let detail = document.createElement('td');
             let detailButton = document.createElement('button');
 
-            detailButton.id = value[i].memberid;
+            detailButton.id = data[i].cId;
             detailButton.innerText = "Add to Storage";
             detailButton.onclick = detailButtonHandler;
             detail.innerHTML = detailButton;
