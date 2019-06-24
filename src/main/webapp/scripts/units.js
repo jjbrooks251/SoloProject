@@ -121,7 +121,6 @@ const detailButtonHandler = () => {
     } else {
         document.getElementById("errolog").innerText = "Please log in to add units to your storage";
     }
-
 }
 
 function filterTable() {
@@ -322,28 +321,28 @@ function filter(path2, type) {
 function rarity() {
     var path2 = "Unit/getUnitRarity/";
 
-    if (document.getElementById("searchRarity").value == "N") {
+    if (document.getElementById("searchRarity").value == "n") {
         let type = 1;
         filter(path2, type);
-    } else if (document.getElementById("searchRarity").value == "R") {
+    } else if (document.getElementById("searchRarity").value == "r") {
         let type = 2;
         filter(path2, type);
-    } else if (document.getElementById("searchRarity").value == "SR") {
+    } else if (document.getElementById("searchRarity").value == "sr") {
         let type = 3;
         filter(path2, type);
-    } else if (document.getElementById("searchRarity").value == "SSR") {
+    } else if (document.getElementById("searchRarity").value == "ssr") {
         let type = 4;
         filter(path2, type);
-    } else if (document.getElementById("searchRarity").value == "UR") {
+    } else if (document.getElementById("searchRarity").value == "ur") {
         let type = 5;
         filter(path2, type);
-    } else if (document.getElementById("searchRarity").value == "TUR") {
+    } else if (document.getElementById("searchRarity").value == "tur") {
         let type = 6;
         filter(path2, type);
-    } else if (document.getElementById("searchRarity").value == "LR") {
+    } else if (document.getElementById("searchRarity").value == "lr") {
         let type = 7;
         filter(path2, type);
-    } else if (document.getElementById("searchRarity").value == "EZA") {
+    } else if (document.getElementById("searchRarity").value == "eza") {
         let type = 8;
         filter(path2, type);
     } else {
