@@ -95,7 +95,6 @@ function getAllUnits() {
 
             let detail = document.createElement('td');
             let detailButton = document.createElement('button');
-
             detailButton.id = data[i].cId;
             detailButton.innerText = "Add to Storage";
             detailButton.onclick = detailButtonHandler;
@@ -110,7 +109,7 @@ function getAllUnits() {
 }
 
 const detailButtonHandler = () => {
-
+    console.log(event.target.id);
     let check = sessionStorage.getItem('userLogin')
 
     if (check != null) {
