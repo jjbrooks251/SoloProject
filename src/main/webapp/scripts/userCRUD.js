@@ -34,7 +34,7 @@ function getUser() {
     createPromise("GET", path + "User/findAUserId/" + getId).then(resolve => { console.log(resolve) });
 }
 
-function createUser() {
+function register() {
 
     if (document.getElementById('password').value == document.getElementById('passcon').value) {
 
@@ -51,9 +51,9 @@ function createUser() {
         createPromise("GET", path + "User/findAUserNameExact/" + user.username).then(value => {
             let data = JSON.parse(value);
 
-            console.log(data.uId);
+            console.log(data[0].uId);
 
-            sessionStorage.setItem('userLogin', data.uId);
+            sessionStorage.setItem('userLogin', data[0].uId);
 
             window.location.href = 'ownaccount.html';
         })
